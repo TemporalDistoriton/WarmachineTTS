@@ -1,0 +1,1430 @@
+{
+	"command cards": [],
+	"cards": [
+		{
+			"name": "Aurum Adeptus Syvestro",
+			"type": "Warcaster",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\aurum adeptus syvestro.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Syvestro"
+				],
+				"values": [
+					[
+						"16"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "0",
+			"fa": "c",
+			"composition": "",
+			"rules": {},
+			"spells": [
+				"Admonition",
+				"Ignite",
+				"Purification",
+				"Revive",
+				"Stygian Abyss"
+			],
+			"rack": "",
+			"feat": {
+				"Meta Principle": "While in Syvestro's control range, friendly Faction models gain an additional die on attack and damage rolls. Discard one die of your choice in each roll. Additionally, when an enemy model is destroyed while in Syvestro's control range, a friendly Faction model in Syvestro's control range can remove d3 damage points. Meta Principle lasts for one turn."
+			},
+			"profiles": [
+				{
+					"name": "Syvestro 1",
+					"stats": {
+						"spd": "6",
+						"aat": "7",
+						"mat": "6",
+						"rat": "6",
+						"def": "15",
+						"arm": "15",
+						"arc": "7",
+						"fury": "",
+						"ctrl": "14",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Chemical Warfare",
+						"Field Alchemy"
+					],
+					"weapons": [
+						{
+							"name": "Fulmination Grenade",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "6",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "13/7"
+							},
+							"properties": [
+								"Decrepitation"
+							]
+						},
+						{
+							"name": "Purified Blade",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [
+								"Assets\\Icons\\weapon qual dam type magical.png"
+							],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "10"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Apollo",
+			"type": "Warjack",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\apollo.png",
+			"attachments": [],
+			"health": {
+				"type": "Grid",
+				"names": [],
+				"values": [
+					"-,-,-,-,-,-",
+					"-, , , , ,-",
+					" , , , , , ",
+					" ,L,A,A,R, ",
+					"L,L,M,C,R,R",
+					"-,M,M,C,C,-"
+				]
+			},
+			"keywords": [
+				"Light Warjack"
+			],
+			"cost": "11",
+			"fa": "c",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Apollo",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "5",
+						"rat": "6",
+						"def": "13",
+						"arm": "17",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 40mm.png"
+					],
+					"abilities": [
+						"Bond [Lukas]",
+						"Arcane Realignment",
+						"Arcane Repeater"
+					],
+					"weapons": [
+						{
+							"name": "Automatic Dart Launcher",
+							"type": "Ranged",
+							"count": "1",
+							"location": "L",
+							"icons": [],
+							"stats": {
+								"rng": "12",
+								"rof": "3",
+								"aoe": "-",
+								"pow": "-"
+							},
+							"properties": [
+								"Attack Type",
+								"Hallucination",
+								"Putrefaction",
+								"Unnatural Affliction"
+							]
+						},
+						{
+							"name": "Surgical Implements",
+							"type": "Melee",
+							"count": "1",
+							"location": "R",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "11"
+							},
+							"properties": [
+								"Armor-Piercing (★ Attack)"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Railless Interceptor",
+			"type": "Battle Engine",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\railless interceptor.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Interceptor"
+				],
+				"values": [
+					[
+						"30"
+					]
+				]
+			},
+			"keywords": [
+				"Battle Engine"
+			],
+			"cost": "12",
+			"fa": "2",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Interceptor",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "5",
+						"rat": "6",
+						"def": "10",
+						"arm": "19",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 120mm.png"
+					],
+					"abilities": [
+						"Bulldoze",
+						"Reposition [3\"]"
+					],
+					"weapons": [
+						{
+							"name": "Alchemical Cannon",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "14",
+								"rof": "1",
+								"aoe": "3",
+								"pow": "15/8"
+							},
+							"properties": [
+								"Attack Type",
+								"Acid Wash",
+								"Blood of Urcaen",
+								"Incendiary"
+							]
+						},
+						{
+							"name": "Antiminator",
+							"type": "Ranged",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "Sp8",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "14"
+							},
+							"properties": [
+								"Ice Cage"
+							]
+						},
+						{
+							"name": "Flamethrower",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "Sp8",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "12"
+							},
+							"properties": []
+						},
+						{
+							"name": "Ram",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "15"
+							},
+							"properties": [
+								"Ram"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aurum Ominus Alyce Marc",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\aurum ominus alyce marc.png",
+			"attachments": [],
+			"health": {
+				"type": "Box Multi",
+				"names": [
+					"Little Alyce",
+					"Big Alyce"
+				],
+				"values": [
+					[
+						"5"
+					],
+					[
+						"8"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "5",
+			"fa": "c",
+			"composition": "",
+			"rules": {
+				"Attached": "Before the start of the game, attach this model to a friendly Faction Leader for the rest of the game. Each Leader can have only one model/unit attached to it. The attached model is part of its Leader's battlegroup."
+			},
+			"profiles": [
+				{
+					"name": "Little Alyce",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "4",
+						"rat": "4",
+						"def": "13",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Magic Ability",
+						"Empower (★ Action)",
+						"Guidance (★ Action)",
+						"Harmonious Exaltation (★Action)",
+						"Transmogrification Elixir",
+						"Traumatic Transformation"
+					],
+					"weapons": [
+						{
+							"name": "Acid Bomb",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "6",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "12/6"
+							},
+							"properties": []
+						},
+						{
+							"name": "Knife",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "7"
+							},
+							"properties": []
+						}
+					]
+				},
+				{
+					"name": "Big Alyce",
+					"stats": {
+						"spd": "7",
+						"aat": "",
+						"mat": "7",
+						"rat": "",
+						"def": "13",
+						"arm": "17",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 40mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Hyper-Aggressive",
+						"Hyper-Regeneration",
+						"Jump"
+					],
+					"weapons": [
+						{
+							"name": "Claw",
+							"type": "Melee",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "14"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crucible Guard Mechanik 1",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\crucible guard mechanik 1.png",
+			"attachments": [],
+			"health": {},
+			"keywords": [],
+			"cost": "1",
+			"fa": "4",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Mechanik",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "4",
+						"rat": "4",
+						"def": "12",
+						"arm": "14",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"All-Terrain (★Action)",
+						"Alchemical Mask",
+						"Empower (★ Action)",
+						"Repair [d3 +1] (★ Action)"
+					],
+					"weapons": [
+						{
+							"name": "Carbine",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "10",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "10"
+							},
+							"properties": []
+						},
+						{
+							"name": "Torch",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "10"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dragon's Breath Rocket",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\dragons breath rocket.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Dragon's Breath Rocket"
+				],
+				"values": [
+					[
+						"5"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "3",
+			"fa": "2",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Gunner",
+					"stats": {
+						"spd": "4",
+						"aat": "",
+						"mat": "5",
+						"rat": "6",
+						"def": "12",
+						"arm": "14",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 50mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask"
+					],
+					"weapons": [
+						{
+							"name": "Rocket",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "14",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "14/8"
+							},
+							"properties": [
+								"Arcing Fire",
+								"Withering Humor"
+							]
+						},
+						{
+							"name": "Sword",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "9"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Prospero",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\prospero.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Prospero"
+				],
+				"values": [
+					[
+						"8"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "3",
+			"fa": "c",
+			"composition": "",
+			"rules": {},
+			"spells": [
+				"Guided Fire",
+				"Instability Equation"
+			],
+			"rack": "",
+			"profiles": [
+				{
+					"name": "Prospero 1",
+					"stats": {
+						"spd": "6",
+						"aat": "4",
+						"mat": "5",
+						"rat": "5",
+						"def": "13",
+						"arm": "16",
+						"arc": "4",
+						"fury": "",
+						"ctrl": "10",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 40mm.png"
+					],
+					"abilities": [
+						"Journeyman Warcaster",
+						"Soul Vessel"
+					],
+					"weapons": [
+						{
+							"name": "Exothermic Pulse",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "10",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "12"
+							},
+							"properties": []
+						},
+						{
+							"name": "Fist",
+							"type": "Melee",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "12"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Suppressor 1",
+			"type": "Warjack",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\suppressor 1.png",
+			"attachments": [],
+			"health": {
+				"type": "Grid",
+				"names": [],
+				"values": [
+					"-, , , , ,-",
+					" , , , , , ",
+					" , , , , , ",
+					"L, , , ,R, ",
+					"L,L,M,C,R,R",
+					"-,M,M,C,C,-"
+				]
+			},
+			"keywords": [],
+			"cost": "12",
+			"fa": "4",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Suppressor",
+					"stats": {
+						"spd": "5",
+						"aat": "",
+						"mat": "6",
+						"rat": "5",
+						"def": "11",
+						"arm": "18",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 50mm.png"
+					],
+					"abilities": [],
+					"weapons": [
+						{
+							"name": "Pyrodraulic Jet",
+							"type": "Ranged",
+							"count": "2",
+							"location": "L R",
+							"icons": [],
+							"stats": {
+								"rng": "Sp8",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "12"
+							},
+							"properties": [
+								"Attack Type",
+								"Ice Cage",
+								"Incendiary",
+								"Iron Bane",
+								"Both Barrels (★Attack)"
+							]
+						},
+						{
+							"name": "Fist",
+							"type": "Melee",
+							"count": "2",
+							"location": "L R",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "15"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rocketman Ace",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\rocketman ace.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Rocketman Ace"
+				],
+				"values": [
+					[
+						"5"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "3",
+			"fa": "2",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Ace",
+					"stats": {
+						"spd": "7",
+						"aat": "",
+						"mat": "",
+						"rat": "6",
+						"def": "15",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Dodge",
+						"Dogfighter",
+						"Flying High",
+						"Reposition [5\"]",
+						"Swift Hunter"
+					],
+					"weapons": [
+						{
+							"name": "Gravity Bomb",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "4",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "12/6"
+							},
+							"properties": [
+								"Brutal Damage",
+								"Sky-Dropped"
+							]
+						},
+						{
+							"name": "Carbine",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "10",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "10"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rocketman Stinger 1",
+			"type": "Solo",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\rocketman stinger 1.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Rocketman Stinger 1"
+				],
+				"values": [
+					[
+						"5"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "3",
+			"fa": "2",
+			"composition": "",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Stinger",
+					"stats": {
+						"spd": "7",
+						"aat": "",
+						"mat": "6",
+						"rat": "",
+						"def": "15",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Flying High",
+						"Reposition [5\"]",
+						"Side Step"
+					],
+					"weapons": [
+						{
+							"name": "Alchemical Injector",
+							"type": "Melee",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "-"
+							},
+							"properties": [
+								"Attack Type",
+								"Blind",
+								"Burster",
+								"Shadow Bind",
+								"Puncture"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Combat Alchemists",
+			"type": "Unit",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\combat alchemists.png",
+			"attachments": [],
+			"health": {},
+			"keywords": [],
+			"cost": "5",
+			"fa": "3",
+			"composition": "3 Grunts",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Grunt",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "4",
+						"rat": "5",
+						"def": "14",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Acid Treatment (★Action)",
+						"Alchemical Mask",
+						"Heat Treatment (★Action)",
+						"Magical Treatment (★Action)",
+						"Prowl",
+						"Smoke Bombs (★Action)"
+					],
+					"weapons": [
+						{
+							"name": "Alchemical Grenade",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "8",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "12/6"
+							},
+							"properties": [
+								"Spontaneous Combustion"
+							]
+						},
+						{
+							"name": "Dagger",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "7"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Containment Operatives",
+			"type": "Unit",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\containment operatives.png",
+			"attachments": [],
+			"health": {},
+			"keywords": [],
+			"cost": "6",
+			"fa": "2",
+			"composition": "3 Grunts",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Grunt",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "5",
+						"rat": "6",
+						"def": "14",
+						"arm": "12",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Prowl"
+					],
+					"weapons": [
+						{
+							"name": "Alchemical Projector",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "14",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "13/7"
+							},
+							"properties": [
+								"Arcing Fire",
+								"Attack Type",
+								"Blood of Urcaen",
+								"Pyrocatalyst",
+								"Vitriolic Trajectile"
+							]
+						},
+						{
+							"name": "Dagger",
+							"type": "Melee",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "7"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crucible Guard Rocketmen 1",
+			"type": "Unit",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\crucible guard rocketmen 1.png",
+			"attachments": [
+				"Crucible Guard Rocketman Captain 1"
+			],
+			"health": {},
+			"keywords": [],
+			"cost": "6",
+			"fa": "3",
+			"composition": "5 Grunts",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "grunt",
+					"stats": {
+						"spd": "7",
+						"aat": "",
+						"mat": "",
+						"rat": "6",
+						"def": "15",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Flying High"
+					],
+					"weapons": [
+						{
+							"name": "Gravity Bomb",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "4",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "12/6"
+							},
+							"properties": [
+								"Cumbersome",
+								"Sky-Dropped"
+							]
+						},
+						{
+							"name": "Carbine",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "10",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "10"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crucible Guard Rocketman Captain 1",
+			"type": "Command Attachment",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\crucible guard rocketman captain 1.png",
+			"attachments": [],
+			"health": {
+				"type": "Box",
+				"names": [
+					"Crucible Guard Rocketman Captain 1"
+				],
+				"values": [
+					[
+						"5"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "3",
+			"fa": "3",
+			"composition": "",
+			"rules": {
+				"Command Attachment [Crucible Guard Rocketmen]": "This command attachment can be added to a Crucible Guard Rocketmen unit."
+			},
+			"profiles": [
+				{
+					"name": "Captain",
+					"stats": {
+						"spd": "7",
+						"aat": "",
+						"mat": "",
+						"rat": "6",
+						"def": "15",
+						"arm": "11",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 30mm.png"
+					],
+					"abilities": [
+						"Alchemical Mask",
+						"Flying High",
+						"Granted: Dodge",
+						"Granted: Reposition [2\"]",
+						"Mission Objective"
+					],
+					"weapons": [
+						{
+							"name": "Gravity Bomb",
+							"type": "Ranged",
+							"count": "1",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "4",
+								"rof": "1",
+								"aoe": "2",
+								"pow": "12/6"
+							},
+							"properties": [
+								"Cumbersome",
+								"Sky-Dropped"
+							]
+						},
+						{
+							"name": "Carbine",
+							"type": "Ranged",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "10",
+								"rof": "1",
+								"aoe": "-",
+								"pow": "10"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"spells": {
+		"Admonition": {
+			"text": "When an enemy model advances and ends its movement or is placed within 6\" of target model in the spellcaster's battlegroup, the affected model can immediately advance up to 3\", then Admonition expires.",
+			"stats": {
+				"cost": "2",
+				"rng": "6",
+				"aoe": "-",
+				"pow": "-",
+				"dur": "Up",
+				"off": "No"
+			}
+		},
+		"Ignite": {
+			"text": "Target friendly Faction model/unit gains +2 to melee attack damage rolls. Affected models gain Critical Fire on their melee attacks.",
+			"stats": {
+				"cost": "2",
+				"rng": "6",
+				"aoe": "-",
+				"pow": "-",
+				"dur": "Up",
+				"off": "No"
+			}
+		},
+		"Purification": {
+			"text": "Continuous effects, animi, and upkeep spells in the spellcaster's control range immediately expire.",
+			"stats": {
+				"cost": "4",
+				"rng": "Self",
+				"aoe": "Ctrl",
+				"pow": "-",
+				"dur": "-",
+				"off": "No"
+			}
+		},
+		"Revive": {
+			"text": "Target one friendly trooper model. Return one destroyed Grunt model to the target model's unit. The Grunt is returned with one unmarked damage box. Place the returned Grunt within 2\" of the target model. The Grunt model must forfeit its Normal Movement and Combat Action the turn it is returned to play.",
+			"stats": {
+				"cost": "2",
+				"rng": "8",
+				"aoe": "-",
+				"pow": "-",
+				"dur": "-",
+				"off": "No"
+			}
+		},
+		"Stygian Abyss": {
+			"text": "On a critical hit, the model hit suffers Blind for one round. (A model suffering Blind cannot make ranged or arcane attacks, suffers -4 MAT and DEF, and cannot run, charge, or make slam or trample power attacks. It must forfeit either its Normal Movement or Combat Action during its next activation. Blind can be shaken.)",
+			"stats": {
+				"cost": "3",
+				"rng": "10",
+				"aoe": "-",
+				"pow": "12",
+				"dur": "*",
+				"off": "Yes"
+			}
+		},
+		"Guided Fire": {
+			"text": "While in the spellcaster's control range, models in its battlegroup gain boosted ranged attack rolls for one turn.",
+			"stats": {
+				"cost": "3",
+				"rng": "Self",
+				"aoe": "Ctrl",
+				"pow": "-",
+				"dur": "Turn",
+				"off": "No"
+			}
+		},
+		"Instability Equation": {
+			"text": "Target friendly warjack stands up and is no longer stationary. If the warjack was suffering Disruption, it is no longer disrupted. The warjack gains up to 3 focus points and gains Unstable for one turn. (At the end of an activation in which a model with Unstable spent more than 1 focus point, roll a d6. If the roll is equal to or less than the number of focus points spent, the model with Unstable explodes and other models within 3\" of it suffer an unboostable POW 14 blast damage roll. Remove the model with Unstable from play.)",
+			"stats": {
+				"cost": "1",
+				"rng": "6",
+				"aoe": "-",
+				"pow": "-",
+				"dur": "Turn",
+				"off": "No"
+			}
+		}
+	},
+	"abilities": {
+		"Alchemical Mask": "This model does not suffer gas effects. When determining LOS or resolving attacks, this model ignores cloud effects and concealment granted from cloud effects.",
+		"Chemical Warfare": "When an enemy model takes damage from a continuous effect while in this model's control area, double the damage.",
+		"Field Alchemy": "This model can use one of the following special rules at any time during each of its activations.",
+		"Ephemeral Vitae": "This model can cast one spell this activation without spending focus points.",
+		"Impenetrable Haze": "Center a cloud effect template on this model. This AOE remains in play for one round. This model gains Stealth while completely within the template.",
+		"Super Fuel": "Friendly Faction construct models currently within 5\" of this model gain +2 SPD this turn.",
+		"Bond [Lukas]": "If Apollo begins the game in Lukas' battlegroup, it is bonded to him. Apollo is not considered to be bonded while under your opponent's control. If Apollo is bonded to Lukas and is in his control range at the start of Lukas' activation, Lukas can remove d3 damage points.",
+		"Arcane Realignment": "While within this model's Leader's control Range, that Leader can reroll one failed arcane attack roll each turn.",
+		"Arcane Repeater": "While this model's Leader is within 5\" of it, that Leader's control range is extended 2\".",
+		"Bulldoze": "When this model is B2B with an enemy model during its Normal Movement, it can push that model up to 2\" directly away from it. A model can be pushed by Bulldoze only once per turn. Bulldoze has no effect when this model makes a trample power attack.",
+		"Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends.",
+		"Attack Type": "Each time this weapon is used to make an attack, choose one of the following special rules.",
+		"Acid Wash": "This attack causes corrosion damage. Models hit by this attack suffer the Corrosion continuous effect.",
+		"Blood of Urcaen": "This attack causes magic damage. On a critical hit, upkeep spells and animi on the model/unit hit immediately expire.",
+		"Incendiary": "This attack causes fire damage, and models hit suffer the Fire continuous effect.",
+		"Ice Cage": "On a direct hit a model hit suffers a cumulative -2 DEF for one turn unless it has Resistance: Cold. When a model without Resistance: Cold is affected by two or more directly hitting Ice Cage attacks in the same turn, it becomes stationary for one round.",
+		"Ram": "When an enemy model is hit by this weapon during this model's Combat Action, it becomes knocked down and can be pushed 1\" directly away from this model. If the model hit is pushed, this model can immediately advance 1\" directly toward it.",
+		"Attached": "Before the start of the game, attach this model to a friendly Faction Leader for the rest of the game. Each Leader can have only one model/unit attached to it. The attached model is part of its Leader's battlegroup.",
+		"Magic Ability": "Performing a Magic Ability special action counts as casting a spell.",
+		"Empower (★ Action)": "RNG 6. Target friendly Faction warjack. If the target warjack is in range and it was suffering Disruption, it is no longer disrupted. The warjack gains 1 focus point.",
+		"Guidance (★ Action)": "RNG 6. Target friendly model. If the model is in range, it gains Eyeless Sight and its weapons gain Damage Type: Magical for one turn.",
+		"Harmonious Exaltation (★Action)": "RNG 5. Target this model's Leader. If it is in range, once this turn when the Leader casts a spell, reduce the COST of the spell by 1.",
+		"Transmogrification Elixir": "This model can use Transmogrification Elixir once per game during your Control Phase. Immediately mark all of this model's damage boxes and replace it with Big Alyce.",
+		"Traumatic Transformation": "This model begins the game as Little Alyce. When all of this model's damage boxes are marked, instead of becoming disabled this model is replaced with Big Alyce. Damage points in excess of this model's remaining unmarked damage boxes are not applied to Big Alyce's damage boxes. If this model is replaced with Big Alyce during its activation, its activation ends. After this model is replaced with Big Alyce, apply effects that were on it to Big Alyce. When this model is replaced by Big Alyce, Big Alyce is not considered to have entered an area and does not trigger effects triggered by entering that area.",
+		"Hyper-Aggressive": "When this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance directly toward the attacking model.",
+		"Hyper-Regeneration": "Remove d3 damage points from this model at the start of each of its activations.",
+		"Jump": "After it makes a full advance during its Normal Movement and before it performs its Combat Action, you can place this model anywhere completely within 5\" of its current location.",
+		"All-Terrain (★Action)": "RNG 1. Target friendly Faction construct model. If the model is in range, it gains Pathfinder for one turn.",
+		"Repair [d3 +1] (★ Action)": "RNG 1. Target friendly Faction construct model. If the model is in range, remove d3 +1 damage points from it.",
+		"Arcing Fire": "When attacking with this weapon, this model can ignore intervening models.",
+		"Withering Humor": "On a direct hit, living and undead models hit by this attack suffer -2 ARM and lose Tough for one turn unless they can ignore gas effects.",
+		"Journeyman Warcaster": "This model is not a warcaster or Leader, but has the following warcaster special rules: Battlegroup Controller, Focus Manipulation, Power Field, and Spellcaster. This model must have at least one cohort in its battlegroup at the start of the game.",
+		"Soul Vessel": "This model generates soul tokens as if it were a living model.",
+		"Dodge": "This model can advance up to 2\" immediately after an enemy attack that missed it is resolved.",
+		"Dogfighter": "This model gains boosted attack and damage rolls against models with Flight.",
+		"Flying High": "Ranged attacks targeting this model suffer -3 RNG. Friendly models can advance through this model if they have enough movement to move completely past its base. This model loses Flying High if it loses Flight.",
+		"Reposition [5\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 5\", then its activation ends.",
+		"Swift Hunter": "When this model destroys one or more enemy models with a basic ranged attack, immediately after the attack is resolved it can advance up to 2\".",
+		"Decrepitation": "This weapon gains an additional die on damage rolls against construct and undead models.",
+		"Hallucination": "On a direct hit, living models hit suffer Double Vision for one round. A model suffering Double Vision suffers -1 to attack rolls. Additionally, a model targeted by a model with Double Vision gains Dodge for that attack. (A model with Dodge can advance up to 2\" immediately after an enemy attack that missed it is resolved.)",
+		"Putrefaction": "On a direct hit, models hit gain Acid Blast for one round. (When this model is destroyed, models within 2\" of it suffer a POW 12 corrosion blast damage roll and the corrosion continuous effect.)",
+		"Unnatural Affliction": "On a direct hit, models hit lose Resistance: Cold, Resistance: Corrosion, Resistance: Electricity, and Resistance: Fire for one round.",
+		"Armor-Piercing (★ Attack)": "When calculating damage from this weapon, halve the base ARM stats of models hit.",
+		"Both Barrels (★Attack)": "This model gains +4 to the damage roll for this attack. This model cannot make additional ranged attacks with this weapon during an activation in which it makes a Both Barrels attack.",
+		"Iron Bane": "Models hit without Resistance: Corrosion suffer Rust. (A construct suffering Rust suffers -2 ARM. Rust lasts for one round.)",
+		"Brutal Damage": "On a direct hit, gain an additional die on this weapon's damage rolls against the target directly hit.",
+		"Sky-Dropped": "Attacks with this weapon ignore cover. Models with Flight do not suffer blast damage from this attack.",
+		"Side Step": "When this model hits an enemy model with an initial melee attack or a melee special attack, it can advance up to 2\" after the attack is resolved.",
+		"Blind": "A model is hit by this attack suffers Blind for one round. (A model suffering Blind cannot make ranged or arcane attacks, suffers –4 MAT and DEF, and cannot run, charge, or make slam or trample power attacks. It must forfeit either its Normal Movement or Combat Action during its next activation. Blind can be shaken.)",
+		"Burster": "When this attack boxes a living or undead model, the closest three enemy models within 3\" of the boxed model suffer an unboostable POW 10 corrosion damage roll. This damage is not considered to have been caused by an attack. After this damage is resolved, remove the boxed model from play.",
+		"Shadow Bind": "A model hit by this weapon suffers Shadow Bind for one round. (A model suffering Shadow Bind suffers –3 DEF and cannot advance for one round. Shadow Bind can be shaken.)",
+		"Puncture": "On a direct hit, all models hit suffer d3 damage points.",
+		"Acid Treatment (★Action)": "RNG 5. Target model's ranged and melee weapons gain Continuous Effect Corrosion for one round.",
+		"Heat Treatment (★Action)": "RNG 5. Target model's ranged and melee weapons gain Continuous Effect Fire for one round.",
+		"Magical Treatment (★Action)": "RNG 5. Target model's ranged and melee weapons gain Damage Type Magical for one round.",
+		"Prowl": "While this model has concealment, it gains Stealth.",
+		"Smoke Bombs (★Action)": "Center a cloud effect template on this model. This template remains in play for one round.",
+		"Spontaneous Combustion": "On a direct hit, add an additional die to this weapon's damage roll if the model hit is suffering a continuous effect. Add two dice instead if the model hit is suffering from two different continuous effects. Then, all continuous effects on that model expire.",
+		"Pyrocatalyst": "This attack causes fire damage. On a critical hit, models hit suffer the Fire continuous effect.",
+		"Vitriolic Trajectile": "This attack causes corrosion damage. On a critical hit, models hit suffer the Corrosion continuous effect.",
+		"Cumbersome": "This model cannot attack with this weapon and with another weapon during the same activation.",
+		"Granted: Dodge": "While this model is in play, models in its unit gain Dodge. (A model with Dodge can advance up to 2\" immediately after an enemy attack that missed it is resolved.)",
+		"Granted: Reposition [2\"]": "While this model is in play, models in its unit gain Reposition [2\"]. (At the end of a model/unit with Reposition [2\"]'s activation in which it did not run or fail a charge, it can advance up to 2\", then its activation ends.)",
+		"Mission Objective": "Once per game at any time during its unit's activation, this model can use Mission Objective. When it does, choose an enemy model/unit in this model's LOS. This activation, models in this unit gains +2 to attack and damage rolls against the chosen model/unit."
+	},
+	"properties": {
+		"Decrepitation": "This weapon gains an additional die on damage rolls against construct and undead models.",
+		"Hallucination": "On a direct hit, living models hit suffer Double Vision for one round. A model suffering Double Vision suffers -1 to attack rolls. Additionally, a model targeted by a model with Double Vision gains Dodge for that attack.",
+		"Putrefaction": "On a direct hit, models hit gain Acid Blast for one round. (When this model is destroyed, models within 2\" of it suffer a POW 12 corrosion blast damage roll and the corrosion continuous effect.)",
+		"Unnatural Affliction": "On a direct hit, models hit lose Resistance: Cold, Resistance: Corrosion, Resistance: Electricity, and Resistance: Fire for one round.",
+		"Attack Type": "Each time this weapon is used to make an attack, choose one of the following special rules.",
+		"Acid Wash": "This attack causes corrosion damage. Models hit by this attack suffer the Corrosion continuous effect.",
+		"Blood of Urcaen": "This attack causes magic damage. On a critical hit, upkeep spells and animi on the model/unit hit immediately expire.",
+		"Incendiary": "This attack causes fire damage, and models hit suffer the Fire continuous effect.",
+		"Ice Cage": "On a direct hit a model hit suffers a cumulative -2 DEF for one turn unless it has Resistance: Cold. When a model without Resistance: Cold is affected by two or more directly hitting Ice Cage attacks in the same turn, it becomes stationary for one round.",
+		"Ram": "When an enemy model is hit by this weapon during this model's Combat Action, it becomes knocked down and can be pushed 1\" directly away from this model. If the model hit is pushed, this model can immediately advance 1\" directly toward it.",
+		"Arcing Fire": "When attacking with this weapon, this model can ignore intervening models.",
+		"Withering Humor": "On a direct hit, living and undead models hit by this attack suffer -2 ARM and lose Tough for one turn unless they can ignore gas effects.",
+		"Armor-Piercing (★ Attack)": "When calculating damage from this weapon, halve the base ARM stats of models hit.",
+		"Both Barrels (★Attack)": "This model gains +4 to the damage roll for this attack. This model cannot make additional ranged attacks with this weapon during an activation in which it makes a Both Barrels attack.",
+		"Iron Bane": "Models hit without Resistance: Corrosion suffer Rust. (A construct suffering Rust suffers -2 ARM. Rust lasts for one round.)",
+		"Brutal Damage": "On a direct hit, gain an additional die on this weapon's damage rolls against the target directly hit.",
+		"Sky-Dropped": "Attacks with this weapon ignore cover. Models with Flight do not suffer blast damage from this attack.",
+		"Critical Freeze": "A critical attack inflicts stationary on models hit.",
+		"Blind": "A model is hit by this attack suffers Blind for one round. (A model suffering Blind cannot make ranged or arcane attacks, suffers –4 MAT and DEF, and cannot run, charge, or make slam or trample power attacks. It must forfeit either its Normal Movement or Combat Action during its next activation. Blind can be shaken.)",
+		"Burster": "When this attack boxes a living or undead model, the closest three enemy models within 3\" of the boxed model suffer an unboostable POW 10 corrosion damage roll. This damage is not considered to have been caused by an attack. After this damage is resolved, remove the boxed model from play.",
+		"Shadow Bind": "A model hit by this weapon suffers Shadow Bind for one round. (A model suffering Shadow Bind suffers –3 DEF and cannot advance for one round. Shadow Bind can be shaken.)",
+		"Puncture": "On a direct hit, all models hit suffer d3 damage points.",
+		"Spontaneous Combustion": "On a direct hit, add an additional die to this weapon's damage roll if the model hit is suffering a continuous effect. Add two dice instead if the model hit is suffering from two different continuous effects. Then, all continuous effects on that model expire.",
+		"Pyrocatalyst": "This attack causes fire damage. On a critical hit, models hit suffer the Fire continuous effect.",
+		"Vitriolic Trajectile": "This attack causes corrosion damage. On a critical hit, models hit suffer the Corrosion continuous effect.",
+		"Cumbersome": "This model cannot attack with this weapon and with another weapon during the same activation."
+	},
+	"rack": {}
+}
