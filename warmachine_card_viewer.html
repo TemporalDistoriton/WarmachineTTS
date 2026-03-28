@@ -131,6 +131,10 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .grl{width:28px;display:flex;align-items:center;justify-content:center;font-family:'Oswald';font-size:10px;color:var(--text-muted)}
 .gc{width:28px;height:22px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:'Oswald'}
 .gc.ms{background:transparent;border:1px solid transparent}
+.grs.lg .gc{width:22px;height:18px;font-size:8px}
+.grs.lg+.gl span{font-size:9px}
+.gh.lg .gcl{width:22px;font-size:9px}
+.grs.lg .grl{width:22px;font-size:9px}
 .gl{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
 .gl span{font-size:10px;font-family:'Oswald'}
 
@@ -202,6 +206,13 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .vb.act{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 .empty{color:var(--text-muted);font-style:italic;margin-top:80px;font-size:15px}
+
+/* Icons */
+.ico{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin-bottom:2px}
+.ico img{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);object-fit:contain;vertical-align:middle}
+.ico.sm img{width:18px;height:18px}
+.wico{display:inline-flex;gap:2px;margin-left:4px;vertical-align:middle}
+.wico img{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);object-fit:contain}
 
 /* Print */
 @media print {
@@ -276,8 +287,8 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 <script>
 let D=null, SEL=null, TF='All', SR='', VM='single', PL=new Set();
 
-const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc'};
-const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node'};
+const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc',S:'#aa8844'};
+const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node',S:'Superstructure'};
 const SO=['spd','aat','mat','rat','def','arm','arc','fury','ctrl','thr','ess'];
 const SL={spd:'SPD',aat:'AAT',mat:'MAT',rat:'RAT',def:'DEF',arm:'ARM',arc:'ARC',fury:'FURY',ctrl:'CTRL',thr:'THR',ess:'ESS'};
 const XO=['cost','rng','aoe','pow','dur','off'];
@@ -285,6 +296,27 @@ const XL={cost:'COST',rng:'RNG',aoe:'AOE',pow:'POW',dur:'DUR',off:'OFF'};
 
 function tc(t){t=(t||'').toLowerCase();if(t.includes('warcaster')||t.includes('warlock'))return'#8b6b3d';if(t.includes('warjack')||t.includes('warbeast'))return'#3d6b8b';if(t.includes('unit'))return'#6b3d8b';if(t.includes('solo'))return'#3d8b6b';if(t.includes('battle engine'))return'#6b6b3d';if(t.includes('command'))return'#8b3d6b';return'#5a5a5a'}
 function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+// Icon URL conversion: turns "Assets\Icons\name.png" or "/Media/Icons/name.png" into a GitHub raw URL
+const ICON_BASE='https://raw.githubusercontent.com/TemporalDistoriton/WarmachineTTS/main/Assets/Icons/';
+function icoUrl(path){
+  if(!path)return'';
+  // Extract just the filename from various path formats
+  let fn=path.replace(/\\/g,'/');
+  const idx=fn.lastIndexOf('/');
+  if(idx>=0)fn=fn.substring(idx+1);
+  return ICON_BASE+encodeURIComponent(fn);
+}
+// Render a row of icons
+function rIco(icons,sm){
+  if(!icons||!icons.length)return'';
+  return`<span class="ico${sm?' sm':''}">${icons.map(i=>`<img src="${icoUrl(i)}" alt="" title="${E(i.split(/[/\\]/).pop())}" onerror="this.style.display='none'">`).join('')}</span>`;
+}
+// Render weapon icons inline
+function rWIco(icons){
+  if(!icons||!icons.length)return'';
+  return`<span class="wico">${icons.map(i=>`<img src="${icoUrl(i)}" alt="" title="${E(i.split(/[/\\]/).pop())}" onerror="this.style.display='none'">`).join('')}</span>`;
+}
 
 // File Loading
 const dz=document.getElementById('dropzone'),fi=document.getElementById('fileInput'),em=document.getElementById('error-msg');
@@ -345,14 +377,20 @@ function rH(h){
     return o+'</div>';
   }
   if(t==='Grid'||t==='Grid Large'){
-    const rows=h.values||[];let tb=0;
+    const rows=h.values||[];
+    const isLarge=t==='Grid Large';
+    // Detect column count from first row
+    const colCount=rows.length?rows[0].split(',').length:6;
+    const halfCol=isLarge?colCount/2:colCount;
+    let tb=0;
     rows.forEach(r=>r.split(',').forEach(c=>{if(c.trim()!=='-')tb++}));
     let o='<div class="hs">';
     o+=`<div class="hl"><span class="hhp">♥${tb}</span></div>`;
-    o+='<div class="gh"><div class="gcl"></div>';
-    for(let i=1;i<=6;i++)o+=`<div class="gcl">${i}</div>`;
-    o+='</div><div class="grs">';
-    // Top-to-bottom: row 0 in JSON = top row of grid
+    // Column headers - for Large grids, show two sets of 1-6
+    o+=`<div class="gh${isLarge?' lg':''}"><div class="gcl"></div>`;
+    if(isLarge){for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`;for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`}
+    else{for(let i=1;i<=colCount;i++)o+=`<div class="gcl">${i}</div>`}
+    o+=`</div><div class="grs${isLarge?' lg':''}">`;
     rows.forEach((row,ri)=>{
       const cells=row.split(',');
       o+=`<div class="gr"><div class="grl">${ri+1}</div>`;
@@ -378,7 +416,7 @@ function rW(w,pr){
   const sl={rat:'RAT',mat:'MAT',rng:'RNG',rof:'ROF',aoe:'AOE',pow:'POW'};
   const ws=w.stats||{};
   const dn=(parseInt(w.count)>1?`${w.name} x${w.count}`:w.name)+(w.location?` [${w.location}]`:'');
-  let o=`<div class="wb ${cls}"><div class="wi"><div class="wt"><div><div class="wn">${E(dn)}</div><div class="wtl">${isR?'⚡ Ranged':'⚔ Melee'}</div></div><div class="wss">`;
+  let o=`<div class="wb ${cls}"><div class="wi"><div class="wt"><div><div class="wn">${E(dn)}${rWIco(w.icons)}</div><div class="wtl">${isR?'⚡ Ranged':'⚔ Melee'}</div></div><div class="wss">`;
   so.forEach(k=>{const v=ws[k];if(v===undefined||v==='')return;o+=`<div class="ws"><div class="wsl">${sl[k]}</div><div class="wsv">${E(v)}</div></div>`});
   o+='</div></div>';
   if(w.properties&&w.properties.length){
@@ -417,7 +455,7 @@ function rCard(card){
 
   // Profiles
   (card.profiles||[]).forEach(p=>{
-    o+=`<div class="sh"><span class="si">👤</span>${E(p.name)}</div><div class="aw">`;
+    o+=`<div class="sh"><span class="si">👤</span>${E(p.name)} ${rIco(p.icons)}</div><div class="aw">`;
     o+=rSB(p.stats,false);
     if(p.abilities&&p.abilities.length){
       o+='<div class="at" style="margin-top:6px">';
@@ -460,7 +498,7 @@ function rCard(card){
     o+='<div class="sh"><span class="si">🔧</span>Options</div><div class="ow">';
     card.options.forEach(opt=>{
       o+='<div class="ob"><div class="ot"><div>';
-      o+=`<span class="onn">${E(opt.name)}</span>`;
+      o+=`<span class="onn">${E(opt.name)}</span>${rIco(opt.icons,true)}`;
       if(opt.hardpoints)o+=`<span class="ohp">[${opt.hardpoints.map(E).join(', ')}]</span>`;
       o+='</div>';
       if(opt.cost&&opt.cost!=='0')o+=`<span class="oc">+${E(opt.cost)} pts</span>`;
@@ -470,7 +508,7 @@ function rCard(card){
       if(opt.profiles&&opt.profiles.length){
         o+='<div style="margin-top:6px">';
         opt.profiles.forEach(p=>{
-          o+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)}</div>`;
+          o+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)} ${rIco(p.icons,true)}</div>`;
           o+=rSB(p.stats,true);
           if(p.abilities&&p.abilities.length){o+='<div style="margin-top:3px">';p.abilities.forEach(a=>{o+=`<div style="font-size:10px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
           if(p.weapons&&p.weapons.length){o+='<div style="margin-top:3px">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
