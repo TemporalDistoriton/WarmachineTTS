@@ -123,6 +123,15 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .hb{width:18px;height:18px;border-radius:2px;background:#444;border:1px solid #555}
 .hb.l2{background:rgba(61,139,110,0.25);border-color:var(--accent)}
 
+/* Horror Ring Health */
+.ring-wrap{padding:10px 14px 14px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.ring-total{color:var(--red);font-family:'Oswald';font-weight:700;font-size:14px;align-self:flex-start;margin-bottom:2px}
+.ring-diagram{position:relative;display:flex;align-items:center;justify-content:center}
+.ring-svg{display:block}
+.ring-legend{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+.ring-legend-item{display:flex;align-items:center;gap:5px;font-family:'Oswald';font-size:11px;color:var(--text-dim)}
+.ring-legend-dot{width:10px;height:10px;border-radius:50%;border:2px solid}
+
 /* Grid */
 .gh{display:flex;gap:1px;margin-bottom:3px}
 .gcl{width:28px;text-align:center;font-family:'Oswald';font-size:11px;font-weight:600;color:var(--text-dim)}
@@ -287,8 +296,8 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 <script>
 let D=null, SEL=null, TF='All', SR='', VM='single', PL=new Set();
 
-const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc',S:'#aa8844'};
-const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node',S:'Superstructure'};
+const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc',S:'#aa8844',B:'#cc88cc',I:'#44aacc'};
+const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node',S:'Superstructure',B:'Brain',I:'Interface'};
 const SO=['spd','aat','mat','rat','def','arm','arc','fury','ctrl','thr','ess'];
 const SL={spd:'SPD',aat:'AAT',mat:'MAT',rat:'RAT',def:'DEF',arm:'ARM',arc:'ARC',fury:'FURY',ctrl:'CTRL',thr:'THR',ess:'ESS'};
 const XO=['cost','rng','aoe','pow','dur','off'];
@@ -370,6 +379,52 @@ function rSB(st,cp){const v=SO.filter(k=>st[k]!==undefined&&st[k]!=='');if(!v.le
 function rH(h){
   if(!h||!h.type)return'';
   const t=h.type;
+
+  // ── Horror Ring Health ──────────────────────────────────────────────────────
+  if(t==='Ring'){
+    const vals=h.values||[];
+    const outer=parseInt(vals[0]||0),mid=parseInt(vals[1]||0),inner=parseInt(vals[2]||0);
+    const total=outer+mid+inner;
+    // SVG dimensions — scale for colossal vs normal
+    const isLarge=total>30;
+    const W=isLarge?320:280, H=isLarge?320:280, cx=W/2, cy=H/2;
+    const rO=isLarge?130:108, rM=isLarge?88:72, rI=isLarge?46:37;
+    const rings=[
+      {count:outer, r:rO, color:'#8b3030', stroke:'#c44', label:'Outer', dotR:5.5},
+      {count:mid,   r:rM, color:'#7a2a2a', stroke:'#b33', label:'Middle', dotR:5.5},
+      {count:inner, r:rI, color:'#6a1f1f', stroke:'#a22', label:'Inner', dotR:isLarge?5.5:4.5},
+    ];
+    let dots='';
+    rings.forEach(({count,r,color,stroke,dotR})=>{
+      if(!count)return;
+      for(let j=0;j<count;j++){
+        const angle=(2*Math.PI*j/count)-Math.PI/2;
+        const x=(cx+r*Math.cos(angle)).toFixed(2);
+        const y=(cy+r*Math.sin(angle)).toFixed(2);
+        dots+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="#e8e8e8" stroke="#222" stroke-width="1.5"/>`;
+      }
+    });
+    // Draw concentric ring arcs (background)
+    const arcs=rings.map(({r,stroke})=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${stroke}" stroke-width="${isLarge?18:15}" stroke-opacity="0.35"/>`).join('');
+
+    let legend='<div class="ring-legend">';
+    rings.forEach(({count,color,stroke,label})=>{
+      if(!count)return;
+      legend+=`<div class="ring-legend-item"><div class="ring-legend-dot" style="background:${stroke}44;border-color:${stroke}"></div>${label}: ${count}</div>`;
+    });
+    legend+='</div>';
+
+    return `<div class="ring-wrap">
+      <div class="ring-total">♥${total} (${outer}/${mid}/${inner})</div>
+      <div class="ring-diagram">
+        <svg class="ring-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+          ${arcs}${dots}
+        </svg>
+      </div>
+      ${legend}
+    </div>`;
+  }
+
   if(t==='Box'||t==='Box Multi'){
     const ns=h.names||[],vs=h.values||[];
     let o='<div class="hs">';

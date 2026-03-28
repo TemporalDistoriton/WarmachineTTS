@@ -54,7 +54,9 @@
 						"ess": ""
 					},
 					"icons": [
-						"Assets\\Icons\\base size 30mm.png"
+						"Assets\\Icons\\base size 30mm.png",
+						"Assets\\Icons\\model res corrosion.png",
+						"Assets\\Icons\\model res fire.png"
 					],
 					"abilities": [
 						"Alchemical Mask",
@@ -277,10 +279,7 @@
 							"type": "Ranged",
 							"count": "2",
 							"location": "",
-							"icons": [
-								"Assets\\Icons\\weapon qual cont eff corrosion.png",
-								"Assets\\Icons\\weapon qual cont eff fire.png"
-							],
+							"icons": [],
 							"stats": {
 								"rng": "Sp8",
 								"rof": "1",
@@ -685,7 +684,7 @@
 							"location": "",
 							"icons": [
 								"Assets\\Icons\\weapon qual cont eff fire.png",
-								"Assets\\Icons\\weapon qual cont eff corrosion.png"
+								"Assets\\Icons\\weapon qual pistol weapon.png"
 							],
 							"stats": {
 								"rng": "10",
@@ -3625,6 +3624,83 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Failed Experiments",
+			"type": "Unit",
+			"faction": "Crucible Guard",
+			"armies": [
+				"Crucible Guard"
+			],
+			"portrait": "ModelArt\\failed experiments.png",
+			"attachments": [],
+			"health": {
+				"type": "Box Multi",
+				"names": [
+					"Grunt 1",
+					"Grunt 2",
+					"Grunt 3"
+				],
+				"values": [
+					[
+						"8"
+					],
+					[
+						"8"
+					],
+					[
+						"8"
+					]
+				]
+			},
+			"keywords": [],
+			"cost": "8",
+			"fa": "2",
+			"composition": "3 Grunts",
+			"rules": {},
+			"profiles": [
+				{
+					"name": "Grunt",
+					"stats": {
+						"spd": "6",
+						"aat": "",
+						"mat": "6",
+						"rat": "",
+						"def": "13",
+						"arm": "15",
+						"arc": "",
+						"fury": "",
+						"ctrl": "",
+						"thr": "",
+						"ess": ""
+					},
+					"icons": [
+						"Assets\\Icons\\base size 40mm.png",
+						"Assets\\Icons\\model res cold.png"
+					],
+					"abilities": [
+						"Berserk",
+						"Hyper-Regeneration",
+						"Impervious Flesh"
+					],
+					"weapons": [
+						{
+							"name": "Hand Weapon",
+							"type": "Melee",
+							"count": "2",
+							"location": "",
+							"icons": [],
+							"stats": {
+								"rng": "1",
+								"rof": "",
+								"aoe": "",
+								"pow": "13"
+							},
+							"properties": []
+						}
+					]
+				}
+			]
 		}
 	],
 	"spells": {
@@ -4123,7 +4199,9 @@
 		"Iron Flesh": "Target friendly Faction model/unit gains +2 ARM and Resistance: Blast.",
 		"Telekinesis": "Place target friendly model completely within 2\" of its current location. A model can be placed by Telekinesis only once per turn.",
 		"Iron Bane (Alchemical Vents)": "Affected enemy construct models without Resistance: Corrosion suffer Rust. A construct suffering Rust suffers –2 ARM.",
-		"Miasma of Death": "Affected living enemy models lose Tough and cannot have damage removed from them unless they can ignore gas effects."
+		"Miasma of Death": "Affected living enemy models lose Tough and cannot have damage removed from them unless they can ignore gas effects.",
+		"Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+		"Impervious Flesh": "When this model suffers a damage roll, roll one fewer die."
 	},
 	"properties": {
 		"Decrepitation": "This weapon gains an additional die on damage rolls against construct and undead models.",
