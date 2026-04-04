@@ -132,6 +132,28 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .ring-legend-item{display:flex;align-items:center;gap:5px;font-family:'Oswald';font-size:11px;color:var(--text-dim)}
 .ring-legend-dot{width:10px;height:10px;border-radius:50%;border:2px solid}
 
+/* Warbeast Spiral Health */
+.spiral-wrap{padding:10px 14px 14px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.spiral-total{color:var(--red);font-family:'Oswald';font-weight:700;font-size:14px;align-self:flex-start;margin-bottom:2px}
+.spiral-hdr{display:flex;gap:4px;align-self:flex-start;margin-bottom:4px}
+.spiral-hdr-label{font-family:'Oswald';font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;letter-spacing:0.5px}
+.spiral-diagram{position:relative;display:flex;align-items:center;justify-content:center}
+.spiral-svg{display:block}
+.spiral-legend{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+.spiral-legend-item{display:flex;align-items:center;gap:5px;font-family:'Oswald';font-size:11px;color:var(--text-dim)}
+.spiral-legend-dot{width:10px;height:10px;border-radius:50%;border:2px solid}
+
+/* Animus */
+.anw{padding:4px 14px 8px}
+.anb{background:rgba(36,26,46,0.5);border-radius:4px;padding:8px 10px;margin-bottom:4px;border-left:3px solid #9966cc}
+.ant{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.ann{font-family:'Oswald';font-weight:600;font-size:13px;color:#bb88ee}
+.ans{display:flex;gap:1px}
+.anc{text-align:center;min-width:24px}
+.anl{font-size:8px;color:var(--text-muted);font-family:'Oswald';letter-spacing:0.3px;font-weight:500}
+.anv{font-size:11px;font-weight:700;font-family:'Oswald';color:var(--text)}
+.anx{font-size:11px;color:var(--text-dim);margin-top:4px;line-height:1.4}
+
 /* Grid */
 .gh{display:flex;gap:1px;margin-bottom:3px}
 .gcl{width:28px;text-align:center;font-family:'Oswald';font-size:11px;font-weight:600;color:var(--text-dim)}
@@ -247,6 +269,11 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
   .cf{display:none!important}
   .hs{padding:4px 10px!important}
   .aw,.ww,.sw,.fw,.rw,.ow{padding:2px 10px 4px!important}
+  .anw{padding:2px 10px 4px!important}
+  .ann{font-size:11px!important}
+  .anx{font-size:9px!important}
+  .spiral-wrap{padding:4px 10px!important}
+  .spiral-svg{max-width:200px!important;height:auto!important}
 }
 </style>
 </head>
@@ -425,6 +452,114 @@ function rH(h){
     </div>`;
   }
 
+  // ── Warbeast Spiral Health ──────────────────────────────────────────────────
+  if(t==='Spiral'){
+    const vals=h.values||[];
+    // vals = 6 column counts [col1, col2, col3, col4, col5, col6]
+    // Columns pair into aspects: Mind=1+2, Body=3+4, Spirit=5+6
+    // Each aspect also has 2 shared circles at the inner end (not in the column counts)
+    const colCounts=vals.map(v=>parseInt(v)||0);
+    const total=colCounts.reduce((a,b)=>a+b,0)+6; // +6 for 2 shared per aspect
+    const aspects=[
+      {name:'Mind',  short:'M', col1:colCounts[0], col2:colCounts[1], color:'#5588cc', stroke:'#6699dd'},
+      {name:'Body',  short:'B', col1:colCounts[2], col2:colCounts[3], color:'#cc5555', stroke:'#dd6666'},
+      {name:'Spirit',short:'S', col1:colCounts[4], col2:colCounts[5], color:'#55aa55', stroke:'#66bb66'}
+    ];
+
+    const W=300, H=300, cx=W/2, cy=H/2;
+    const dotR=7.5;
+    const maxR=125;
+    const minR=38;
+    const sharedR1=30;
+    const sharedR2=22;
+    const spiralTwist=-1.2;
+    const angleOffset = -Math.PI/2 + 4*Math.PI/3;
+    const armStarts=[];
+    for(let i=0;i<6;i++) armStarts.push(angleOffset + (2*Math.PI*i/6));
+
+    function spiralPos(startAngle, t){
+      const r = maxR - t*(maxR - minR);
+      const angle = startAngle + t * spiralTwist;
+      return {x: cx + r*Math.cos(angle), y: cy + r*Math.sin(angle)};
+    }
+
+    let paths='';
+    let dots='';
+    let labels='';
+
+    aspects.forEach((asp,ai)=>{
+      const cols = [asp.col1, asp.col2];
+      const armPositions = [[],[]];
+
+      cols.forEach((nDots, colIdx)=>{
+        const armI = ai*2 + colIdx;
+        const startAngle = armStarts[armI];
+        const totalInArm = nDots + 1; // +1 to leave room for shared dots beyond
+
+        for(let d=0; d<nDots; d++){
+          const tScaled = nDots>1 ? d/(totalInArm) : 0;
+          const pos = spiralPos(startAngle, tScaled);
+          armPositions[colIdx].push(pos);
+          dots+=`<circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
+        }
+
+        const labelAngle = startAngle;
+        const lR = maxR + 16;
+        const lx = cx + lR * Math.cos(labelAngle);
+        const ly = cy + lR * Math.sin(labelAngle);
+        labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${asp.stroke}" font-family="Oswald" font-weight="700" font-size="14">${armI+1}</text>`;
+      });
+
+      // 2 shared circles per aspect
+      const midAngle = (armStarts[ai*2] + armStarts[ai*2+1])/2 + spiralTwist*0.85;
+      const s1 = {x: cx + sharedR1*Math.cos(midAngle), y: cy + sharedR1*Math.sin(midAngle)};
+      const s2 = {x: cx + sharedR2*Math.cos(midAngle-0.25), y: cy + sharedR2*Math.sin(midAngle-0.25)};
+      dots+=`<circle cx="${s1.x.toFixed(1)}" cy="${s1.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
+      dots+=`<circle cx="${s2.x.toFixed(1)}" cy="${s2.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
+      armPositions[0].push(s1, s2);
+      armPositions[1].push(s1, s2);
+
+      // Draw curved path for each arm
+      armPositions.forEach((posArr)=>{
+        if(posArr.length < 2) return;
+        let pathD = `M${posArr[0].x.toFixed(1)},${posArr[0].y.toFixed(1)}`;
+        for(let i=1; i<posArr.length; i++){
+          const prev = posArr[i-1];
+          const curr = posArr[i];
+          const mx = (prev.x+curr.x)/2;
+          const my = (prev.y+curr.y)/2;
+          const dx = curr.x-prev.x;
+          const dy = curr.y-prev.y;
+          const curveAmt = 0.15;
+          const cpx = mx + dy*curveAmt;
+          const cpy = my - dx*curveAmt;
+          pathD += ` Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${curr.x.toFixed(1)},${curr.y.toFixed(1)}`;
+        }
+        paths+=`<path d="${pathD}" fill="none" stroke="${asp.stroke}" stroke-width="2.5" stroke-opacity="0.3" stroke-linecap="round"/>`;
+      });
+    });
+
+    let legend='<div class="spiral-legend">';
+    aspects.forEach(asp=>{
+      const aspTotal = asp.col1 + asp.col2 + 2;
+      legend+=`<div class="spiral-legend-item"><div class="spiral-legend-dot" style="background:${asp.stroke}44;border-color:${asp.stroke}"></div>${asp.name}: ${aspTotal}</div>`;
+    });
+    legend+='</div>';
+
+    return `<div class="spiral-wrap">
+      <div class="spiral-total">♥${total}</div>
+      <div class="spiral-hdr">
+        ${aspects.map(a=>`<span class="spiral-hdr-label" style="background:${a.color}30;color:${a.stroke};border:1px solid ${a.stroke}55">${a.short}</span>`).join('')}
+      </div>
+      <div class="spiral-diagram">
+        <svg class="spiral-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+          ${paths}${dots}${labels}
+        </svg>
+      </div>
+      ${legend}
+    </div>`;
+  }
+
   if(t==='Box'||t==='Box Multi'){
     const ns=h.names||[],vs=h.values||[];
     let o='<div class="hs">';
@@ -538,6 +673,21 @@ function rCard(card){
     o+='</div>';
   }
 
+  // Animus
+  if(card.animus&&Object.keys(card.animus).length){
+    const an=card.animus;
+    o+='<div class="sh"><span class="si">🔮</span>Animus</div><div class="anw">';
+    Object.entries(an).forEach(([sn,s])=>{
+      o+='<div class="anb"><div class="ant">';
+      o+=`<div class="ann">${E(sn)}</div><div class="ans">`;
+      XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;o+=`<div class="anc"><div class="anl">${XL[k]}</div><div class="anv">${E(v)}</div></div>`});
+      o+='</div></div>';
+      if(s.text)o+=`<div class="anx">${E(s.text)}</div>`;
+      o+='</div>';
+    });
+    o+='</div>';
+  }
+
   // Rack
   if(card.rack&&card.rack!=='')o+=`<div style="padding:2px 14px 6px"><span style="font-size:10px;color:var(--text-muted);font-family:'Oswald'">Spell Rack: ${E(card.rack)} slots</span></div>`;
 
@@ -550,29 +700,39 @@ function rCard(card){
 
   // Options
   if(card.options&&card.options.length){
-    o+='<div class="sh"><span class="si">🔧</span>Options</div><div class="ow">';
+    // Group by slot if present
+    const slots=new Map();
     card.options.forEach(opt=>{
-      o+='<div class="ob"><div class="ot"><div>';
-      o+=`<span class="onn">${E(opt.name)}</span>${rIco(opt.icons,true)}`;
-      if(opt.hardpoints)o+=`<span class="ohp">[${opt.hardpoints.map(E).join(', ')}]</span>`;
-      o+='</div>';
-      if(opt.cost&&opt.cost!=='0')o+=`<span class="oc">+${E(opt.cost)} pts</span>`;
-      o+='</div>';
-      if(opt.abilities&&opt.abilities.length){o+='<div style="margin-top:4px">';opt.abilities.forEach(a=>{o+=`<div style="font-size:11px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
-      if(opt.weapons&&opt.weapons.length){o+='<div style="margin-top:4px">';opt.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
-      if(opt.profiles&&opt.profiles.length){
-        o+='<div style="margin-top:6px">';
-        opt.profiles.forEach(p=>{
-          o+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)} ${rIco(p.icons,true)}</div>`;
-          o+=rSB(p.stats,true);
-          if(p.abilities&&p.abilities.length){o+='<div style="margin-top:3px">';p.abilities.forEach(a=>{o+=`<div style="font-size:10px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
-          if(p.weapons&&p.weapons.length){o+='<div style="margin-top:3px">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
-        });
+      const s=opt.slot||'';
+      if(!slots.has(s))slots.set(s,[]);
+      slots.get(s).push(opt);
+    });
+    slots.forEach((opts,slot)=>{
+      const slotLabel=slot?`🔧 ${slot} Options`:'🔧 Options';
+      o+=`<div class="sh"><span class="si">🔧</span>${E(slot?slot+' Options':'Options')}</div><div class="ow">`;
+      opts.forEach(opt=>{
+        o+='<div class="ob"><div class="ot"><div>';
+        o+=`<span class="onn">${E(opt.name)}</span>${rIco(opt.icons,true)}`;
+        if(opt.hardpoints)o+=`<span class="ohp">[${opt.hardpoints.map(E).join(', ')}]</span>`;
         o+='</div>';
-      }
+        if(opt.cost&&opt.cost!=='0')o+=`<span class="oc">+${E(opt.cost)} pts</span>`;
+        o+='</div>';
+        if(opt.abilities&&opt.abilities.length){o+='<div style="margin-top:4px">';opt.abilities.forEach(a=>{o+=`<div style="font-size:11px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
+        if(opt.weapons&&opt.weapons.length){o+='<div style="margin-top:4px">';opt.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
+        if(opt.profiles&&opt.profiles.length){
+          o+='<div style="margin-top:6px">';
+          opt.profiles.forEach(p=>{
+            o+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)} ${rIco(p.icons,true)}</div>`;
+            o+=rSB(p.stats,true);
+            if(p.abilities&&p.abilities.length){o+='<div style="margin-top:3px">';p.abilities.forEach(a=>{o+=`<div style="font-size:10px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
+            if(p.weapons&&p.weapons.length){o+='<div style="margin-top:3px">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
+          });
+          o+='</div>';
+        }
+        o+='</div>';
+      });
       o+='</div>';
     });
-    o+='</div>';
   }
 
   o+=`<div class="cf">${E(card.faction)} — ${E(card.type)}</div></div>`;
