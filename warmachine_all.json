@@ -43104,7 +43104,7 @@
     },
     {
       "name": "bellighul master of pain",
-      "type": "Mercenary",
+      "type": "Solo",
       "faction": "Shadowflame Shard",
       "armies": [
         "Shadowflame Shard"
@@ -43114,7 +43114,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "bellighul master of pain"
+          "Bellighul"
         ],
         "values": [
           [
@@ -43122,14 +43122,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Skorne"
+      ],
+      "cost": "4",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Shadowflame Shard, Reaper Covenant]": "This model will work for the Shadowflame Shard and Reaper Covenant.",
+        "Anatomical Precision": "When this model's melee damage roll fails to exceed the ARM of the living model hit, that model suffers 1 damage point. A model disabled by a melee attack made by this model cannot make a Tough roll.",
+        "Condition (\u2605 Action)": "RNG 6. Target friendly warbeast. If the warbeast is in range, you can place 1 fury point on it or remove 1 fury point from it.",
+        "Enrage (\u2605 Action)": "RNG 3. Target friendly warbeast. If the warbeast is in range, it gains +2 to its melee attack damage rolls. Enrage lasts for one turn.",
+        "Medicate [d3+1] (\u2605 Action)": "RNG 1. Target friendly living warbeast. If the warbeast is in range, remove d3 +1 damage points from it.",
+        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends."
+      },
       "profiles": [
         {
-          "name": "bellighul master of pain",
+          "name": "Bellighul 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -43144,10 +43154,38 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv soulless.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Anatomical Precision",
+            "Condition (\u2605 Action)",
+            "Enrage (\u2605 Action)",
+            "Medicate [d3+1] (\u2605 Action)",
+            "Reposition [3\"]"
+          ],
+          "weapons": [
+            {
+              "name": "Barbed Whip",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual chain weapon.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "8"
+              },
+              "properties": [
+                "Inflict Pain"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -43318,7 +43356,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "horruskh the thousand wraths"
+          "Horruskh"
         ],
         "values": [
           [
@@ -43326,14 +43364,19 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens."
+      },
       "profiles": [
         {
-          "name": "horruskh the thousand wraths",
+          "name": "Horruskh 1",
           "stats": {
             "spd": "6",
             "aat": "6",
@@ -43348,15 +43391,45 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Hell Marked"
+          ],
+          "weapons": [
+            {
+              "name": "Abyssal Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Blood Boon"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Abattoir",
+        "Carnage",
+        "Thunder Strike",
+        "Vanish",
+        "Windstorm"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Illimitable Dominion": "While in Horruskh's control range, friendly Faction models cannot become knocked down and gain +2 ARM. Illimitable Dominion lasts for one round."
+      }
     },
     {
       "name": "kishtaar the howling silence",
@@ -43370,7 +43443,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "kishtaar the howling silence"
+          "Kishtaar"
         ],
         "values": [
           [
@@ -43378,14 +43451,24 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Scout",
+        "Sea Raiders"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Hell Hunter": "When this model destroys one or more enemy models with a basic ranged attack during its activation, immediately after the attack is resolved one Cohort model in this model's battlegroup that is in its control range can advance up to 3\".",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
+        "Prowl": "While this model has concealment, it gains Stealth.",
+        "Swift Hunter": "When this model destroys one or more enemy models with a basic ranged attack, immediately after the attack is resolved it can advance up to 2\".",
+        "Resourceful": "This model can upkeep spells on models in its battlegroup without spending focus or fury points."
+      },
       "profiles": [
         {
-          "name": "kishtaar the howling silence",
+          "name": "Kishtaar 1",
           "stats": {
             "spd": "6",
             "aat": "6",
@@ -43400,15 +43483,68 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Hell Hunter",
+            "Hell Marked",
+            "Prowl",
+            "Swift Hunter",
+            "Resourceful"
+          ],
+          "weapons": [
+            {
+              "name": "Death Whisperer",
+              "type": "Ranged",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Ricochet"
+              ]
+            },
+            {
+              "name": "Blade Strike",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Fire Group",
+        "Second Sight",
+        "Silence of Death",
+        "Sure Foot"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Pandemonium": "While in Kishtaar's control range friendly Faction models gain an additional die on attack and damage rolls. Discard the lowest die in each roll. Pandemonium lasts for one round."
+      }
     },
     {
       "name": "oriax the soul slaver",
@@ -43422,7 +43558,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "oriax the soul slaver"
+          "Oriax"
         ],
         "values": [
           [
@@ -43430,14 +43566,25 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Curse Bound",
+        "Sea Raiders"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Fate Blessed": "When a friendly Faction model makes an attack or damage roll during its activation while in this model's control range, this model can spend 1 focus or fury point to allow the model to reroll that roll. Each roll can be rerolled only once as a result of Fate Blessed.",
+        "Soul Mastery": "At any time during its activation, this model can spend soul tokens to use one of the following effects for each token spent:",
+        "Gate of Worlds": "At any time during its activation, this model can spend one soul token to place a friendly Faction model within 5\" of this model anywhere completely within 2\" of its current location. A model can be placed as a result of Gate of Worlds only once per turn.",
+        "Soul Phase": "This model can spend a soul token at any time during its activation to gain Incorporeal for one turn.",
+        "Vengeful Spirits": "Choose a cohort model in this model's battlegroup within 10\" of it. That cohort model gains up to 3 focus points.",
+        "Soul Taker: Exhumator": "This model can gain soul tokens. When a living enemy model is destroyed within this model's control range, this model gains the destroyed model's soul token. This model can have up to five soul tokens at any time. At the start of this model's activation, you can remove soul tokens from this model to give it 1 focus point for each token removed."
+      },
       "profiles": [
         {
-          "name": "oriax the soul slaver",
+          "name": "Oriax 1",
           "stats": {
             "spd": "6",
             "aat": "7",
@@ -43452,15 +43599,54 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv pathfinder.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Fate Blessed",
+            "Soul Mastery",
+            "Gate of Worlds",
+            "Soul Phase",
+            "Vengeful Spirits",
+            "Soul Taker: Exhumator"
+          ],
+          "weapons": [
+            {
+              "name": "Soul Flayer",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual chain weapon.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Dark Banishment"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Censure",
+        "Curse of Shadows",
+        "Dark Fire",
+        "Icy Grip",
+        "Onslaught",
+        "Star-Crossed"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Howl of the Abyss": "Oriax gains up to d3 +2 soul tokens. Additionally, while in Oriax's control range the melee weapons of Cohort models in his battlegroup gain Shadow Bind. Howl of the Abyss lasts for one turn. (A model hit by this weapon suffers Shadow Bind. A model suffering from Shadowbind suffers \u22123 DEF and cannot advance for one round. Shadow Bind can be shaken.)"
+      }
     },
     {
       "name": "orsus the betrayed",
@@ -43474,7 +43660,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "orsus the betrayed"
+          "Orsus"
         ],
         "values": [
           [
@@ -43482,14 +43668,25 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Blood-Quenched": "This model gains a cumulative +1 ARM and +1 to its melee damage rolls for each enemy model it destroys with a melee attack during its activation. This bonus lasts for one round.",
+        "Field Marshal [Homicidal Maniac]": "Cohort models in this model's battlegroup gain Homicidal Maniac.",
+        "Homicidal Maniac": "If there are no models in this model's melee range after resolving a basic melee attack in which this model destroyed one or more enemy models, this model can advance up to 1\".",
+        "Relentless Charge": "While advancing as part of a charge, this model gains Pathfinder.",
+        "Reposition [2\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 2\", then its activation ends.",
+        "Spell Ward": "This model cannot be targeted by spells."
+      },
       "profiles": [
         {
-          "name": "orsus the betrayed",
+          "name": "Butcher 5",
           "stats": {
             "spd": "7",
             "aat": "7",
@@ -43504,15 +43701,70 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv pathfinder.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Blood-Quenched",
+            "Field Marshal [Homicidal Maniac]",
+            "Homicidal Maniac",
+            "Relentless Charge",
+            "Reposition [2\"]",
+            "Spell Ward"
+          ],
+          "weapons": [
+            {
+              "name": "Fell Axe",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": [
+                "Blood Boon"
+              ]
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Beat Back"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Eruption",
+        "Hand of Destruction",
+        "Hunter's Mark",
+        "Redline",
+        "Revive"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Horn of Woe": "While in Orsus' control range, enemy models lose Tough and cannot have damage removed from them. Enemy models destroyed while in Orsus' control range are removed from play. Additionally, choose d3 +2 friendly Faction models currently in Orsus' control range. The chosen models gain an additional die on melee damage rolls. Horn of Woe lasts for one round."
+      }
     },
     {
       "name": "sabbreth the eternal annihilation",
@@ -43526,7 +43778,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "sabbreth the eternal annihilation"
+          "Sabbreth"
         ],
         "values": [
           [
@@ -43534,14 +43786,22 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Field Marshal [Overtake]": "Cohort models in this model's battlegroup gain Overtake.",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
+        "Overtake": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, after the attack is resolved it can immediately advance up to 1\".",
+        "Prowl": "While this model has concealment, it gains Stealth."
+      },
       "profiles": [
         {
-          "name": "sabbreth the eternal annihilation",
+          "name": "Sabbreth 1",
           "stats": {
             "spd": "6",
             "aat": "7",
@@ -43556,15 +43816,51 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Field Marshal [Overtake]",
+            "Hell Marked",
+            "Overtake",
+            "Prowl"
+          ],
+          "weapons": [
+            {
+              "name": "Rune Blade",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Witch Mark"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Crippling Grasp",
+        "Death March",
+        "Fog of War",
+        "Ghost Walk",
+        "Hex Blast",
+        "Inviolable Resolve",
+        "Perdition"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Invocations of Fire": "This activation, Sabbreth can cast each of her spells once without spending focus points. Friendly Faction warrior models beginning a charge in Sabbreth's control range gain +2 SPD during that charge. Invocations of Fire lasts for one turn."
+      }
     },
     {
       "name": "azdharak",
@@ -43579,27 +43875,32 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "-, , , , ,-",
-          " , , , , , ",
-          " , , , , , ",
-          " , ,H,H, , ",
-          " , ,M,C, , ",
-          " ,M,M,C,C, "
+          "34"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "21",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Blade Glide": "While making a trample power attack, this model gains +3 SPD and does not stop when it contacts a model with a medium or larger base, an obstacle, or an obstruction. This model makes trample attacks against models regardless of their base size. This model cannot hit models occupying buildings with its trample power attacks.",
+        "Flame Trail": "When this model advances into B2B contact with an enemy model during its activation, the enemy model suffers the Fire continuous effect.",
+        "Fuel for the Flames [5\"]": "When an enemy model without Resistance: Fire suffers a fire damage roll while within 5\" of this model, add an additional die to the damage roll.",
+        "Spring Blades": "If a model hits this model with a melee attack, the attacking model suffers d3 damage points immediately after the attack is resolved unless this model was destroyed or removed from play by the attack.",
+        "Threshing Blades": "This model gains +4 to its trample power attack damage rolls.",
+        "Reposition [5\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 5\", then its activation ends."
+      },
       "profiles": [
         {
-          "name": "azdharak",
+          "name": "Azdharak 1",
           "stats": {
             "spd": "6",
             "aat": "",
             "mat": "7",
-            "rat": "7",
+            "rat": "5",
             "def": "13",
             "arm": "19",
             "arc": "",
@@ -43609,10 +43910,78 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 80mm.png"
+            "Assets\\Icons\\base size 80mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\weapon qual dam type fire.png",
+            "Assets\\Icons\\model res fire.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Blade Glide",
+            "Flame Trail",
+            "Fuel for the Flames [5\"]",
+            "Spring Blades",
+            "Threshing Blades",
+            "Reposition [5\"]"
+          ],
+          "weapons": [
+            {
+              "name": "Flame Blaster",
+              "type": "Ranged",
+              "count": "1",
+              "location": "H",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "16"
+              },
+              "properties": [
+                "Eruption of Ash"
+              ]
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "19"
+              },
+              "properties": [
+                "Beat Back"
+              ]
+            },
+            {
+              "name": "Tail Strike",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual chain weapon.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Critical Shred"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -43629,22 +43998,22 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "-,-,-,-,-,-",
-          "-, , , , ,-",
-          "-, , , , ,-",
-          " ,L,H,H,R, ",
-          " ,L,M,C,R, ",
-          "L,M,M,C,C,R"
+          "26"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "11",
+      "fa": "4",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Aggressive": "This model can run or charge without spending a focus point."
+      },
       "profiles": [
         {
-          "name": "jackal",
+          "name": "Jackal",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -43659,12 +44028,185 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
+          "abilities": [
+            "Aggressive"
+          ],
           "weapons": []
         }
-      ]
+      ],
+      "card_options": {
+        "head": [
+          {
+            "name": "Advance Deployment",
+            "cost": "1",
+            "granted": "Advance Deployment"
+          },
+          {
+            "name": "Arc Node",
+            "cost": "2",
+            "granted": "Arc Node"
+          },
+          {
+            "name": "Berserk",
+            "cost": "2",
+            "granted": "Berserk"
+          },
+          {
+            "name": "Bloodthirst",
+            "cost": "2",
+            "granted": "Bloodthirst"
+          }
+        ],
+        "right_arm": [
+          {
+            "name": "Flamethrower",
+            "cost": "4",
+            "weapon": {
+              "name": "Flamethrower",
+              "type": "Ranged",
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ]
+            }
+          },
+          {
+            "name": "Hunter Rifle",
+            "cost": "5",
+            "weapon": {
+              "name": "Hunter Rifle",
+              "type": "Ranged",
+              "stats": {
+                "rng": "14",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Critical Brutal Damage"
+              ]
+            }
+          },
+          {
+            "name": "Mace",
+            "cost": "3",
+            "weapon": {
+              "name": "Mace",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Beat Back",
+                "Critical Dispel"
+              ]
+            }
+          },
+          {
+            "name": "Pole Arm",
+            "cost": "4",
+            "granted": "Set Defense",
+            "weapon": {
+              "name": "Pole Arm",
+              "type": "Melee",
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Brutal Charge"
+              ]
+            }
+          }
+        ],
+        "left_arm": [
+          {
+            "name": "Assault Shield",
+            "cost": "3",
+            "weapon": {
+              "name": "Assault Shield",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png"
+              ]
+            }
+          },
+          {
+            "name": "Clawed Fist",
+            "cost": "1",
+            "weapon": {
+              "name": "Clawed Fist",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ]
+            }
+          },
+          {
+            "name": "Heavy Bolt Thrower",
+            "cost": "4",
+            "weapon": {
+              "name": "Heavy Bolt Thrower",
+              "type": "Ranged",
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Reload [1]"
+              ]
+            }
+          },
+          {
+            "name": "Pneumatic Spike",
+            "cost": "2",
+            "weapon": {
+              "name": "Pneumatic Spike",
+              "type": "Melee",
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Sustained Attack"
+              ]
+            }
+          }
+        ]
+      }
     },
     {
       "name": "molok",
@@ -43679,22 +44221,27 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "-, , , , ,-",
-          "-, , , , ,-",
-          " , , , , , ",
-          " ,L,H,H,R, ",
-          " ,L,M,C,R, ",
-          "L,M,M,C,C,R"
+          "32"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "17",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Hyper-Aggressive": "When this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance directly toward the attacking model.",
+        "Ghost Shield": "This model gains +1 ARM for each soul token currently on it.",
+        "Soul Taker: Collector": "This model can gain soul tokens. When a living enemy model is destroyed while within 10\" of this model, this model gains the destroyed model's soul token. This model can have up to three soul tokens at any time. This model can spend soul tokens for the following:",
+        "Dark Blessing": "Once per turn at any time during its activation, this model can spend one soul token to gain +1 DEF. Dark Blessing lasts for one round.",
+        "Soul Generator": "At the start of this model's activation, you can spend soul tokens on this model to give it 1 focus point for each token spent.",
+        "Soul Tap": "If this model is in its Leader's control range during your Control Phase, the Leader can spend soul tokens on this model to upkeep one spell for each token spent."
+      },
       "profiles": [
         {
-          "name": "molok",
+          "name": "Molok 1",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -43709,12 +44256,84 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
+          "abilities": [
+            "Hyper-Aggressive",
+            "Ghost Shield",
+            "Soul Taker: Collector",
+            "Dark Blessing",
+            "Soul Generator",
+            "Soul Tap"
+          ],
           "weapons": []
         }
-      ]
+      ],
+      "card_options": {
+        "head": [
+          {
+            "name": "Molok",
+            "granted": "Poltergeist",
+            "weapon": {
+              "name": "Gore",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              }
+            }
+          }
+        ],
+        "left_arm": [
+          {
+            "name": "Hand of Ruin",
+            "weapon": {
+              "name": "Hand of Ruin",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "properties": [
+                "Possession"
+              ]
+            }
+          }
+        ],
+        "abyssal_mace": [
+          {
+            "name": "Abyssal Mace",
+            "weapon": {
+              "name": "Abyssal Mace",
+              "type": "Melee",
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "19"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "properties": [
+                "Gates of Hell"
+              ]
+            }
+          }
+        ]
+      }
     },
     {
       "name": "tyrant",
@@ -43729,22 +44348,22 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "-, , , , ,-",
-          "-, , , , ,-",
-          " , , , , , ",
-          " ,L,H,H,R, ",
-          " ,L,M,C,R, ",
-          "L,M,M,C,C,R"
+          "32"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "17",
+      "fa": "4",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Hyper-Aggressive": "When this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance directly toward the attacking model."
+      },
       "profiles": [
         {
-          "name": "tyrant",
+          "name": "Tyrant",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -43759,12 +44378,218 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
+          "abilities": [
+            "Hyper-Aggressive"
+          ],
           "weapons": []
         }
-      ]
+      ],
+      "card_options": {
+        "head": [
+          {
+            "name": "Arcane Vortex",
+            "cost": "3",
+            "granted": "Arcane Vortex"
+          },
+          {
+            "name": "Hunter",
+            "cost": "3",
+            "granted": "Hunter"
+          },
+          {
+            "name": "Overtake",
+            "cost": "2",
+            "granted": "Overtake"
+          },
+          {
+            "name": "Relentless Charge",
+            "cost": "1",
+            "granted": "Relentless Charge"
+          }
+        ],
+        "right_arm": [
+          {
+            "name": "Belcher",
+            "cost": "6",
+            "weapon": {
+              "name": "Belcher",
+              "type": "Ranged",
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "3",
+                "pow": "14/10"
+              }
+            }
+          },
+          {
+            "name": "Harpoon",
+            "cost": "6",
+            "weapon": [
+              {
+                "name": "Harpoon (Ranged)",
+                "type": "Ranged",
+                "stats": {
+                  "rng": "10",
+                  "rof": "1",
+                  "aoe": "-",
+                  "pow": "14"
+                },
+                "properties": [
+                  "Skewer"
+                ]
+              },
+              {
+                "name": "Harpoon (Melee)",
+                "type": "Melee",
+                "stats": {
+                  "rng": "2",
+                  "rof": "",
+                  "aoe": "",
+                  "pow": "14"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Scything Flail",
+            "cost": "7",
+            "weapon": {
+              "name": "Scything Flail",
+              "type": "Melee",
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "18"
+              },
+              "icons": [
+                "Assets\\Icons\\weapon qual chain weapon.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "properties": [
+                "Thresher (\u2605 Attack)"
+              ]
+            }
+          },
+          {
+            "name": "Shredder",
+            "cost": "8",
+            "weapon": {
+              "name": "Shredder",
+              "type": "Ranged",
+              "stats": {
+                "rng": "14",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "16"
+              },
+              "properties": [
+                "Powerful Attack"
+              ]
+            }
+          },
+          {
+            "name": "Blade",
+            "cost": "0",
+            "weapon": {
+              "name": "Blade",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              }
+            }
+          }
+        ],
+        "left_arm": [
+          {
+            "name": "Cannon Shield",
+            "cost": "6",
+            "weapon": [
+              {
+                "name": "Cannon",
+                "type": "Ranged",
+                "stats": {
+                  "rng": "10",
+                  "rof": "1",
+                  "aoe": "-",
+                  "pow": "12"
+                }
+              },
+              {
+                "name": "Shield",
+                "type": "Melee",
+                "stats": {
+                  "rng": "1",
+                  "rof": "",
+                  "aoe": "",
+                  "pow": "13"
+                },
+                "icons": [
+                  "Assets\\Icons\\weapon qual shield.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Claw",
+            "cost": "3",
+            "weapon": {
+              "name": "Claw",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              }
+            }
+          },
+          {
+            "name": "Quad Bolt Thrower",
+            "cost": "6",
+            "weapon": {
+              "name": "Quad Bolt Thrower",
+              "type": "Ranged",
+              "stats": {
+                "rng": "10",
+                "rof": "D3+1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": [
+                "Volume Fire"
+              ]
+            }
+          },
+          {
+            "name": "Ripper",
+            "cost": "5",
+            "weapon": {
+              "name": "Ripper",
+              "type": "Melee",
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Critical Shred"
+              ]
+            }
+          }
+        ]
+      }
     },
     {
       "name": "gharlghast",
@@ -43776,28 +44601,30 @@
       "portrait": "ModelArt\\gharlghast.png",
       "attachments": [],
       "health": {
-        "type": "Grid Large",
+        "type": "Grid",
         "names": [],
         "values": [
-          " , , , , , , , , , , , ",
-          " , , , ,H,H,H,H, , , , ",
-          " , , ,H,S,S,S,S,H, , , ",
-          " ,L,L,L,S,B,B,S,R,R,R, ",
-          "L,L,B,B,B,B,B,B,B,B,R,R",
-          "L,M,M,M,M,M,M,M,M,M,M,R"
+          "72"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth"
+      ],
+      "cost": "33",
+      "fa": "2",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Orgoth Monstrosity": "This model is a monstrosity that can be included in any Orgoth warcaster's battlegroup. An Orgoth warcaster can allocate focus points to this model as if it was a warjack. If this model's warcaster is destroyed or removed from the table, it becomes autonomous. An Orgoth warcaster can take control of an autonomous friendly Orgoth monstrosity. To do this, an Orgoth warcaster must spend 1 focus point during its activation while B2B with the autonomous Orgoth monstrosity. The monstrosity must forfeit its Combat Action the turn it becomes controlled. The monstrosity becomes a part of the battlegroup of the warcaster that took control of it. At any time during its activation, an Orgoth warcaster can spend focus points to heal damage a monstrosity in its battlegroup in its control range has suffered. For each focus point spent this way, remove 1 damage point.",
+        "Bulldoze": "When this model is B2B with an enemy model during its Normal Movement, it can push that model up to 2\" directly away from it. A model can be pushed by Bulldoze only once per turn. Bulldoze has no effect when this model makes a trample power attack.",
+        "Pain Maddened": "When this model is damaged by an enemy attack, it gains +2 SPD for one round.",
+        "Repairable": "This model can be targeted with Repair special actions as if it were a construct model."
+      },
       "profiles": [
         {
-          "name": "gharlghast",
+          "name": "Gharlghast",
           "stats": {
-            "spd": "6",
-            "aat": "",
+            "spd": "4",
+            "aat": "6",
             "mat": "6",
             "rat": "4",
             "def": "8",
@@ -43809,10 +44636,205 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 120mm.png"
+            "Assets\\Icons\\base size 120mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Bulldoze",
+            "Pain Maddened",
+            "Repairable"
+          ],
+          "weapons": [
+            {
+              "name": "Rocket Pod",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "14",
+                "rof": "2",
+                "aoe": "3",
+                "pow": "15/8"
+              },
+              "properties": [
+                "Arcing Fire"
+              ]
+            },
+            {
+              "name": "Crushing Jaws",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "23"
+              },
+              "properties": []
+            },
+            {
+              "name": "Web Spinner",
+              "type": "Ranged",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "9",
+                "rof": "D3",
+                "aoe": "",
+                "pow": ""
+              },
+              "properties": [
+                "Drag",
+                "Shadow Bind"
+              ]
+            },
+            {
+              "name": "Skull Splitter",
+              "type": "Ranged",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "18"
+              },
+              "properties": []
+            },
+            {
+              "name": "Bile Jet",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "14"
+              },
+              "properties": []
+            },
+            {
+              "name": "Infernus Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "2",
+                "pow": "12/7"
+              },
+              "properties": [
+                "Choking Ash"
+              ]
+            },
+            {
+              "name": "Demolisher Fist",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "20"
+              },
+              "properties": [
+                "Critical Knockdown",
+                "Siege Weapon"
+              ]
+            },
+            {
+              "name": "Rending Claws",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "19"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            },
+            {
+              "name": "Bile Jet",
+              "type": "Ranged",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "14"
+              },
+              "properties": []
+            },
+            {
+              "name": "Infernus Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "2",
+                "pow": "12/7"
+              },
+              "properties": [
+                "Choking Ash"
+              ]
+            },
+            {
+              "name": "Demolisher Fist",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "20"
+              },
+              "properties": [
+                "Critical Knockdown",
+                "Siege Weapon"
+              ]
+            },
+            {
+              "name": "Rending Claws",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "19"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -43829,22 +44851,25 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "-,-, , ,-,-",
-          "-, , , , ,-",
-          " , , , , , ",
-          " ,L, , ,R, ",
-          " ,L,M,B,R, ",
-          "L,M,M,B,B,R"
+          "30"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Curse Bound"
+      ],
+      "cost": "12",
+      "fa": "2",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Orgoth Monstrosity": "This model is a monstrosity that can be included in any Orgoth warcaster's battlegroup. An Orgoth warcaster can allocate focus points to this model as if it was a warjack. If this model's warcaster is destroyed or removed from the table, it becomes autonomous.",
+        "Snacking": "When this model boxes a living model with a melee attack, it can choose to remove the boxed model from play. When it does, this model can remove d3 damage points.",
+        "Spell Ward": "This model cannot be targeted by spells."
+      },
       "profiles": [
         {
-          "name": "ravener",
+          "name": "Ravener",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -43859,10 +44884,72 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Orgoth Monstrosity",
+            "Snacking",
+            "Spell Ward"
+          ],
+          "weapons": [
+            {
+              "name": "Fell Cleaver",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual open fist.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            },
+            {
+              "name": "Mechano-Claw",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Man Catcher"
+              ]
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Beat Back"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -43878,7 +44965,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "anathia the imperishable desolation"
+          "Anathia"
         ],
         "values": [
           [
@@ -43886,14 +44973,27 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Deathless",
+        "Cadre",
+        "Sea Raiders"
+      ],
+      "cost": "20",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Gifts of Annihilation": "Once per turn at any time during its activation, this model can use one of the following effects. Gifts of Annihilation effects last for one round.",
+        "Dark Rituals": "This model can channel spells through friendly Faction warrior models in its control range. Immediately after a spell is channeled through a model as a result of Dark Rituals, the model it was channeled through suffers d3 points of magical damage.",
+        "Fate Binder": "Cohort models in this model's battlegroup gain Shield Guard.",
+        "Night Reaper": "This model gains Carrion Feast and Entropic Force. (When a living or undead model is destroyed while within 5\" of a model with Carrion Feast, you can choose to have that model be removed from play. If a model is removed from play as a result of Carrion Feast, it does not generate a corpse token and the model with Carrion Feast can remove d3 damage points.) (While within 5\" of a model with Entropic Force, enemy models lose Tough and cannot have damage removed from them.)",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
+        "Lesser Warlock": "This model is not a warlock or Leader, but has the following warlock special rules: Battlegroup Controller, Fury Manipulation, Healing, Spellcaster, and Transferring Damage. This model must have at least one warbeast in its battlegroup at the start of the game.",
+        "Limited Battlegroup [Barrow Ghoul and Charnel Hound]": "The only warbeasts that can be in this model's battlegroup are Barrow Ghoul and Charnel Hound."
+      },
       "profiles": [
         {
-          "name": "anathia the imperishable desolation",
+          "name": "Anathia 1",
           "stats": {
             "spd": "5",
             "aat": "6",
@@ -43908,11 +45008,47 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv undead.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Gifts of Annihilation",
+            "Dark Rituals",
+            "Fate Binder",
+            "Night Reaper",
+            "Hell Marked",
+            "Lesser Warlock",
+            "Limited Battlegroup [Barrow Ghoul and Charnel Hound]"
+          ],
+          "weapons": [
+            {
+              "name": "Blood Tongue",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual chain weapon.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "3",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Inflict Pain",
+                "Man Catcher"
+              ]
+            }
+          ]
         }
+      ],
+      "spells": [
+        "Disintegration",
+        "Hellwrought"
       ]
     },
     {
@@ -43927,7 +45063,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "grhotten champion"
+          "Grhotten Champion"
         ],
         "values": [
           [
@@ -43935,14 +45071,22 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Curse Bound"
+      ],
+      "cost": "5",
+      "fa": "2",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Blade Shield": "This model gains +2 DEF against ranged attack rolls.",
+        "Blood Drinker": "Immediately after this model resolves a melee attack in which it destroys one or more living models, it can end its activation and remove d3 damage points.",
+        "Spell Ward": "This model cannot be targeted by spells."
+      },
       "profiles": [
         {
-          "name": "grhotten champion",
+          "name": "Champion",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -43957,10 +45101,36 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Blade Shield",
+            "Blood Drinker",
+            "Spell Ward"
+          ],
+          "weapons": [
+            {
+              "name": "Fell Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": [
+                "Thresher (\u2605 Attack)"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -43976,7 +45146,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "grhotten keeper"
+          "Grhotten Keeper"
         ],
         "values": [
           [
@@ -43984,14 +45154,21 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Curse Bound"
+      ],
+      "cost": "5",
+      "fa": "2",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Primal Rage": "Once per turn, when this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance toward the attacking model and can make one basic melee attack.",
+        "Shield Guard": "When a friendly model is directly hit by a non-spray ranged attack while within 3\" of a model with Shield Guard, you can choose to have the model with Shield Guard be directly hit instead. That model is automatically hit and suffers all damage and effects. A model can use Shield Guard only once per round and cannot use Shield Guard if it is incorporeal, knocked down, or stationary. Shield Guard can only be used once per attack.",
+        "Spell Ward": "This model cannot be targeted by spells."
+      },
       "profiles": [
         {
-          "name": "grhotten keeper",
+          "name": "Keeper",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -44006,10 +45183,51 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Primal Rage",
+            "Shield Guard",
+            "Spell Ward"
+          ],
+          "weapons": [
+            {
+              "name": "Fell Axe",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": [
+                "Critical Decapitation"
+              ]
+            },
+            {
+              "name": "Fell Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44025,7 +45243,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "halexus the warlord"
+          "Halexus"
         ],
         "values": [
           [
@@ -44033,14 +45251,25 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Curse Bound"
+      ],
+      "cost": "4",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Ghost Shield": "This model gains +1 ARM for each soul token currently on it.",
+        "Soul Taker: Body Count": "This model can gain soul tokens. When this model destroys a living enemy model with an attack, this model gains the destroyed model's soul token. This model can have up to three soul tokens at any time. This model can spend soul tokens for the following:",
+        "Soul Transfer (\u2605 Action)": "RNG 5. Target friendly Faction model with a Soul Taker special rule. If the model is in range, remove any number of soul tokens from this model and place them on the target friendly model.",
+        "Spectral Vortex": "This model can immediately negate any spell that targets it or a model within 3\" of it by spending 1 soul token. The negated spell does not take effect, but its COST remains spent.",
+        "Spirit-Driven": "At the beginning of this model's activation, it can spend one soul token to gain +2 SPD that activation.",
+        "Strength of Death": "During its Combat Action, this model can spend soul tokens to boost one attack or damage roll for each token spent."
+      },
       "profiles": [
         {
-          "name": "halexus the warlord",
+          "name": "Halexus 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44055,10 +45284,39 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Ghost Shield",
+            "Soul Taker: Body Count",
+            "Soul Transfer (\u2605 Action)",
+            "Spectral Vortex",
+            "Spirit-Driven",
+            "Strength of Death"
+          ],
+          "weapons": [
+            {
+              "name": "Deathgorger",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44074,7 +45332,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "reaver commander"
+          "Reaver Commander"
         ],
         "values": [
           [
@@ -44082,14 +45340,25 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "3",
+      "fa": "4",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Battle Plan": "This model can use one of the following plans at any time during its activation:",
+        "Combat Coordination": "RNG 5. Target friendly Faction warrior model. If the model is in range, during its activation this turn, it can reroll one attack or damage roll, then Combat Coordination expires.",
+        "Precision Strike": "While within 10\" of this model, friendly models ignore other friendly models when determining LOS. Friendly models can advance through other friendly models within 10\" of this model if they have enough movement to move completely past them. Precision Strike lasts for one turn.",
+        "Stand Your Ground": "RNG 5. Target friendly Faction warrior model/unit. If the model/unit is in range, it gains Set Defense for one round. (Models suffer \u22122 on charge and slam power attack rolls against a model with Set Defense.)",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
+        "Last Word": "When this model is disabled by an enemy attack, it can immediately advance up to 3\" and can make one basic melee attack.",
+        "Overtake": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, after the attack is resolved it can immediately advance up to 1\"."
+      },
       "profiles": [
         {
-          "name": "reaver commander",
+          "name": "Commander",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44104,10 +45373,69 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Battle Plan",
+            "Combat Coordination",
+            "Precision Strike",
+            "Stand Your Ground",
+            "Hell Marked",
+            "Last Word",
+            "Overtake"
+          ],
+          "weapons": [
+            {
+              "name": "Bolt Thrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png"
+              ],
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Infernus Hand Weapon",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Battle Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44123,7 +45451,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "revenant champion"
+          "Revenant Champion"
         ],
         "values": [
           [
@@ -44131,14 +45459,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Deathless",
+        "Cadre",
+        "Graveborn"
+      ],
+      "cost": "4",
+      "fa": "1",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Guard Dog": "While this model is within 3\" of its Leader and is not knocked down or stationary, its Leader gains +2 DEF against melee attack rolls and cannot become knocked down.",
+        "Impervious Flesh": "When this model suffers a damage roll, roll one fewer die.",
+        "Inhuman Resolve": "When a friendly warrior model within 10\" of this model is destroyed by an enemy attack, after the attack is resolved this model can remove 1 damage point. When this model is disabled, it becomes knocked down instead of becoming boxed and its activation immediately ends. While this model is disabled, it cannot activate. If this model is disabled at the beginning of your Maintenance Phase, it is destroyed.",
+        "Shield Guard": "When a friendly model is directly hit by a non-spray ranged attack while within 3\" of a model with Shield Guard, you can choose to have the model with Shield Guard be directly hit instead. That model is automatically hit and suffers all damage and effects. A model can use Shield Guard only once per round and cannot use Shield Guard if it is incorporeal, knocked down, or stationary. Shield Guard can only be used once per attack."
+      },
       "profiles": [
         {
-          "name": "revenant champion",
+          "name": "Champion",
           "stats": {
             "spd": "4",
             "aat": "",
@@ -44153,10 +45491,52 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv undead.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Guard Dog",
+            "Impervious Flesh",
+            "Inhuman Resolve",
+            "Shield Guard"
+          ],
+          "weapons": [
+            {
+              "name": "War Axe",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            },
+            {
+              "name": "Shattered Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Critical Dispel"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -44172,7 +45552,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "siege tarask"
+          "Siege Tarask"
         ],
         "values": [
           [
@@ -44180,14 +45560,23 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "9",
+      "fa": "2",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Boundless Rage": "When this model is damaged by an enemy attack or when this model destroys an enemy model with a basic attack this model gains a rage token. This model can have up to three rage tokens at any time. This model gains +1 to its melee attack and melee damage rolls for each rage token on it. This model can spend rage tokens for the following:",
+        "Painmonger": "At any time during its activation, this model can spend rage tokens to remove d3+1 damage points for each token spent.",
+        "Rage Howler": "At any time during its activation, this model can spend one rage token to gain Mortal Fear. Rage Howler lasts for one round. (While within 8\" of a model with Mortal Fear, living enemy models suffer \u22122 to damage rolls.)",
+        "Hyper-Aggressive": "When this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance directly toward the attacking model.",
+        "Overtake": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, after the attack is resolved it can immediately advance up to 1\"."
+      },
       "profiles": [
         {
-          "name": "siege tarask",
+          "name": "Siege Tarask",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44202,10 +45591,64 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 80mm.png"
+            "Assets\\Icons\\base size 80mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Boundless Rage",
+            "Painmonger",
+            "Rage Howler",
+            "Hyper-Aggressive",
+            "Overtake"
+          ],
+          "weapons": [
+            {
+              "name": "Heavy Harpoon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Skewer"
+              ]
+            },
+            {
+              "name": "Bladed Tusks",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            },
+            {
+              "name": "Fist",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44221,7 +45664,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "therion vhanek"
+          "Therion Vhanek"
         ],
         "values": [
           [
@@ -44229,14 +45672,25 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "4",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Battle Wizard": "Once per turn, when this model destroys or removes from play one or more enemy models with a melee attack during its activation, immediately after the attack is resolved it can make one Magic Ability special attack or special action.",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
+        "Magic Ability": "Performing a Magic Ability special action or special attack counts as casting a spell.",
+        "Grim Returns (\u2605 Action)": "RNG 5. Target friendly trooper model. If the model is in range, return one destroyed Grunt to its unit. The Grunt returns with one unmarked damage box. Place the returned Grunt within 2\" of the target trooper model. The returned Grunt must forfeit its Normal Movement and Combat Actions the turn it is returned to play.",
+        "Hex Blast (\u2605 Attack)": "Hex Blast is a RNG 10, AOE 2, POW 13/8 arcane attack. Enemy upkeep spells and animi on the model/unit directly hit by Hex Blast immediately expire.",
+        "Sigil of Power (\u2605 Action)": "RNG 6. Target friendly model/unit. If the model/unit is in range, its weapons gain Damage Type: Magical. Sigil of Power lasts for one turn.",
+        "Veteran Leader [Warwitch Coven]": "While within 10\" of this model, Warwitch models gain +1 to attack rolls."
+      },
       "profiles": [
         {
-          "name": "therion vhanek",
+          "name": "Vhanek 1",
           "stats": {
             "spd": "6",
             "aat": "6",
@@ -44251,10 +45705,57 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv soulless.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Battle Wizard",
+            "Hell Marked",
+            "Magic Ability",
+            "Grim Returns (\u2605 Action)",
+            "Hex Blast (\u2605 Attack)",
+            "Sigil of Power (\u2605 Action)",
+            "Veteran Leader [Warwitch Coven]"
+          ],
+          "weapons": [
+            {
+              "name": "Helltooth",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Grievous Wounds"
+              ]
+            },
+            {
+              "name": "Fell Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44270,7 +45771,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "vulcar forge master"
+          "Vulcar Forge Master"
         ],
         "values": [
           [
@@ -44278,14 +45779,23 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "2",
+      "fa": "4",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Magic Ability": "Performing a Magic Ability special action or special attack counts as casting a spell.",
+        "Defensive Measures (\u2605 Action)": "RNG 6. Target friendly Faction Cohort model. If the Cohort model is in range, it gains Shield Guard for one round.",
+        "Guidance (\u2605 Action)": "RNG 6. Target friendly model. If the model is in range, it gains Eyeless Sight and its weapons gain Damage Type: Magical for one turn.",
+        "Tune Up (\u2605 Action)": "RNG 1. Target friendly Faction cohort. If the cohort is in range, it immediately stands up and is no longer stationary, continuous effects on the cohort expire, and the cohort gains Pathfinder for one turn.",
+        "Repair [d6] (\u2605 Action)": "RNG 1. Target friendly Faction construct model. If the model is in range, remove d6 damage points from it."
+      },
       "profiles": [
         {
-          "name": "vulcar forge master",
+          "name": "Forge Master",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44302,8 +45812,48 @@
           "icons": [
             "Assets\\Icons\\base size 40mm.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Magic Ability",
+            "Defensive Measures (\u2605 Action)",
+            "Guidance (\u2605 Action)",
+            "Tune Up (\u2605 Action)",
+            "Repair [d6] (\u2605 Action)"
+          ],
+          "weapons": [
+            {
+              "name": "Torch",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "4",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Grappler",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "7"
+              },
+              "properties": [
+                "Armor-Piercing"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -44343,14 +45893,19 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "6",
+      "fa": "4",
       "composition": "5 Grunts",
-      "rules": {},
+      "rules": {
+        "Last Word": "When this model is disabled by an enemy attack, it can immediately advance up to 3\" and can make one basic melee attack."
+      },
       "profiles": [
         {
-          "name": "assault reavers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44365,10 +45920,48 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv unstoppable.png",
+            "Assets\\Icons\\model adv combined ranged attack.png",
+            "Assets\\Icons\\model adv gunfighter.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Last Word"
+          ],
+          "weapons": [
+            {
+              "name": "Harpoon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Skewer"
+              ]
+            },
+            {
+              "name": "Spear",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44390,24 +45983,38 @@
         ],
         "values": [
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Curse Bound",
+        "Ulkor"
+      ],
+      "cost": "9",
+      "fa": "2",
       "composition": "3 Grunts",
-      "rules": {},
+      "rules": {
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Blood Drinker": "Immediately after this model resolves a melee attack in which it destroys one or more living models, it can end its activation and remove d3 damage points.",
+        "Spell Ward": "This model cannot be targeted by spells."
+      },
       "profiles": [
         {
-          "name": "gnashers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44422,10 +46029,35 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Blood Drinker",
+            "Spell Ward"
+          ],
+          "weapons": [
+            {
+              "name": "Fell Weapons",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44465,14 +46097,21 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "6",
+      "fa": "4",
       "composition": "5 Grunts",
-      "rules": {},
+      "rules": {
+        "Last Word": "When this model is disabled by an enemy attack, it can immediately advance up to 3\" and can make one basic melee attack.",
+        "Overtake": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, after the attack is resolved it can immediately advance up to 1\".",
+        "Prowl": "While this model has concealment, it gains Stealth."
+      },
       "profiles": [
         {
-          "name": "reaver skirmishers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44487,10 +46126,35 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Last Word",
+            "Overtake",
+            "Prowl"
+          ],
+          "weapons": [
+            {
+              "name": "Infernus Hand Weapons",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44512,24 +46176,36 @@
         ],
         "values": [
           [
+            "5",
+            "5",
             "5"
           ],
           [
+            "5",
+            "5",
             "5"
           ],
           [
+            "5",
+            "5",
             "5"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "9",
+      "fa": "2",
       "composition": "3 Grunts",
-      "rules": {},
+      "rules": {
+        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends.",
+        "Sitting Vulture": "While B2B with this model, enemy models suffer \u22121 DEF."
+      },
       "profiles": [
         {
-          "name": "rhok harriers",
+          "name": "Grunt",
           "stats": {
             "spd": "8",
             "aat": "",
@@ -44544,10 +46220,48 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv soulless.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Reposition [3\"]",
+            "Sitting Vulture"
+          ],
+          "weapons": [
+            {
+              "name": "Maw",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Critical Pitch"
+              ]
+            },
+            {
+              "name": "Claws",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44587,14 +46301,20 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "7",
+      "fa": "4",
       "composition": "5 Grunts",
-      "rules": {},
+      "rules": {
+        "Last Word": "When this model is disabled by an enemy attack, it can immediately advance up to 3\" and can make one basic melee attack.",
+        "Shield Wall": "While this model is B2B with one or more models in its unit, it gains +2 ARM and cannot be knocked down."
+      },
       "profiles": [
         {
-          "name": "strike reavers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44609,10 +46329,62 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv combined ranged attack.png",
+            "Assets\\Icons\\model adv gunfighter.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Last Word",
+            "Shield Wall"
+          ],
+          "weapons": [
+            {
+              "name": "Bolt Thrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png"
+              ],
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Battle Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            },
+            {
+              "name": "Bayonet",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": [
+                "Brutal Charge"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -44628,30 +46400,43 @@
       "health": {
         "type": "Box Multi",
         "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
+          "Duulgrim",
+          "Harrkreth",
+          "Vurgesh"
         ],
         "values": [
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Graveborn"
+      ],
+      "cost": "8",
       "fa": "c",
-      "composition": "3 Grunts",
-      "rules": {},
+      "composition": "Duulgrim, Harrkreth and Vurgesh",
+      "rules": {
+        "Accursed Armor": "A living enemy model that hits this model with an attack gains Weaken for one round. (A model with Weaken suffers -2 DEF and -2 to its melee attack damage rolls.)",
+        "Shield Wall": "While this model is B2B with one or more models in its unit, it gains +2 ARM and cannot be knocked down.",
+        "Vengeance": "During your Maintenance Phase, if one or more models in this unit were damaged by enemy attacks during the last round, each model in the unit can make a Vengeance Move. Each model making a Vengeance Move can advance 3\". After all models in the unit have moved, each model can then make one basic melee attack. A model can only make one Vengeance Move each turn."
+      },
       "profiles": [
         {
-          "name": "the execrators",
+          "name": "Duulgrim 1, Harrkreth 1, Vurgesh 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44666,10 +46451,73 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv undead.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Accursed Armor",
+            "Shield Wall",
+            "Vengeance"
+          ],
+          "weapons": [
+            {
+              "name": "Accursed Spear",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Snap Fire",
+                "Thunderbolt"
+              ]
+            },
+            {
+              "name": "Iron Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            },
+            {
+              "name": "Great Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44691,24 +46539,36 @@
         ],
         "values": [
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "8",
+      "fa": "2",
       "composition": "3 Grunts",
-      "rules": {},
+      "rules": {
+        "Snacking": "When this model boxes a living model with a melee attack, it can choose to remove the boxed model from play. When it does, this model can remove d3 damage points.",
+        "Unyielding": "This model gains +2 ARM against melee damage rolls."
+      },
       "profiles": [
         {
-          "name": "ulkor axers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44723,10 +46583,33 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Snacking",
+            "Unyielding"
+          ],
+          "weapons": [
+            {
+              "name": "Axes",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Combo Strike (\u2605 Attack)"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -44748,24 +46631,35 @@
         ],
         "values": [
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "8",
+      "fa": "2",
       "composition": "3 Grunts",
-      "rules": {},
+      "rules": {
+        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends."
+      },
       "profiles": [
         {
-          "name": "ulkor barragers",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44780,10 +46674,42 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Reposition [3\"]"
+          ],
+          "weapons": [
+            {
+              "name": "Barrage Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "2",
+                "pow": "14/8"
+              },
+              "properties": []
+            },
+            {
+              "name": "Bash",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44815,14 +46741,22 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "4",
+      "fa": "4",
       "composition": "3 Grunts",
-      "rules": {},
+      "rules": {
+        "Magic Ability": "Performing a Magic Ability special action or special attack counts as casting a spell.",
+        "Deathly Power (\u2605 Action)": "This model gains Dark Shroud for one turn. (While within 2\" of a model with Dark Shroud, enemy models suffer \u22122 ARM.)",
+        "Empower (\u2605 Action)": "RNG 6. Target friendly Faction warjack. If the target warjack is in range and it was suffering Disruption, it is no longer disrupted. The warjack gains 1 focus point.",
+        "Flesh Eater (\u2605 Attack)": "Flesh Eater is a RNG 8, POW 10 arcane attack. When Flesh Eater destroys an enemy warrior model, you can remove d3 damage points from a friendly living model within 6\" of this model."
+      },
       "profiles": [
         {
-          "name": "warwitch coven",
+          "name": "Grunt",
           "stats": {
             "spd": "6",
             "aat": "5",
@@ -44837,10 +46771,34 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Magic Ability",
+            "Deathly Power (\u2605 Action)",
+            "Empower (\u2605 Action)",
+            "Flesh Eater (\u2605 Attack)"
+          ],
+          "weapons": [
+            {
+              "name": "Witch Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -44864,14 +46822,23 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Sea Raiders"
+      ],
+      "cost": "1",
+      "fa": "8",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Command Attachment [Reaver]": "This command attachment can be added to a Reaver unit.",
+        "Cursed": "While within 5\" of this model, enemy models suffer \u22121 ARM.",
+        "Granted: Rise": "While this model is in play, models in its unit that are knocked down at the beginning of your Maintenance Phase stand up.",
+        "Last Word": "When this model is disabled by an enemy attack, it can immediately advance up to 3\" and can make one basic melee attack.",
+        "Take Up": "If this model is destroyed by an effect other than Take Up, you can choose a grunt in this unit within 1\" of it to be destroyed instead. Remove that grunt from the table instead of this model. This model has the same number of unmarked damage boxes as the chosen grunt."
+      },
       "profiles": [
         {
-          "name": "reaver standard",
+          "name": "Standard",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -44888,8 +46855,30 @@
           "icons": [
             "Assets\\Icons\\base size 40mm.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Cursed",
+            "Granted: Rise",
+            "Last Word",
+            "Take Up"
+          ],
+          "weapons": [
+            {
+              "name": "Infernus Hand Weapon",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -45338,7 +47327,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "anathia the imperishable desolation warlock"
+          "Anathia"
         ],
         "values": [
           [
@@ -45346,14 +47335,25 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Orgoth",
+        "Deathless",
+        "Cadre",
+        "Reaper Covenant"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Gifts of Annihilation": "Once per turn at any time during its activation, this model can use one of the following effects. Gifts of Annihilation effects last for one round.",
+        "Dark Rituals": "This model can channel spells through friendly Faction warrior models in its control range. Immediately after a spell is channeled through a model as a result of Dark Rituals, the model it was channeled through suffers d3 points of magical damage.",
+        "Fate Binder": "Cohort models in this model's battlegroup gain Shield Guard. (When a friendly model is directly hit by a non-spray ranged attack while within 3\" of a model with Shield Guard, you can choose to have the model with Shield Guard be directly hit instead. That model is automatically hit and suffers all damage and effects. A model can use Shield Guard only once per round and cannot use Shield Guard if it is incorporeal, knocked down, or stationary. Shield Guard can only be used once per attack.)",
+        "Night Reaper": "This model gains Carrion Feast and Entropic Force. (When a living or undead model is destroyed while within 5\" of a model with Carrion Feast, you can choose to have that model be removed from play. If a model is removed from play as a result of Carrion Feast, it does not generate a corpse token and the model with Carrion Feast can remove d3 damage points.) (While within 5\" of a model with Entropic Force, enemy models lose Tough and cannot have damage removed from them.)",
+        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens."
+      },
       "profiles": [
         {
-          "name": "anathia the imperishable desolation warlock",
+          "name": "Anathia 1",
           "stats": {
             "spd": "5",
             "aat": "8",
@@ -45368,15 +47368,53 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv undead.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Gifts of Annihilation",
+            "Dark Rituals",
+            "Fate Binder",
+            "Night Reaper",
+            "Hell Marked"
+          ],
+          "weapons": [
+            {
+              "name": "Blood Tongue",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual chain weapon.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "3",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Inflict Pain",
+                "Man Catcher"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Affliction",
+        "Disintegration",
+        "Gallows",
+        "Hellwrought",
+        "Impending Doom"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Time of Slaughter": "Anathia gains the benefit of all of her Gifts of Annihilation effects for one round. Additionally, Anathia can immediately leech fury from warbeasts in her battlegroup currently in her control range."
+      }
     },
     {
       "name": "barrow ghoul",
@@ -45391,22 +47429,24 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "4",
-          "4",
-          "5",
-          "5",
-          "4",
-          "4"
+          "32"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Reaper Covenant"
+      ],
+      "cost": "11",
+      "fa": "1",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Ashen Veil": "This model has concealment. Living enemy models without Resistance: Fire suffer \u22122 to attack rolls while within 2\" of this model.",
+        "Cursed": "While within 5\" of this model, enemy models suffer \u22121 ARM.",
+        "Taste of Death": "When a living or undead enemy model within 5\" of this model is destroyed, this model's controller can gain 1 focus or fury point. A model's focus or fury point total cannot exceed its ARC as a result of Taste of Death."
+      },
       "profiles": [
         {
-          "name": "barrow ghoul",
+          "name": "Barrow Ghoul",
           "stats": {
             "spd": "4",
             "aat": "",
@@ -45417,14 +47457,73 @@
             "arc": "",
             "fury": "4",
             "ctrl": "",
-            "thr": "17",
+            "thr": "",
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv undead.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Ashen Veil",
+            "Cursed",
+            "Taste of Death"
+          ],
+          "weapons": [
+            {
+              "name": "Bone Mace",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Beat Back",
+                "Critical Dispel"
+              ]
+            },
+            {
+              "name": "Iron Grip",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": []
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Well of Secrets",
+          "text": "Enemy upkeep spells on the spellcaster immediately expire. Additionally, the spellcaster gains Sacred Ward for one round. (A model with Sacred Ward cannot be targeted by enemy spells.)",
+          "stats": {
+            "cost": "2",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Rnd",
+            "off": "No"
+          }
         }
       ]
     },
@@ -45441,22 +47540,24 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "3",
-          "2",
-          "3",
-          "2",
-          "3",
-          "2"
+          "21"
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Deathless",
+        "Cadre",
+        "Reaper Covenant"
+      ],
+      "cost": "7",
+      "fa": "1",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mage Static": "Spells cast by enemy models within 10\" of this model suffer +1 COST and \u22123 RNG."
+      },
       "profiles": [
         {
-          "name": "charnel hound",
+          "name": "Charnel Hound",
           "stats": {
             "spd": "7",
             "aat": "",
@@ -45471,10 +47572,47 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv construct.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv trample power attack.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Mage Static"
+          ],
+          "weapons": [
+            {
+              "name": "Bite",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Combo Strike (\u2605 Attack)"
+              ]
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Lightning Strike",
+          "text": "The spellcaster gains Sprint. Lightning Strike lasts for one turn. (At the end of an activation in which it destroyed or removed from play one or more enemy models with melee attacks, a model with Sprint can immediately make a full advance, then its activation ends.)",
+          "stats": {
+            "cost": "1",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Turn",
+            "off": "No"
+          }
         }
       ]
     },
@@ -45490,7 +47628,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "revenant champion"
+          "Revenant Champion"
         ],
         "values": [
           [
@@ -45498,14 +47636,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
+      "keywords": [
+        "Orgoth",
+        "Deathless",
+        "Cadre",
+        "Graveborn"
+      ],
+      "cost": "4",
+      "fa": "1",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Guard Dog": "While this model is within 3\" of its Leader and is not knocked down or stationary, its Leader gains +2 DEF against melee attack rolls and cannot become knocked down.",
+        "Impervious Flesh": "When this model suffers a damage roll, roll one fewer die.",
+        "Inhuman Resolve": "When a friendly warrior model within 10\" of this model is destroyed by an enemy attack, after the attack is resolved this model can remove 1 damage point. When this model is disabled, it becomes knocked down instead of becoming boxed and its activation immediately ends. While this model is disabled, it cannot activate. If this model is disabled at the beginning of your Maintenance Phase, it is destroyed.",
+        "Shield Guard": "When a friendly model is directly hit by a non-spray ranged attack while within 3\" of a model with Shield Guard, you can choose to have the model with Shield Guard be directly hit instead. That model is automatically hit and suffers all damage and effects. A model can use Shield Guard only once per round and cannot use Shield Guard if it is incorporeal, knocked down, or stationary. Shield Guard can only be used once per attack."
+      },
       "profiles": [
         {
-          "name": "revenant champion",
+          "name": "Champion",
           "stats": {
             "spd": "4",
             "aat": "",
@@ -45520,10 +47668,52 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv undead.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Guard Dog",
+            "Impervious Flesh",
+            "Inhuman Resolve",
+            "Shield Guard"
+          ],
+          "weapons": [
+            {
+              "name": "War Axe",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            },
+            {
+              "name": "Shattered Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Critical Dispel"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -45539,30 +47729,43 @@
       "health": {
         "type": "Box Multi",
         "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
+          "Duulgrim",
+          "Harrkreth",
+          "Vurgesh"
         ],
         "values": [
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ],
           [
+            "8",
+            "8",
             "8"
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Orgoth",
+        "Graveborn"
+      ],
+      "cost": "8",
       "fa": "c",
-      "composition": "3 Grunts",
-      "rules": {},
+      "composition": "Duulgrim, Harrkreth and Vurgesh",
+      "rules": {
+        "Accursed Armor": "A living enemy model that hits this model with an attack gains Weaken for one round. (A model with Weaken suffers -2 DEF and -2 to its melee attack damage rolls.)",
+        "Shield Wall": "While this model is B2B with one or more models in its unit, it gains +2 ARM and cannot be knocked down.",
+        "Vengeance": "During your Maintenance Phase, if one or more models in this unit were damaged by enemy attacks during the last round, each model in the unit can make a Vengeance Move. Each model making a Vengeance Move can advance 3\". After all models in the unit have moved, each model can then make one basic melee attack. A model can only make one Vengeance Move each turn."
+      },
       "profiles": [
         {
-          "name": "the execrators",
+          "name": "Duulgrim 1, Harrkreth 1, Vurgesh 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -45577,16 +47780,79 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv undead.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Accursed Armor",
+            "Shield Wall",
+            "Vengeance"
+          ],
+          "weapons": [
+            {
+              "name": "Accursed Spear",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Snap Fire",
+                "Thunderbolt"
+              ]
+            },
+            {
+              "name": "Iron Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            },
+            {
+              "name": "Great Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
     {
       "name": "bellighul master of pain",
-      "type": "Mercenary",
+      "type": "Solo",
       "faction": "Reaper Covenant",
       "armies": [
         "Reaper Covenant"
@@ -45596,7 +47862,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "bellighul master of pain"
+          "Bellighul"
         ],
         "values": [
           [
@@ -45604,14 +47870,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Skorne"
+      ],
+      "cost": "4",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Shadowflame Shard, Reaper Covenant]": "This model will work for the Shadowflame Shard and Reaper Covenant.",
+        "Anatomical Precision": "When this model's melee damage roll fails to exceed the ARM of the living model hit, that model suffers 1 damage point. A model disabled by a melee attack made by this model cannot make a Tough roll.",
+        "Condition (\u2605 Action)": "RNG 6. Target friendly warbeast. If the warbeast is in range, you can place 1 fury point on it or remove 1 fury point from it.",
+        "Enrage (\u2605 Action)": "RNG 3. Target friendly warbeast. If the warbeast is in range, it gains +2 to its melee attack damage rolls. Enrage lasts for one turn.",
+        "Medicate [d3+1] (\u2605 Action)": "RNG 1. Target friendly living warbeast. If the warbeast is in range, remove d3 +1 damage points from it.",
+        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends."
+      },
       "profiles": [
         {
-          "name": "bellighul master of pain",
+          "name": "Bellighul 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -45626,10 +47902,38 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv soulless.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Anatomical Precision",
+            "Condition (\u2605 Action)",
+            "Enrage (\u2605 Action)",
+            "Medicate [d3+1] (\u2605 Action)",
+            "Reposition [3\"]"
+          ],
+          "weapons": [
+            {
+              "name": "Barbed Whip",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual chain weapon.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "8"
+              },
+              "properties": [
+                "Inflict Pain"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -67147,27 +69451,37 @@
       "health": {
         "type": "Box",
         "names": [
-          "helga the conqueror"
+          "Helga the Conqueror"
         ],
         "values": [
           [
-            "15"
+            "16"
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Field Marshal [Gang Fighter]": "Cohort models in this model's battlegroup gain Gang Fighter. (When making a melee attack damage roll against an enemy model in the melee range of another friendly Faction warrior model, this model adds +2 to the roll.)",
+        "Gang Fighter": "When making a melee attack damage roll against an enemy model in the melee range of another friendly Faction warrior model, this model adds +2 to the roll.",
+        "Set Defense": "Models suffer \u22122 on charge and slam power attack rolls against this model.",
+        "Veteran Leader [Farrow Valkyries]": "While within 10\" of this model, friendly Farrow Valkyries gain +1 to attack rolls."
+      },
       "profiles": [
         {
-          "name": "helga the conqueror",
+          "name": "Helga 1",
           "stats": {
             "spd": "5",
             "aat": "6",
             "mat": "7",
-            "rat": "",
+            "rat": "6",
             "def": "15",
             "arm": "15",
             "arc": "6",
@@ -67177,15 +69491,81 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Field Marshal [Gang Fighter]",
+            "Gang Fighter",
+            "Set Defense",
+            "Veteran Leader [Farrow Valkyries]"
+          ],
+          "weapons": [
+            {
+              "name": "Shield Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": []
+            },
+            {
+              "name": "Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "9"
+              },
+              "properties": []
+            },
+            {
+              "name": "Hunting Spear",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Inflict Pain"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Cyclone",
+        "Dash",
+        "Deceleration",
+        "Distraction",
+        "Muzzle"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Grand Finale": "When a friendly Faction model in Helga's control range hits an enemy model with a basic melee attack, instead of making a normal damage roll, the enemy model can be slammed d6\" directly away from the attacking model. The POW of the slam and resulting collateral damage rolls are equal to the POW of the attack. Grand Finale lasts for one turn."
+      }
     },
     {
       "name": "lord carver bmmd esq iii",
@@ -67325,7 +69705,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "midas"
+          "Midas"
         ],
         "values": [
           [
@@ -67333,14 +69713,24 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Mercenary",
+        "Bone Grinder",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Blood Trade": "This model can upkeep spells by suffering 1 damage point per spell instead of spending focus or fury points.",
+        "Curse [Bone Grinder]": "This model can use Curse once per activation at any time. Choose an enemy model/unit within 10\" of this model. Friendly Bone Grinder gain +2 to attack rolls against the chosen model/unit. Curse lasts for one turn.",
+        "Dismember": "This model gains an additional die on its melee and ranged damage rolls against warbeasts."
+      },
       "profiles": [
         {
-          "name": "midas",
+          "name": "Midas 1",
           "stats": {
             "spd": "5",
             "aat": "7",
@@ -67355,15 +69745,47 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Blood Trade",
+            "Curse [Bone Grinder]",
+            "Dismember"
+          ],
+          "weapons": [
+            {
+              "name": "Bone Saw",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Blood Boon"
+              ]
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Avenging Force",
+        "Battle Lust",
+        "Bond of Gristle & Bone",
+        "Calamity",
+        "Hex Blast"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Pet Cemetery": "Midas spends any number of fury points when this feat is used. Return each destroyed warbeast from Midas' battlegroup to play, placing them completely within 6\" of Midas with one unmarked damage box in each aspect. For each fury point spent, remove 1 damage point from each model in Midas' battlegroup that is in his control range. Returned warbeasts gain Undead. Returned warbeasts cannot be forced this turn. Warbeasts that were destroyed this turn cannot be returned."
+      }
     },
     {
       "name": "sturm",
@@ -67377,7 +69799,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "sturm"
+          "Sturm & Drang"
         ],
         "values": [
           [
@@ -67385,14 +69807,22 @@
           ]
         ]
       },
-      "keywords": [],
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
       "cost": "0",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Mental Domination [Shield Guard]": "While in this model's control range, warbeasts in its battlegroup gain Shield Guard. (When a friendly model is directly hit by a non-spray ranged attack while within 3\" of a model with Shield Guard, you can choose to have the model with Shield Guard be directly hit instead. That model is automatically hit and suffers all damage and effects. A model can use Shield Guard only once per round and cannot use Shield Guard if it is incorporeal, knocked down, or stationary. Shield Guard can only be used once per attack.)",
+        "Struggle of Wills": "Before the start of the game and at the start of each of your Maintenance Phases after your first turn, choose which mind is dominant: Sturm or Drang. Use that mind's stats and rules for one round."
+      },
       "profiles": [
         {
-          "name": "sturm",
+          "name": "Sturm 1",
           "stats": {
             "spd": "5",
             "aat": "7",
@@ -67407,15 +69837,59 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Mental Domination [Shield Guard]",
+            "Struggle of Wills"
+          ],
+          "weapons": [
+            {
+              "name": "Brain Burn",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Mechano Fist",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "11"
+              },
+              "properties": []
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Deflection",
+        "Polarity Shield",
+        "Telekinesis",
+        "Vision"
+      ],
       "rack": "",
-      "feat": {}
+      "feat": {
+        "Psychic Apocalypse": "While in Strum & Drang's control range enemy Cohort models cannot gain, be allocated, or spend focus or essence points, or be forced. While in Sturm & Drang's control range, enemy models cannot be used to channel spells. Psychic Apocalypse lasts for one round."
+      }
     },
     {
       "name": "drang",
@@ -67610,22 +70084,23 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "2",
-          "2",
-          "4",
-          "4",
-          "2",
-          "2"
+          "22"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "8",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Bacon": "When this model is destroyed, each living warbeast within 1\" of it can remove d3 damage points."
+      },
       "profiles": [
         {
-          "name": "gun boar",
+          "name": "Gun Boar",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -67640,10 +70115,63 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Bacon"
+          ],
+          "weapons": [
+            {
+              "name": "Big Gun",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Momentum"
+              ]
+            },
+            {
+              "name": "Open Fist",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "11"
+              },
+              "properties": []
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Counterblast",
+          "text": "When an enemy model advances and ends its movement or is placed within 5\" of the spellcaster, the spellcaster can make one basic melee or ranged attack targeting that model, then Counterblast expires. Counterblast lasts for one round.",
+          "stats": {
+            "cost": "1",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Rnd",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67660,22 +70188,30 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "3",
-          "2",
-          "5",
-          "5",
-          "5",
-          "4"
+          "30"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Bone Grinder",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "15",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Bacon": "When this model is destroyed, each living warbeast within 1\" of it can remove d3 damage points.",
+        "Bloodthirst": "When it charges a living or undead model, this model gains +2\" SPD.",
+        "Body Snatcher: Heart Eater": "When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to three corpse tokens at any time. This model can spend corpse tokens for the following:",
+        "Death Feast": "During its activation, this model can spend corpse tokens to remove d3 damage points for each token spent.",
+        "Butcher's Curse": "During its activation this model can spend a corpse token to cast one of the spells on its Leaders Card with a cost of 3 or less. This model cannot cast Upkeep spells or spells with a RNG of SELF or CTRL.",
+        "Carrion Hex": "During its activation, this model can spend a corpse token to cast its animus without being forced.",
+        "Channeling": "While this model is in its controller's control range, its controller can channel spells through it."
+      },
       "profiles": [
         {
-          "name": "lytiersis",
+          "name": "Lytiersis",
           "stats": {
             "spd": "5",
             "aat": "6",
@@ -67690,10 +70226,84 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Bacon",
+            "Bloodthirst",
+            "Body Snatcher: Heart Eater",
+            "Death Feast",
+            "Butcher's Curse",
+            "Carrion Hex",
+            "Channeling"
+          ],
+          "weapons": [
+            {
+              "name": "Blood Marked Cleaver",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Grievous Wounds"
+              ]
+            },
+            {
+              "name": "Punching Spike",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": []
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Critical Knockdown"
+              ]
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Putrid Miasma",
+          "text": "While within 6\" of this model, friendly models gain Magic Resistance. (When a model with Magic Resistance is targeted by an arcane attack roll, the attacking model rolls 1 additional die on its attack roll. Discard the highest die of each roll.) Putrid Miasma lasts for one round.",
+          "stats": {
+            "cost": "2",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Rnd",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67710,22 +70320,26 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "1",
-          "1",
-          "2",
-          "2",
-          "1",
-          "1"
+          "14"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "3",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Bacon": "When this model is destroyed, each living warbeast within 1\" of it can remove d3 damage points.",
+        "Extended Control Range": "When checking to see if this model is in its controller's control range, double the range.",
+        "Flank [Razor Boar]": "When this model makes a melee attack against an enemy model in the melee range of another friendly Razor Boar, this model gains +2 to attack rolls and gains an additional damage die.",
+        "Snacking": "When this model boxes a living model with a melee attack, it can choose to remove the boxed model from play. When it does, this model can remove d3 damage points."
+      },
       "profiles": [
         {
-          "name": "razor boar",
+          "name": "Razor Boar",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -67742,8 +70356,42 @@
           "icons": [
             "Assets\\Icons\\base size 30mm.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Bacon",
+            "Extended Control Range",
+            "Flank [Razor Boar]",
+            "Snacking"
+          ],
+          "weapons": [
+            {
+              "name": "Ripping Tusks",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Elusive",
+          "text": "The spellcaster gains Dodge. Elusive lasts for one round. (A model with Dodge can advance up to 2\" immediately after an enemy attack that missed it is resolved.)",
+          "stats": {
+            "cost": "1",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Rnd",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67760,22 +70408,24 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "3",
-          "2",
-          "6",
-          "6",
-          "4",
-          "3"
+          "30"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "13",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Full Boar": "This model can use Full Boar at the start of its activation. This model gains +2 SPD that activation. At the end of that activation, this model suffers d3 damage points. Full Boar can be used only once per activation.",
+        "Repairable": "This model can be targeted with Repair special actions as if it were a construct model."
+      },
       "profiles": [
         {
-          "name": "road hog",
+          "name": "Hog",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -67790,10 +70440,82 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Full Boar",
+            "Repairable"
+          ],
+          "weapons": [
+            {
+              "name": "Flamethrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png",
+                "Assets\\Icons\\weapon qual crit fire.png"
+              ],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Mechano-Claw",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": []
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": [
+                "Critical Knockdown"
+              ]
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Lightning Strike",
+          "text": "The spellcaster gains Sprint. Lightning Strike lasts for one turn. (At the end of an activation in which it destroyed or removed from play one or more enemy models with melee attacks, a model with Sprint can immediately make a full advance, then its activation ends.)",
+          "stats": {
+            "cost": "1",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Turn",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67810,22 +70532,24 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "2",
-          "2",
-          "4",
-          "4",
-          "2",
-          "2"
+          "22"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "8",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Alchemical Mask": "This model does not suffer gas effects. When determining LOS or resolving attacks, this model ignores cloud effects and concealment granted from cloud effects.",
+        "Bacon": "When this model is destroyed, each living warbeast within 1\" of it can remove d3 damage points."
+      },
       "profiles": [
         {
-          "name": "splatter boar",
+          "name": "Boar",
           "stats": {
             "spd": "5",
             "aat": "",
@@ -67840,10 +70564,68 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 40mm.png"
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Alchemical Mask",
+            "Bacon"
+          ],
+          "weapons": [
+            {
+              "name": "Alchemical Mortar",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "2",
+                "pow": "12/6"
+              },
+              "properties": [
+                "Arcing Fire",
+                "Attack Type",
+                "Acid Wash",
+                "Burning Flames",
+                "Psychoactive Gas"
+              ]
+            },
+            {
+              "name": "Open Fist",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "11"
+              },
+              "properties": []
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Lucky Shot",
+          "text": "Target friendly Faction model can reroll its next missed ranged attack roll this turn. Each attack roll can be rerolled only once as a result of Lucky Shot. Lucky shot lasts for one turn.",
+          "stats": {
+            "cost": "1",
+            "rng": "6",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Turn",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67860,29 +70642,31 @@
         "type": "Spiral",
         "names": [],
         "values": [
-          "3",
-          "2",
-          "6",
-          "6",
-          "4",
-          "3"
+          "30"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "13",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Aggression Dial": "This model can use Aggression Dial at any time during its activation. This model gains +2 to its melee damage rolls that activation. At the end of that activation, this model suffers d3 damage points. Aggression Dial can be used only once per activation.",
+        "Repairable": "This model can be targeted with Repair special actions as if it were a construct model."
+      },
       "profiles": [
         {
-          "name": "war hog",
+          "name": "War Hog",
           "stats": {
             "spd": "5",
             "aat": "",
-            "mat": "7",
+            "mat": "6",
             "rat": "",
             "def": "12",
-            "arm": "18",
+            "arm": "19",
             "arc": "",
             "fury": "4",
             "ctrl": "",
@@ -67890,10 +70674,61 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 50mm.png"
+            "Assets\\Icons\\base size 50mm.png",
+            "Assets\\Icons\\model adv slam power attack.png",
+            "Assets\\Icons\\model adv headbutt power attack.png",
+            "Assets\\Icons\\model adv trample power attack.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Aggression Dial",
+            "Repairable"
+          ],
+          "weapons": [
+            {
+              "name": "War Cleaver",
+              "type": "Melee",
+              "count": "2",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            },
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": [
+                "Critical Knockdown"
+              ]
+            }
+          ]
+        }
+      ],
+      "animus": [
+        {
+          "name": "Slaughterhouse",
+          "text": "The spellcaster's melee weapons gain Grievous Wounds. Slaughterhouse lasts for one turn. (On a direct hit, a model hit by a weapon with Grievous Wounds loses Tough and cannot have damage removed from it for one round.)",
+          "stats": {
+            "cost": "1",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Turn",
+            "off": "No"
+          }
         }
       ]
     },
@@ -67915,8 +70750,12 @@
           "11"
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "17",
       "fa": "c",
       "composition": "",
       "rules": {
@@ -68023,7 +70862,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "meat thresher"
+          "Meat Thresher"
         ],
         "values": [
           [
@@ -68031,14 +70870,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "13",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Bulldoze": "When this model is B2B with an enemy model during its Normal Movement, it can push that model up to 2\" directly away from it. A model can be pushed by Bulldoze only once per turn. Bulldoze has no effect when this model makes a trample power attack.",
+        "Exhaust Fumes": "When this model advances during its Normal Movement, for one round other friendly models gain concealment while within 3\" of this model.",
+        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends.",
+        "Turn Up The Heat": "This model can use Turn Up The Heat at the start of its activation. This activation, this model gains +2 SPD. At the end of the activation, this model suffers d3 damage points."
+      },
       "profiles": [
         {
-          "name": "meat thresher",
+          "name": "Meat Thresher",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -68053,10 +70902,57 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 120mm.png"
+            "Assets\\Icons\\base size 120mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv stealth.png",
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Bulldoze",
+            "Exhaust Fumes",
+            "Reposition [3\"]",
+            "Turn Up The Heat"
+          ],
+          "weapons": [
+            {
+              "name": "Hailer",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png"
+              ],
+              "stats": {
+                "rng": "12",
+                "rof": "D3+1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Volume Fire"
+              ]
+            },
+            {
+              "name": "Crusher",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": [
+                "Blood Reaper",
+                "Grinding Wheel",
+                "Knockdown",
+                "Trash"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -68421,18 +71317,28 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "3",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Berserk": "When this model destroys one or more models with a melee attack during its Combat Action, immediately after the attack is resolved it must make one additional melee attack against another model in its melee range, regardless of whether that model is a friendly model or an enemy model.",
+        "Spell Ward": "This model cannot be targeted by spells.",
+        "Unyielding": "This model gains +2 ARM against melee damage rolls.",
+        "Vampiric": "When this model destroys a living or undead model with a melee or ranged attack, immediately after the attack is resolved this model can remove d3 damage points."
+      },
       "profiles": [
         {
-          "name": "maximus",
+          "name": "Maximus 1",
           "stats": {
             "spd": "5",
             "aat": "",
-            "mat": "8",
+            "mat": "7",
             "rat": "",
             "def": "13",
             "arm": "16",
@@ -68443,10 +71349,35 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Berserk",
+            "Spell Ward",
+            "Unyielding",
+            "Vampiric"
+          ],
+          "weapons": [
+            {
+              "name": "Fellblade",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -68462,7 +71393,7 @@
       "health": {
         "type": "Box",
         "names": [
-          "rorsh"
+          "Rorsh"
         ],
         "values": [
           [
@@ -68470,19 +71401,30 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "14",
       "fa": "c",
-      "composition": "",
-      "rules": {},
+      "composition": "Rorsh & Brine",
+      "rules": {
+        "Mercenary [Unlimited - Circle, Cryx, Cygnar, Khador, Legion, Protectorate, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Cryx, Cygnar, Khador, Legion, Protectorate, Skorne, and Trollbloods.",
+        "Diversionary Tactic (\u2605 Action)": "Models other than Brine within 3\" of Rorsh suffer a POW 7 blast damage roll. After these damage rolls are resolved, Rorsh can make a full advance. If Brine was within 3\" of Rorsh when he used Diversionary Tactic, Brine can also make a full advance.",
+        "Farrow Warlock": "This model can have only Minion Farrow warbeasts in its battlegroup.",
+        "Feign Death": "This model cannot be targeted by ranged or arcane attacks while knocked down.",
+        "Lesser Warlock": "This model is not a warlock or Leader, but has the following warlock special rules: Battlegroup Controller, Fury Manipulation, Healing, Spellcaster, and Transferring Damage. This model must have at least one warbeast in its battlegroup at the start of the game.",
+        "Souie (\u2605 Action)": "If Brine is currently in this model's control range, Brine can immediately make a full advance toward Rorsh."
+      },
       "profiles": [
         {
-          "name": "rorsh",
+          "name": "Rorsh 1",
           "stats": {
             "spd": "6",
             "aat": "",
-            "mat": "7",
-            "rat": "5",
+            "mat": "6",
+            "rat": "4",
             "def": "13",
             "arm": "16",
             "arc": "3",
@@ -68492,13 +71434,70 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv tough.png",
+            "Assets\\Icons\\model adv unstoppable.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Diversionary Tactic (\u2605 Action)",
+            "Farrow Warlock",
+            "Feign Death",
+            "Lesser Warlock",
+            "Souie (\u2605 Action)"
+          ],
+          "weapons": [
+            {
+              "name": "Dynamite",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "6",
+                "rof": "1",
+                "aoe": "3",
+                "pow": "14/7"
+              },
+              "properties": [
+                "Cumbersome"
+              ]
+            },
+            {
+              "name": "Lever Action Pig Iron",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual cont eff fire.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Cleaver",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "11"
+              },
+              "properties": []
+            }
+          ]
         }
       ],
-      "spells": [],
+      "spells": [
+        "Pigpen"
+      ],
       "rack": "",
       "feat": {}
     },
@@ -68633,14 +71632,24 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Farrow",
+        "Thornfall Alliance"
+      ],
+      "cost": "2",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Legion, Skorne, and Trollbloods.",
+        "Attached": "Before the start of the game, attach this model to a friendly Faction Leader for the rest of the game. Each Leader can have only one model/unit attached to it. The attached model is part of its Leader's battlegroup.",
+        "Arcane Assist": "If its Leader is within 5\" of this model during your Control Phase, the Leader can upkeep one spell without spending a focus or fury point.",
+        "Repair [d6] (\u2605 Action)": "RNG 1. Target friendly Faction construct model. If the model is in range, remove d6 damage points from it.",
+        "Ancillary Attack (\u2605 Action)": "RNG 3. Target friendly Faction Cohort model. If the target is in range, it immediately makes one basic melee or ranged attack. A model can be targeted by an Ancillary Attack special action only once per turn."
+      },
       "profiles": [
         {
-          "name": "targ",
+          "name": "Targ 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -68655,10 +71664,30 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv tough.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Arcane Assist",
+            "Repair [d6] (\u2605 Action)",
+            "Ancillary Attack (\u2605 Action)"
+          ],
+          "weapons": [
+            {
+              "name": "Butchers Knife",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
         }
       ]
     },
@@ -68682,21 +71711,31 @@
           ]
         ]
       },
-      "keywords": [],
-      "cost": "0",
+      "keywords": [
+        "Mercenary",
+        "Efaarit",
+        "Thornfall Alliance"
+      ],
+      "cost": "4",
       "fa": "c",
       "composition": "",
-      "rules": {},
+      "rules": {
+        "Mercenary [Unlimited - Circle, Grymkin, Legion, Skorne, and Trollbloods]": "In games played in the Unlimited Arena this model will work for Circle, Grymkin, Legion, Skorne, and Trollbloods.",
+        "Blade Shield": "This model gains +2 DEF against ranged attack rolls.",
+        "Deflect": "When an enemy model misses this model with a non-spray ranged attack, the attacking model becomes the target of the attack and is directly hit by the attack. This model becomes the point of origin for the attack.",
+        "Sprint": "At the end of an activation in which it destroyed or removed from play one or more enemy models with melee attacks, this model can immediately make a full advance, then its activation ends.",
+        "Take A Bullet": "When a friendly model is targeted by a non-spray ranged attack while within 3\" of this model, you can choose to have this model become the target of the attack instead. If you do, this model is considered to be within the attacker's LOS and within the RNG of the attack. This model can use Take A Bullet only once per round and cannot use Take A Bullet if it is incorporeal, knocked down, or stationary."
+      },
       "profiles": [
         {
-          "name": "the wastelander",
+          "name": "Wastelander",
           "stats": {
             "spd": "7",
             "aat": "",
-            "mat": "8",
+            "mat": "7",
             "rat": "",
-            "def": "15",
-            "arm": "15",
+            "def": "14",
+            "arm": "13",
             "arc": "",
             "fury": "",
             "ctrl": "",
@@ -68704,10 +71743,37 @@
             "ess": ""
           },
           "icons": [
-            "Assets\\Icons\\base size 30mm.png"
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv stealth.png"
           ],
-          "abilities": [],
-          "weapons": []
+          "abilities": [
+            "Blade Shield",
+            "Deflect",
+            "Sprint",
+            "Take A Bullet"
+          ],
+          "weapons": [
+            {
+              "name": "Mekitana",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": [
+                "Decapitation"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -100647,6 +103713,127 @@
         "dur": "Up",
         "off": "No"
       }
+    },
+    "Battle Lust": {
+      "text": "Target friendly Faction warrior model/unit gains an additional die on melee damage rolls but suffers \u22122 DEF.",
+      "stats": {
+        "cost": "2",
+        "rng": "6",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Up",
+        "off": "No"
+      }
+    },
+    "Bond of Gristle & Bone": {
+      "text": "Target friendly Faction warrior model/unit gains +2 ARM and Feign Death. (A model with Feign Death cannot be targeted by ranged or magic attacks while knocked down.)",
+      "stats": {
+        "cost": "2",
+        "rng": "6",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Up",
+        "off": "No"
+      }
+    },
+    "Pigpen": {
+      "text": "While within 3\" of the spellcaster, enemy models treat open terrain as rough terrain.",
+      "stats": {
+        "cost": "2",
+        "rng": "Self",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Up",
+        "off": "No"
+      }
+    },
+    "Deflection": {
+      "text": "While in the spellcaster's control range, friendly Faction models gain +2 DEF against ranged and arcane attacks. Deflection lasts for one round.",
+      "stats": {
+        "cost": "3",
+        "rng": "Self",
+        "aoe": "Ctrl",
+        "pow": "-",
+        "dur": "Rnd",
+        "off": "No"
+      }
+    },
+    "Affliction": {
+      "text": "Target model/unit suffers \u22122 DEF. When a damage roll resulting from a direct hit fails to exceed the ARM of an affected model, the model suffers 1 damage point.",
+      "stats": {
+        "cost": "2",
+        "rng": "8",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Up",
+        "off": "Yes"
+      }
+    },
+    "Thunder Strike": {
+      "text": "Instead of suffering a normal damage roll, a non-incorporeal model hit by Thunder Strike is slammed d6\" directly away from the spell's point of origin and suffers a POW 14 damage roll. Collateral damage from this slam is POW 14.",
+      "stats": {
+        "cost": "4",
+        "rng": "8",
+        "aoe": "-",
+        "pow": "14",
+        "dur": "-",
+        "off": "Yes"
+      }
+    },
+    "Sure Foot": {
+      "text": "Target friendly Faction model/unit gains +2 DEF and cannot become knocked down.",
+      "stats": {
+        "cost": "2",
+        "rng": "6",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Up",
+        "off": "No"
+      }
+    },
+    "Dark Fire": {
+      "text": "When a living enemy model is destroyed by Dark Fire, the spellcaster gains the destroyed model's soul token regardless of the proximity of other models.",
+      "stats": {
+        "cost": "2",
+        "rng": "10",
+        "aoe": "-",
+        "pow": "12",
+        "dur": "-",
+        "off": "Yes"
+      }
+    },
+    "Icy Grip": {
+      "text": "Target model hit without Resistance: Cold suffers \u22122 SPD for one round.",
+      "stats": {
+        "cost": "2",
+        "rng": "8",
+        "aoe": "-",
+        "pow": "12",
+        "dur": "Rnd",
+        "off": "Yes"
+      }
+    },
+    "Eruption": {
+      "text": "This attack causes fire damage. On a hit, center a cloud effect on the model targeted. The template is a hazard that remains in play for one round. A model without Resistance: Fire entering or ending its activation in the AOE suffer the Fire continuous effect.",
+      "stats": {
+        "cost": "3",
+        "rng": "8",
+        "aoe": "2",
+        "pow": "14/8",
+        "dur": "Rnd",
+        "off": "Yes"
+      }
+    },
+    "Perdition": {
+      "text": "When an enemy model is damaged by Perdition, immediately after the attack is resolved the spellcaster or one model in its battlegroup that is currently in its control range can advance up to 5\" directly toward the nearest enemy model. A model can advance as a result of Perdition only once per turn.",
+      "stats": {
+        "cost": "2",
+        "rng": "10",
+        "aoe": "-",
+        "pow": "10",
+        "dur": "-",
+        "off": "Yes"
+      }
     }
   },
   "abilities": {
@@ -101742,7 +104929,50 @@
     "Great Power": "During your Control Phase, this model can upkeep one spell without spending a focus or fury point.",
     "Veteran Leader [Farrow warrior]": "While within 10\" of this model, other friendly Farrow warrior models gain +1 to attack rolls.",
     "Dismember": "This model gains an additional die on its melee and ranged damage rolls against warbeasts.",
-    "Feign Death": "This model cannot be targeted by ranged or arcane attacks while knocked down."
+    "Feign Death": "This model cannot be targeted by ranged or arcane attacks while knocked down.",
+    "Turn Up The Heat": "This model can use Turn Up The Heat at the start of its activation. This activation, this model gains +2 SPD. At the end of the activation, this model suffers d3 damage points.",
+    "Full Boar": "This model can use Full Boar at the start of its activation. This model gains +2 SPD that activation. At the end of that activation, this model suffers d3 damage points. Full Boar can be used only once per activation.",
+    "Blood Trade": "This model can upkeep spells by suffering 1 damage point per spell instead of spending focus or fury points.",
+    "Curse [Bone Grinder]": "This model can use Curse once per activation at any time. Choose an enemy model/unit within 10\" of this model. Friendly Bone Grinder gain +2 to attack rolls against the chosen model/unit. Curse lasts for one turn.",
+    "Flank [Razor Boar]": "When this model makes a melee attack against an enemy model in the melee range of another friendly Razor Boar, this model gains +2 to attack rolls and gains an additional damage die.",
+    "Diversionary Tactic (\u2605 Action)": "Models other than Brine within 3\" of Rorsh suffer a POW 7 blast damage roll. After these damage rolls are resolved, Rorsh can make a full advance. If Brine was within 3\" of Rorsh when he used Diversionary Tactic, Brine can also make a full advance.",
+    "Farrow Warlock": "This model can have only Minion Farrow warbeasts in its battlegroup.",
+    "Souie (\u2605 Action)": "If Brine is currently in this model's control range, Brine can immediately make a full advance toward Rorsh.",
+    "Deflect": "When an enemy model misses this model with a non-spray ranged attack, the attacking model becomes the target of the attack and is directly hit by the attack. This model becomes the point of origin for the attack.",
+    "Take A Bullet": "When a friendly model is targeted by a non-spray ranged attack while within 3\" of this model, you can choose to have this model become the target of the attack instead. If you do, this model is considered to be within the attacker's LOS and within the RNG of the attack. This model can use Take A Bullet only once per round and cannot use Take A Bullet if it is incorporeal, knocked down, or stationary.",
+    "Aggression Dial": "This model can use Aggression Dial at any time during its activation. This model gains +2 to its melee damage rolls that activation. At the end of that activation, this model suffers d3 damage points. Aggression Dial can be used only once per activation.",
+    "Repair [d6] (\u2605 Action)": "RNG 1. Target friendly Faction construct model. If the model is in range, remove d6 damage points from it.",
+    "Veteran Leader [Farrow Valkyries]": "While within 10\" of this model, friendly Farrow Valkyries gain +1 to attack rolls.",
+    "Enrage (\u2605 Action)": "RNG 3. Target friendly warbeast. If the warbeast is in range, it gains +2 to its melee attack damage rolls. Enrage lasts for one turn.",
+    "Medicate [d3+1] (\u2605 Action)": "RNG 1. Target friendly living warbeast. If the warbeast is in range, remove d3 +1 damage points from it.",
+    "Inhuman Resolve": "When a friendly warrior model within 10\" of this model is destroyed by an enemy attack, after the attack is resolved this model can remove 1 damage point. When this model is disabled, it becomes knocked down instead of becoming boxed and its activation immediately ends. While this model is disabled, it cannot activate. If this model is disabled at the beginning of your Maintenance Phase, it is destroyed.",
+    "Accursed Armor": "A living enemy model that hits this model with an attack gains Weaken for one round. (A model with Weaken suffers -2 DEF and -2 to its melee attack damage rolls.)",
+    "Gifts of Annihilation": "Once per turn at any time during its activation, this model can use one of the following effects. Gifts of Annihilation effects last for one round.",
+    "Fate Binder": "Cohort models in this model's battlegroup gain Shield Guard.",
+    "Night Reaper": "This model gains Carrion Feast and Entropic Force.",
+    "Orgoth Monstrosity": "This model is a monstrosity that can be included in any Orgoth warcaster's battlegroup. An Orgoth warcaster can allocate focus points to this model as if it was a warjack.",
+    "Pain Maddened": "When this model is damaged by an enemy attack, it gains +2 SPD for one round.",
+    "Homicidal Maniac": "If there are no models in this model's melee range after resolving a basic melee attack in which this model destroyed one or more enemy models, this model can advance up to 1\".",
+    "Hell Hunter": "When this model destroys one or more enemy models with a basic ranged attack during its activation, immediately after the attack is resolved one Cohort model in this model's battlegroup that is in its control range can advance up to 3\".",
+    "Fate Blessed": "When a friendly Faction model makes an attack or damage roll during its activation while in this model's control range, this model can spend 1 focus or fury point to allow the model to reroll that roll. Each roll can be rerolled only once as a result of Fate Blessed.",
+    "Soul Mastery": "At any time during its activation, this model can spend soul tokens to use one of the following effects for each token spent.",
+    "Soul Taker: Exhumator": "This model can gain soul tokens. When a living enemy model is destroyed within this model's control range, this model gains the destroyed model's soul token.",
+    "Soul Tap": "If this model is in its Leader's control range during your Control Phase, the Leader can spend soul tokens on this model to upkeep one spell for each token spent.",
+    "Blade Glide": "While making a trample power attack, this model gains +3 SPD and does not stop when it contacts a model with a medium or larger base, an obstacle, or an obstruction.",
+    "Fuel for the Flames [5\"]": "When an enemy model without Resistance: Fire suffers a fire damage roll while within 5\" of this model, add an additional die to the damage roll.",
+    "Threshing Blades": "This model gains +4 to its trample power attack damage rolls.",
+    "Blood Drinker": "Immediately after this model resolves a melee attack in which it destroys one or more living models, it can end its activation and remove d3 damage points.",
+    "Primal Rage": "Once per turn, when this model suffers damage from an enemy attack, after the attack is resolved it can immediately make a full advance toward the attacking model and can make one basic melee attack.",
+    "Soul Taker: Body Count": "This model can gain soul tokens. When this model destroys a living enemy model with an attack, this model gains the destroyed model's soul token. This model can have up to three soul tokens at any time.",
+    "Spectral Vortex": "This model can immediately negate any spell that targets it or a model within 3\" of it by spending 1 soul token. The negated spell does not take effect, but its COST remains spent.",
+    "Spirit-Driven": "At the beginning of this model's activation, it can spend one soul token to gain +2 SPD that activation.",
+    "Boundless Rage": "When this model is damaged by an enemy attack or when this model destroys an enemy model with a basic attack this model gains a rage token. This model can have up to three rage tokens at any time. This model gains +1 to its melee attack and melee damage rolls for each rage token on it.",
+    "Painmonger": "At any time during its activation, this model can spend rage tokens to remove d3+1 damage points for each token spent.",
+    "Rage Howler": "At any time during its activation, this model can spend one rage token to gain Mortal Fear. Rage Howler lasts for one round.",
+    "Sitting Vulture": "While B2B with this model, enemy models suffer \u22121 DEF.",
+    "Defensive Measures (\u2605 Action)": "RNG 6. Target friendly Faction Cohort model. If the Cohort model is in range, it gains Shield Guard for one round.",
+    "Deathly Power (\u2605 Action)": "This model gains Dark Shroud for one turn. (While within 2\" of a model with Dark Shroud, enemy models suffer \u22122 ARM.)",
+    "Veteran Leader [Warwitch Coven]": "While within 10\" of this model, Warwitch models gain +1 to attack rolls."
   },
   "properties": {
     "Decrepitation": "This weapon gains an additional die on damage rolls against construct and undead models.",
@@ -102040,7 +105270,12 @@
     "Black Oil": "This attack causes no damage. Instead, on a direct hit models hit suffer Blind for one round. (A model suffering Blind cannot make ranged or arcane attacks, suffers \u22124 MAT and DEF, and cannot run, charge, or make slam or trample power attacks. It must forfeit either its Normal Movement or Combat Action during its next activation. Blind can be shaken.)",
     "Critical Heart Seeker": "On a critical hit, gain an additional die on this weapon's damage rolls against the target directly hit. Discard the lowest die in each roll.",
     "Critical Burster": "On a critical hit, that boxes a living or undead model, the closest three enemy models within 3\" of the boxed model suffer an unboostable POW 10 corrosion damage roll. This damage is not considered to have been caused by an attack. After this damage is resolved, remove the boxed model from play.",
-    "Needle": "Instead of suffering a damage roll, a living model hit by this weapon automatically suffers 1 damage point. This weapon cannot damage non-living models."
+    "Needle": "Instead of suffering a damage roll, a living model hit by this weapon automatically suffers 1 damage point. This weapon cannot damage non-living models.",
+    "Blood Reaper": "When this model makes an initial attack with this weapon, it makes one melee attack with this weapon against each model in its LOS that is in this weapon's melee range. Blood Reaper attacks are simultaneous.",
+    "Grinding Wheel": "This weapon gains an additional die on attack rolls against small- and medium-based models.",
+    "Burning Flames": "If this attack directly hits, models within 2\" of the model directly hit suffer the Fire continuous effect.",
+    "Critical Dispel": "On a critical hit, upkeep spells and animi on the model/unit hit immediately expire.",
+    "Possession": "When this model hits an enemy model with this weapon, this model can spend 1 focus point to take control of the enemy model. The enemy model immediately makes one basic melee or ranged attack, then Possession expires."
   },
   "rack": {}
 }
