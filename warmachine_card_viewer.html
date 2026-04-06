@@ -89,8 +89,17 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .sb-pbtn:disabled{background:var(--border);color:var(--text-muted);cursor:default}
 
 .sb-foot{padding:6px 12px 8px;border-top:1px solid var(--border)}
+.sb-foot .sb-btn-row{display:flex;gap:4px;margin-bottom:4px}
 .sb-foot button{width:100%;padding:6px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--text-dim);font-size:10px;cursor:pointer;font-family:'Oswald';letter-spacing:1px;transition:all 0.15s}
 .sb-foot button:hover{border-color:var(--accent);color:var(--accent)}
+.sb-foot .sb-btn-row button{width:auto;flex:1}
+.btn-new{background:var(--bg)!important;color:var(--accent)!important;border-color:var(--accent-dim)!important}
+.btn-new:hover{background:var(--accent-glow)!important;border-color:var(--accent)!important}
+.btn-save{background:var(--accent-dim)!important;color:var(--accent-light)!important;border-color:var(--accent-dim)!important}
+.btn-save:hover{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+#saveNotice{font-size:10px;font-family:'Oswald';letter-spacing:0.5px;padding:3px 0;margin-top:3px;display:none;text-align:center}
+#saveNotice.ok{color:var(--accent-light)}
+#saveNotice.err{color:var(--red)}
 
 /* Card */
 .card{width:400px;background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:fadeUp 0.3s ease-out;break-inside:avoid;page-break-inside:avoid}
@@ -102,6 +111,9 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .card-info{display:flex;gap:14px;margin-top:8px;font-size:11px;color:rgba(255,255,255,0.45);font-family:'Oswald';font-weight:300}
 .card-info strong{color:rgba(255,255,255,0.7);font-weight:600}
 .card-kw{color:var(--gold)}
+.card-cf{padding:6px 14px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);text-align:center;font-style:italic;font-family:'Oswald';letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center}
+.card-ed-btn{background:none;border:1px solid var(--border);color:var(--text-muted);font-family:'Oswald';font-size:9px;letter-spacing:1px;padding:2px 8px;border-radius:3px;cursor:pointer;transition:all 0.15s}
+.card-ed-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
 
 .sh{font-family:'Oswald';font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);padding:10px 14px 4px;border-top:1px solid var(--border);display:flex;align-items:center;gap:6px}
 .si{font-size:12px}
@@ -228,8 +240,6 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .ohp{font-size:10px;color:var(--text-muted);margin-left:8px}
 .oc{font-size:11px;font-weight:700;color:var(--gold);background:rgba(201,168,76,0.12);padding:1px 6px;border-radius:3px}
 
-.cf{padding:6px 14px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);text-align:center;font-style:italic;font-family:'Oswald';letter-spacing:0.5px}
-
 /* View toggle */
 .vt{position:fixed;bottom:16px;right:16px;z-index:100;display:flex;gap:4px}
 .vb{padding:6px 12px;border-radius:4px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);font-size:11px;cursor:pointer;font-family:'Oswald';letter-spacing:0.5px;transition:all 0.15s}
@@ -245,11 +255,90 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .wico{display:inline-flex;gap:2px;margin-left:4px;vertical-align:middle}
 .wico img{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);object-fit:contain}
 
+/* ── Edit Modal ─────────────────────────────────────────────────────────── */
+.edit-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:500;display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+.edit-panel{background:var(--card);border:1px solid var(--border-light);border-radius:10px;width:100%;max-width:820px;display:flex;flex-direction:column;max-height:calc(100vh - 32px);margin:auto}
+.edit-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);background:var(--header-grad);border-radius:10px 10px 0 0;flex-shrink:0}
+.edit-hdr-title{font-family:'Oswald';font-weight:700;font-size:15px;color:var(--accent-light);letter-spacing:2px}
+.edit-close{background:none;border:none;color:rgba(255,255,255,0.45);cursor:pointer;font-size:20px;padding:0 4px;line-height:1;transition:color 0.15s}
+.edit-close:hover{color:var(--red)}
+.edit-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.edit-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-shrink:0;background:var(--bg2);border-radius:0 0 10px 10px}
+
+.ed-sec{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:12px 14px}
+.ed-sec-hdr{font-family:'Oswald';font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid var(--border)}
+.ed-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.ed-field{display:flex;flex-direction:column;gap:3px}
+.ed-field.grow{flex:1;min-width:90px}
+.ed-lbl{font-family:'Oswald';font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)}
+.ed-in{background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:5px 8px;font-family:'Crimson Pro';font-size:13px;outline:none;width:100%;transition:border-color 0.15s}
+.ed-in:focus{border-color:var(--accent)}
+.ed-ta{background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:6px 8px;font-family:'Crimson Pro';font-size:12px;outline:none;width:100%;min-height:60px;resize:vertical;transition:border-color 0.15s;line-height:1.5}
+.ed-ta:focus{border-color:var(--accent)}
+.ed-sel{background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:5px 8px;font-family:'Oswald';font-size:12px;outline:none;cursor:pointer;transition:border-color 0.15s}
+.ed-sel:focus{border-color:var(--accent)}
+.ed-sub{background:var(--card);border:1px solid var(--border-light);border-radius:6px;padding:10px 12px;margin-bottom:6px}
+.ed-sub2{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:8px 10px;margin-bottom:5px}
+.ed-sub-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:6px}
+.ed-li{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.ed-li .ed-in{flex:1}
+.ed-rm{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:3px 6px;border-radius:3px;transition:all 0.15s;font-size:11px;font-family:'Oswald';letter-spacing:0.5px;flex-shrink:0}
+.ed-rm:hover{color:var(--red);background:rgba(204,68,68,0.1)}
+.ed-add{display:inline-block;background:none;border:1px dashed var(--border-light);color:var(--accent);padding:3px 10px;border-radius:4px;cursor:pointer;font-family:'Oswald';font-size:10px;letter-spacing:1px;transition:all 0.15s;margin-top:3px}
+.ed-add:hover{border-color:var(--accent);background:var(--accent-glow)}
+.ed-stats{display:flex;gap:4px;flex-wrap:wrap}
+.ed-stat{display:flex;flex-direction:column;align-items:center;gap:2px}
+.ed-stat span{font-family:'Oswald';font-size:8px;letter-spacing:0.5px;color:var(--text-muted);text-transform:uppercase}
+.ed-stat input{width:46px;text-align:center;background:var(--card-raised);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:4px 2px;font-family:'Oswald';font-size:13px;font-weight:700;outline:none;transition:border-color 0.15s}
+.ed-stat input:focus{border-color:var(--accent)}
+.ed-ico-prev{width:22px;height:22px;border-radius:50%;object-fit:contain;background:rgba(255,255,255,0.07);border:1px solid var(--border-light);flex-shrink:0;vertical-align:middle}
+.ed-wep-hdr{font-family:'Oswald';font-size:13px;font-weight:600}
+.ed-save{flex:1;padding:9px;border-radius:5px;border:none;background:var(--accent);color:#fff;font-family:'Oswald';font-size:12px;font-weight:600;letter-spacing:2px;cursor:pointer;transition:background 0.15s}
+.ed-save:hover{background:var(--accent-light)}
+.ed-del{padding:9px 14px;border-radius:5px;border:1px solid rgba(204,68,68,0.4);background:rgba(204,68,68,0.08);color:var(--red);font-family:'Oswald';font-size:11px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.15s}
+.ed-del:hover{background:rgba(204,68,68,0.2);border-color:var(--red)}
+.ed-cancel{padding:9px 14px;border-radius:5px;border:1px solid var(--border);background:var(--bg);color:var(--text-dim);font-family:'Oswald';font-size:11px;letter-spacing:1px;cursor:pointer;transition:all 0.15s}
+.ed-cancel:hover{border-color:var(--accent);color:var(--accent)}
+.ed-sublbl{font-family:'Oswald';font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin:8px 0 4px;display:block}
+
+/* ── DB Modal ───────────────────────────────────────────────────────────── */
+.db-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:500;display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+.db-panel{background:var(--card);border:1px solid var(--border-light);border-radius:10px;width:100%;max-width:940px;display:flex;flex-direction:column;max-height:calc(100vh - 32px);margin:auto}
+.db-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);background:var(--header-grad);border-radius:10px 10px 0 0;flex-shrink:0}
+.db-hdr-title{font-family:'Oswald';font-weight:700;font-size:15px;color:var(--gold);letter-spacing:2px}
+.db-close{background:none;border:none;color:rgba(255,255,255,0.45);cursor:pointer;font-size:20px;padding:0 4px;line-height:1;transition:color 0.15s}
+.db-close:hover{color:var(--red)}
+.db-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);padding:0 16px}
+.db-tab{padding:9px 20px;font-family:'Oswald';font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s;user-select:none}
+.db-tab:hover{color:var(--text-dim)}
+.db-tab.active{color:var(--accent-light);border-bottom-color:var(--accent)}
+.db-tab.active.gold{color:var(--gold);border-bottom-color:var(--gold)}
+.db-body{display:flex;flex:1;overflow:hidden;min-height:0}
+.db-left{width:240px;min-width:240px;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;background:var(--bg2)}
+.db-search-wrap{padding:8px 10px;border-bottom:1px solid var(--border);flex-shrink:0}
+.db-search{width:100%;padding:5px 8px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:'Crimson Pro';font-size:12px;outline:none;transition:border-color 0.15s}
+.db-search:focus{border-color:var(--accent)}
+.db-list{flex:1;overflow-y:auto;padding:4px 6px}
+.db-list-item{padding:5px 8px;border-radius:4px;cursor:pointer;font-size:12px;font-family:'Crimson Pro';color:var(--text-dim);transition:all 0.12s;border-left:2px solid transparent;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.db-list-item:hover{background:rgba(61,139,110,0.08);color:var(--text)}
+.db-list-item.sel{background:rgba(61,139,110,0.15);border-left-color:var(--accent);color:var(--accent-light);font-weight:600}
+.db-list-item.sel.gold{background:rgba(201,168,76,0.12);border-left-color:var(--gold);color:var(--gold)}
+.db-count{padding:5px 10px;font-family:'Oswald';font-size:9px;color:var(--text-muted);letter-spacing:1px;border-top:1px solid var(--border);flex-shrink:0;text-align:right}
+.db-right{flex:1;overflow-y:auto;padding:18px 20px}
+.db-empty{color:var(--text-muted);font-style:italic;font-size:13px;text-align:center;margin-top:50px;line-height:1.8}
+.db-foot{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-shrink:0;background:var(--bg2);border-radius:0 0 10px 10px}
+.db-add-btn{padding:7px 16px;border-radius:5px;border:1px solid var(--accent-dim);background:var(--accent-glow);color:var(--accent-light);font-family:'Oswald';font-size:11px;font-weight:600;letter-spacing:1.5px;cursor:pointer;transition:all 0.15s}
+.db-add-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.db-save-btn{padding:7px 16px;border-radius:5px;border:1px solid var(--accent-dim);background:var(--accent-dim);color:var(--accent-light);font-family:'Oswald';font-size:11px;font-weight:600;letter-spacing:1.5px;cursor:pointer;transition:all 0.15s}
+.db-save-btn:hover{background:var(--accent);color:#fff}
+.btn-db{background:var(--bg2)!important;color:var(--gold)!important;border-color:rgba(201,168,76,0.3)!important}
+.btn-db:hover{background:rgba(201,168,76,0.08)!important;border-color:var(--gold)!important;color:var(--gold)!important}
+
 /* Print */
 @media print {
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
   body{background:#fff!important}
-  #sidebar,#landing,.vt,.sb-pbar,.sb-foot{display:none!important}
+  #sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal{display:none!important}
   #app{display:block!important}
   #main{display:flex!important;flex-wrap:wrap!important;padding:8mm!important;gap:8px!important;overflow:visible!important;height:auto!important;background:#fff!important;justify-content:flex-start!important}
   .card{width:48%!important;font-size:10px!important;box-shadow:none!important;border:1px solid #999!important;border-radius:4px!important;animation:none!important;break-inside:avoid;page-break-inside:avoid}
@@ -266,7 +355,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
   .spx{font-size:9px!important}
   .fn{font-size:13px!important}
   .fd{font-size:10px!important}
-  .cf{display:none!important}
+  .card-cf{display:none!important}
   .hs{padding:4px 10px!important}
   .aw,.ww,.sw,.fw,.rw,.ow{padding:2px 10px 4px!important}
   .anw{padding:2px 10px 4px!important}
@@ -281,16 +370,17 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 <div id="app">
   <div id="landing">
     <div class="landing-title">WARMACHINE</div>
-    <div class="landing-sub">Card Viewer</div>
-    <div id="dropzone" onclick="document.getElementById('fileInput').click()">
+    <div class="landing-sub">Card Viewer &amp; Editor</div>
+    <div id="dropzone" onclick="handleDropClick()">
       <div class="icon">📂</div>
       <div class="label">Drop a JSON file here or click to browse</div>
       <div class="hint">Supports Card Creator V4 simple format</div>
     </div>
     <input type="file" id="fileInput" accept=".json">
     <div id="error-msg" style="display:none"></div>
-    <div style="margin-top:24px;color:var(--text-muted);font-size:12px;text-align:center;max-width:420px;line-height:1.5">
-      Load your card data JSON — same format as Soul Samurai's Card Creator V4.
+    <div style="margin-top:16px;color:var(--text-muted);font-size:12px;text-align:center;max-width:420px;line-height:1.6">
+      Load your card data JSON.<br>
+      <span style="color:var(--accent-dim);font-size:11px">Tip: Use <a href="#" onclick="pickAndLoad();return false" style="color:var(--accent)">Open with Save Support</a> to enable direct file saving.</span>
     </div>
   </div>
 
@@ -311,7 +401,17 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
       </div>
       <button class="sb-pbtn" id="printBtn" disabled onclick="doPrint()">🖨 PRINT SELECTED</button>
     </div>
-    <div class="sb-foot"><button onclick="resetApp()">LOAD NEW FILE</button></div>
+    <div class="sb-foot">
+      <div class="sb-btn-row">
+        <button class="btn-new" onclick="openNewCard()">＋ NEW CARD</button>
+        <button class="btn-save" onclick="saveDB()">💾 SAVE DB</button>
+      </div>
+      <div class="sb-btn-row">
+        <button class="btn-db" onclick="openDBModal()" style="width:100%">📚 DB EDITOR</button>
+      </div>
+      <button onclick="resetApp()">LOAD NEW FILE</button>
+      <div id="saveNotice"></div>
+    </div>
   </div>
   <div id="main" style="display:none"></div>
   <div class="vt" id="viewToggle" style="display:none">
@@ -320,8 +420,53 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
   </div>
 </div>
 
+<!-- DB Editor Modal -->
+<div id="dbModal" class="db-overlay" style="display:none" onclick="if(event.target===this)closeDBModal()">
+  <div class="db-panel">
+    <div class="db-hdr">
+      <div class="db-hdr-title">📚 DATABASE EDITOR</div>
+      <button class="db-close" onclick="closeDBModal()">✕</button>
+    </div>
+    <div class="db-tabs">
+      <div class="db-tab active" id="dbTabSpells" onclick="dbSetTab('spells')">✦ Spells</div>
+      <div class="db-tab" id="dbTabAbilities" onclick="dbSetTab('abilities')">⚡ Abilities</div>
+      <div class="db-tab gold" id="dbTabProps" onclick="dbSetTab('properties')">🔧 Properties</div>
+    </div>
+    <div class="db-body">
+      <div class="db-left">
+        <div class="db-search-wrap">
+          <input class="db-search" id="dbSearch" placeholder="Search…" oninput="DB_SEARCH=this.value;dbRenderList()">
+        </div>
+        <div class="db-list" id="dbList"></div>
+        <div class="db-count" id="dbCount"></div>
+      </div>
+      <div class="db-right" id="dbEditor"></div>
+    </div>
+    <div class="db-foot">
+      <button class="db-add-btn" onclick="dbAddNew()">＋ ADD NEW</button>
+      <button class="db-save-btn" onclick="saveDB();closeDBModal()">💾 SAVE &amp; CLOSE</button>
+      <button class="ed-cancel" onclick="closeDBModal()">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="edit-overlay" style="display:none" onclick="if(event.target===this)closeEdit()">
+  <div class="edit-panel">
+    <div class="edit-hdr">
+      <div class="edit-hdr-title" id="editTitle">EDIT CARD</div>
+      <button class="edit-close" onclick="closeEdit()">✕</button>
+    </div>
+    <div class="edit-body" id="editBody"></div>
+    <div class="edit-foot" id="editFoot"></div>
+  </div>
+</div>
+
 <script>
 let D=null, SEL=null, TF='All', SR='', VM='single', PL=new Set();
+let FILE_HANDLE=null, FILE_NAME='warmachine_data.json';
+let EDIT_CARD=null, EDIT_IDX=-1;
+let KNOWN_ICONS=[], KNOWN_SPELLS=[], KNOWN_ABILITIES=[], KNOWN_PROPS=[];
 
 const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc',S:'#aa8844',B:'#cc88cc',I:'#44aacc'};
 const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node',S:'Superstructure',B:'Brain',I:'Interface'};
@@ -329,57 +474,151 @@ const SO=['spd','aat','mat','rat','def','arm','arc','fury','ctrl','thr','ess'];
 const SL={spd:'SPD',aat:'AAT',mat:'MAT',rat:'RAT',def:'DEF',arm:'ARM',arc:'ARC',fury:'FURY',ctrl:'CTRL',thr:'THR',ess:'ESS'};
 const XO=['cost','rng','aoe','pow','dur','off'];
 const XL={cost:'COST',rng:'RNG',aoe:'AOE',pow:'POW',dur:'DUR',off:'OFF'};
+const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Unit','Solo','Battle Engine','Command','Structure'];
 
 function tc(t){t=(t||'').toLowerCase();if(t.includes('warcaster')||t.includes('warlock'))return'#8b6b3d';if(t.includes('warjack')||t.includes('warbeast'))return'#3d6b8b';if(t.includes('unit'))return'#6b3d8b';if(t.includes('solo'))return'#3d8b6b';if(t.includes('battle engine'))return'#6b6b3d';if(t.includes('command'))return'#8b3d6b';return'#5a5a5a'}
 function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function av(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
 
-// Icon URL conversion: turns "Assets\Icons\name.png" or "/Media/Icons/name.png" into a GitHub raw URL
 const ICON_BASE='https://raw.githubusercontent.com/TemporalDistoriton/WarmachineTTS/main/Assets/Icons/';
 function icoUrl(path){
   if(!path)return'';
-  // Extract just the filename from various path formats
   let fn=path.replace(/\\/g,'/');
   const idx=fn.lastIndexOf('/');
   if(idx>=0)fn=fn.substring(idx+1);
   return ICON_BASE+encodeURIComponent(fn);
 }
-// Render a row of icons
 function rIco(icons,sm){
   if(!icons||!icons.length)return'';
   return`<span class="ico${sm?' sm':''}">${icons.map(i=>`<img src="${icoUrl(i)}" alt="" title="${E(i.split(/[/\\]/).pop())}" onerror="this.style.display='none'">`).join('')}</span>`;
 }
-// Render weapon icons inline
 function rWIco(icons){
   if(!icons||!icons.length)return'';
   return`<span class="wico">${icons.map(i=>`<img src="${icoUrl(i)}" alt="" title="${E(i.split(/[/\\]/).pop())}" onerror="this.style.display='none'">`).join('')}</span>`;
 }
 
-// File Loading
+// ── File Loading ────────────────────────────────────────────────────────────
 const dz=document.getElementById('dropzone'),fi=document.getElementById('fileInput'),em=document.getElementById('error-msg');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('dragging')});
 dz.addEventListener('dragleave',()=>dz.classList.remove('dragging'));
 dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('dragging');const f=e.dataTransfer.files[0];if(f&&f.name.endsWith('.json'))loadF(f);else sErr('Please drop a .json file')});
 fi.addEventListener('change',e=>{if(e.target.files[0])loadF(e.target.files[0])});
 
-function loadF(f){const r=new FileReader();r.onload=e=>{try{const p=JSON.parse(e.target.result);if(!p.cards||!Array.isArray(p.cards)){sErr("Invalid: missing 'cards' array");return}D=p;SEL=p.cards[0]||null;TF='All';SR='';PL.clear();hErr();showV()}catch(err){sErr('JSON error: '+err.message)}};r.readAsText(f)}
+function handleDropClick(){document.getElementById('fileInput').click()}
+function loadF(f){FILE_NAME=f.name;FILE_HANDLE=null;const r=new FileReader();r.onload=e=>{parseAndLoad(e.target.result)};r.readAsText(f)}
+function parseAndLoad(text){
+  try{
+    const p=JSON.parse(text);
+    if(!p.cards||!Array.isArray(p.cards)){sErr("Invalid: missing 'cards' array");return}
+    D=p;SEL=p.cards[0]||null;TF='All';SR='';PL.clear();hErr();
+    buildKnownLists();
+    showV();
+  }catch(err){sErr('JSON error: '+err.message)}
+}
+
+async function pickAndLoad(){
+  if(!window.showOpenFilePicker){fi.click();return}
+  try{
+    [FILE_HANDLE]=await window.showOpenFilePicker({types:[{description:'JSON files',accept:{'application/json':['.json']}}]});
+    const file=await FILE_HANDLE.getFile();
+    FILE_NAME=file.name;
+    parseAndLoad(await file.text());
+  }catch(e){if(e.name!=='AbortError')sErr('Error: '+e.message)}
+}
+
 function sErr(m){em.textContent=m;em.style.display='block'}
 function hErr(){em.style.display='none'}
-function resetApp(){D=null;SEL=null;PL.clear();document.getElementById('landing').style.display='flex';document.getElementById('sidebar').style.display='none';document.getElementById('main').style.display='none';document.getElementById('viewToggle').style.display='none';fi.value=''}
-function showV(){document.getElementById('landing').style.display='none';document.getElementById('sidebar').style.display='flex';document.getElementById('main').style.display='flex';document.getElementById('viewToggle').style.display='flex';document.getElementById('sbCount').textContent=`Card Viewer — ${D.cards.length} models`;document.getElementById('searchInput').value='';rFilt();rList();rMain();uPB()}
 
+function resetApp(){
+  D=null;SEL=null;PL.clear();FILE_HANDLE=null;
+  document.getElementById('landing').style.display='flex';
+  document.getElementById('sidebar').style.display='none';
+  document.getElementById('main').style.display='none';
+  document.getElementById('viewToggle').style.display='none';
+  fi.value='';
+}
+function showV(){
+  document.getElementById('landing').style.display='none';
+  document.getElementById('sidebar').style.display='flex';
+  document.getElementById('main').style.display='flex';
+  document.getElementById('viewToggle').style.display='flex';
+  document.getElementById('sbCount').textContent=`Card Viewer — ${D.cards.length} models`;
+  document.getElementById('searchInput').value='';
+  rFilt();rList();rMain();uPB();
+}
+
+// ── Save DB ─────────────────────────────────────────────────────────────────
+async function saveDB(){
+  if(!D)return;
+  const json=JSON.stringify(D,null,2);
+  if(FILE_HANDLE){
+    try{
+      const w=await FILE_HANDLE.createWritable();
+      await w.write(json);await w.close();
+      showNotice('Saved to '+FILE_NAME,'ok');
+    }catch(e){showNotice('Save failed: '+e.message,'err')}
+  }else if(window.showSaveFilePicker){
+    try{
+      FILE_HANDLE=await window.showSaveFilePicker({suggestedName:FILE_NAME,types:[{description:'JSON',accept:{'application/json':['.json']}}]});
+      const w=await FILE_HANDLE.createWritable();
+      await w.write(json);await w.close();
+      showNotice('Saved to '+FILE_NAME,'ok');
+    }catch(e){if(e.name!=='AbortError')dlJSON(json);else showNotice('Save cancelled','err')}
+  }else{dlJSON(json)}
+}
+
+function dlJSON(json){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([json],{type:'application/json'}));
+  a.download=FILE_NAME;a.click();URL.revokeObjectURL(a.href);
+  showNotice('Downloaded '+FILE_NAME,'ok');
+}
+
+function showNotice(msg,type){
+  const el=document.getElementById('saveNotice');
+  el.textContent=msg;el.className=type;el.style.display='block';
+  setTimeout(()=>el.style.display='none',3500);
+}
+
+// ── Known lists for autocomplete ────────────────────────────────────────────
+function buildKnownLists(){
+  const icons=new Set(),spells=new Set(),abilities=new Set(),props=new Set();
+  (D.cards||[]).forEach(c=>{
+    (c.profiles||[]).forEach(p=>{
+      (p.icons||[]).forEach(i=>icons.add(i));
+      (p.weapons||[]).forEach(w=>{
+        (w.icons||[]).forEach(i=>icons.add(i));
+        (w.properties||[]).forEach(pr=>props.add(pr));
+      });
+    });
+    (c.spells||[]).forEach(s=>spells.add(s));
+    (c.options||[]).forEach(o=>(o.icons||[]).forEach(i=>icons.add(i)));
+  });
+  Object.keys(D.spells||{}).forEach(s=>spells.add(s));
+  Object.keys(D.abilities||{}).forEach(a=>abilities.add(a));
+  Object.keys(D.properties||{}).forEach(p=>props.add(p));
+  KNOWN_ICONS=[...icons].sort();
+  KNOWN_SPELLS=[...spells].sort();
+  KNOWN_ABILITIES=[...abilities].sort();
+  KNOWN_PROPS=[...props].sort();
+}
+
+// ── Sidebar ──────────────────────────────────────────────────────────────────
 document.getElementById('searchInput').addEventListener('input',e=>{SR=e.target.value;rList();if(VM==='all')rMain()});
 function setTF(t){TF=t;rFilt();rList();if(VM==='all')rMain()}
 function setView(m){VM=m;document.getElementById('btnS').className='vb'+(m==='single'?' act':'');document.getElementById('btnA').className='vb'+(m==='all'?' act':'');rMain()}
 function gFilt(){return D.cards.filter(c=>(TF==='All'||c.type===TF)&&(!SR||c.name.toLowerCase().includes(SR.toLowerCase())))}
 
-// Print List
 function tPrint(nm,ev){ev.stopPropagation();if(PL.has(nm))PL.delete(nm);else PL.add(nm);rList();uPB()}
 function clearPrint(){PL.clear();rList();uPB()}
 function uPB(){const n=PL.size;document.getElementById('printCount').textContent=`Print list: ${n} card${n!==1?'s':''}`;document.getElementById('printBtn').disabled=n===0}
-function doPrint(){if(!PL.size)return;const m=document.getElementById('main');const pc=D.cards.filter(c=>PL.has(c.name));m.innerHTML=pc.map(c=>rCard(c)).join('');window.print();rMain()}
+function doPrint(){if(!PL.size)return;const m=document.getElementById('main');const pc=D.cards.filter(c=>PL.has(c.name));m.innerHTML=pc.map((c,i)=>rCard(c,D.cards.indexOf(c))).join('');window.print();rMain()}
 
-// Render sidebar
-function rFilt(){const ts=['All',...new Set(D.cards.map(c=>c.type))];const w=document.getElementById('filterBtns');w.innerHTML='';ts.forEach(t=>{const b=document.createElement('button');b.className='sb-fbtn'+(TF===t?' active':'');b.textContent=t;b.onclick=()=>setTF(t);w.appendChild(b)})}
+function rFilt(){
+  const ts=['All',...new Set(D.cards.map(c=>c.type))];
+  const w=document.getElementById('filterBtns');w.innerHTML='';
+  ts.forEach(t=>{const b=document.createElement('button');b.className='sb-fbtn'+(TF===t?' active':'');b.textContent=t;b.onclick=()=>setTF(t);w.appendChild(b)});
+}
 function rList(){
   const l=document.getElementById('cardList'),fl=gFilt(),gr={};
   fl.forEach(c=>{const f=c.faction||'?';if(!gr[f])gr[f]=[];gr[f].push(c)});
@@ -397,169 +636,71 @@ function rList(){
     });
   });
 }
-function rMain(){const m=document.getElementById('main');if(VM==='single'){m.innerHTML=SEL?rCard(SEL):'<div class="empty">Select a model from the sidebar</div>'}else{m.innerHTML=gFilt().map(c=>rCard(c)).join('')}}
 
-// Stat bar
+function rMain(){
+  const m=document.getElementById('main');
+  if(VM==='single'){m.innerHTML=SEL?rCard(SEL,D.cards.indexOf(SEL)):'<div class="empty">Select a model from the sidebar</div>'}
+  else{m.innerHTML=gFilt().map(c=>rCard(c,D.cards.indexOf(c))).join('')}
+}
+
+// ── Stat bar ────────────────────────────────────────────────────────────────
 function rSB(st,cp){const v=SO.filter(k=>st[k]!==undefined&&st[k]!=='');if(!v.length)return'';return`<div class="sb${cp?' c':''}">${v.map(k=>`<div class="sc"><div class="sl">${SL[k]}</div><div class="sv">${E(st[k])}</div></div>`).join('')}</div>`}
 
-// Health
+// ── Health ──────────────────────────────────────────────────────────────────
 function rH(h){
   if(!h||!h.type)return'';
   const t=h.type;
-
-  // ── Horror Ring Health ──────────────────────────────────────────────────────
   if(t==='Ring'){
     const vals=h.values||[];
     const outer=parseInt(vals[0]||0),mid=parseInt(vals[1]||0),inner=parseInt(vals[2]||0);
     const total=outer+mid+inner;
-    // SVG dimensions — scale for colossal vs normal
     const isLarge=total>30;
-    const W=isLarge?320:280, H=isLarge?320:280, cx=W/2, cy=H/2;
-    const rO=isLarge?130:108, rM=isLarge?88:72, rI=isLarge?46:37;
-    const rings=[
-      {count:outer, r:rO, color:'#8b3030', stroke:'#c44', label:'Outer', dotR:5.5},
-      {count:mid,   r:rM, color:'#7a2a2a', stroke:'#b33', label:'Middle', dotR:5.5},
-      {count:inner, r:rI, color:'#6a1f1f', stroke:'#a22', label:'Inner', dotR:isLarge?5.5:4.5},
-    ];
+    const W=isLarge?320:280,H=isLarge?320:280,cx=W/2,cy=H/2;
+    const rO=isLarge?130:108,rM=isLarge?88:72,rI=isLarge?46:37;
+    const rings=[{count:outer,r:rO,color:'#8b3030',stroke:'#c44',label:'Outer',dotR:5.5},{count:mid,r:rM,color:'#7a2a2a',stroke:'#b33',label:'Middle',dotR:5.5},{count:inner,r:rI,color:'#6a1f1f',stroke:'#a22',label:'Inner',dotR:isLarge?5.5:4.5}];
     let dots='';
-    rings.forEach(({count,r,color,stroke,dotR})=>{
-      if(!count)return;
-      for(let j=0;j<count;j++){
-        const angle=(2*Math.PI*j/count)-Math.PI/2;
-        const x=(cx+r*Math.cos(angle)).toFixed(2);
-        const y=(cy+r*Math.sin(angle)).toFixed(2);
-        dots+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="#e8e8e8" stroke="#222" stroke-width="1.5"/>`;
-      }
-    });
-    // Draw concentric ring arcs (background)
+    rings.forEach(({count,r,color,stroke,dotR})=>{if(!count)return;for(let j=0;j<count;j++){const angle=(2*Math.PI*j/count)-Math.PI/2;const x=(cx+r*Math.cos(angle)).toFixed(2);const y=(cy+r*Math.sin(angle)).toFixed(2);dots+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="#e8e8e8" stroke="#222" stroke-width="1.5"/>"`;}});
     const arcs=rings.map(({r,stroke})=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${stroke}" stroke-width="${isLarge?18:15}" stroke-opacity="0.35"/>`).join('');
-
     let legend='<div class="ring-legend">';
-    rings.forEach(({count,color,stroke,label})=>{
-      if(!count)return;
-      legend+=`<div class="ring-legend-item"><div class="ring-legend-dot" style="background:${stroke}44;border-color:${stroke}"></div>${label}: ${count}</div>`;
-    });
+    rings.forEach(({count,stroke,label})=>{if(!count)return;legend+=`<div class="ring-legend-item"><div class="ring-legend-dot" style="background:${stroke}44;border-color:${stroke}"></div>${label}: ${count}</div>`});
     legend+='</div>';
-
-    return `<div class="ring-wrap">
-      <div class="ring-total">♥${total} (${outer}/${mid}/${inner})</div>
-      <div class="ring-diagram">
-        <svg class="ring-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-          ${arcs}${dots}
-        </svg>
-      </div>
-      ${legend}
-    </div>`;
+    return`<div class="ring-wrap"><div class="ring-total">♥${total} (${outer}/${mid}/${inner})</div><div class="ring-diagram"><svg class="ring-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${arcs}${dots}</svg></div>${legend}</div>`;
   }
-
-  // ── Warbeast Spiral Health ──────────────────────────────────────────────────
   if(t==='Spiral'){
     const vals=h.values||[];
-    // vals = 6 column counts [col1, col2, col3, col4, col5, col6]
-    // Columns pair into aspects: Mind=1+2, Body=3+4, Spirit=5+6
-    // Each aspect also has 2 shared circles at the inner end (not in the column counts)
     const colCounts=vals.map(v=>parseInt(v)||0);
-    const total=colCounts.reduce((a,b)=>a+b,0)+6; // +6 for 2 shared per aspect
-    const aspects=[
-      {name:'Mind',  short:'M', col1:colCounts[0], col2:colCounts[1], color:'#5588cc', stroke:'#6699dd'},
-      {name:'Body',  short:'B', col1:colCounts[2], col2:colCounts[3], color:'#cc5555', stroke:'#dd6666'},
-      {name:'Spirit',short:'S', col1:colCounts[4], col2:colCounts[5], color:'#55aa55', stroke:'#66bb66'}
-    ];
-
-    const W=300, H=300, cx=W/2, cy=H/2;
-    const dotR=7.5;
-    const maxR=125;
-    const minR=38;
-    const sharedR1=30;
-    const sharedR2=22;
-    const spiralTwist=-1.2;
-    const angleOffset = -Math.PI/2 + 4*Math.PI/3;
-    const armStarts=[];
-    for(let i=0;i<6;i++) armStarts.push(angleOffset + (2*Math.PI*i/6));
-
-    function spiralPos(startAngle, t){
-      const r = maxR - t*(maxR - minR);
-      const angle = startAngle + t * spiralTwist;
-      return {x: cx + r*Math.cos(angle), y: cy + r*Math.sin(angle)};
-    }
-
-    let paths='';
-    let dots='';
-    let labels='';
-
+    const total=colCounts.reduce((a,b)=>a+b,0)+6;
+    const aspects=[{name:'Mind',short:'M',col1:colCounts[0],col2:colCounts[1],color:'#5588cc',stroke:'#6699dd'},{name:'Body',short:'B',col1:colCounts[2],col2:colCounts[3],color:'#cc5555',stroke:'#dd6666'},{name:'Spirit',short:'S',col1:colCounts[4],col2:colCounts[5],color:'#55aa55',stroke:'#66bb66'}];
+    const W=300,H=300,cx=W/2,cy=H/2,dotR=7.5,maxR=125,minR=38,sharedR1=30,sharedR2=22,spiralTwist=-1.2,angleOffset=-Math.PI/2+4*Math.PI/3;
+    const armStarts=[];for(let i=0;i<6;i++)armStarts.push(angleOffset+(2*Math.PI*i/6));
+    function spiralPos(startAngle,t){const r=maxR-t*(maxR-minR);const angle=startAngle+t*spiralTwist;return{x:cx+r*Math.cos(angle),y:cy+r*Math.sin(angle)}}
+    let paths='',dots='',labels='';
     aspects.forEach((asp,ai)=>{
-      const cols = [asp.col1, asp.col2];
-      const armPositions = [[],[]];
-
-      cols.forEach((nDots, colIdx)=>{
-        const armI = ai*2 + colIdx;
-        const startAngle = armStarts[armI];
-        const totalInArm = nDots + 1; // +1 to leave room for shared dots beyond
-
-        for(let d=0; d<nDots; d++){
-          const tScaled = nDots>1 ? d/(totalInArm) : 0;
-          const pos = spiralPos(startAngle, tScaled);
-          armPositions[colIdx].push(pos);
-          dots+=`<circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
-        }
-
-        const labelAngle = startAngle;
-        const lR = maxR + 16;
-        const lx = cx + lR * Math.cos(labelAngle);
-        const ly = cy + lR * Math.sin(labelAngle);
+      const cols=[asp.col1,asp.col2];const armPositions=[[],[]];
+      cols.forEach((nDots,colIdx)=>{
+        const armI=ai*2+colIdx;const startAngle=armStarts[armI];const totalInArm=nDots+1;
+        for(let d=0;d<nDots;d++){const tScaled=nDots>1?d/totalInArm:0;const pos=spiralPos(startAngle,tScaled);armPositions[colIdx].push(pos);dots+=`<circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;}
+        const labelAngle=startAngle;const lR=maxR+16;const lx=cx+lR*Math.cos(labelAngle);const ly=cy+lR*Math.sin(labelAngle);
         labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${asp.stroke}" font-family="Oswald" font-weight="700" font-size="14">${armI+1}</text>`;
       });
-
-      // 2 shared circles per aspect
-      const midAngle = (armStarts[ai*2] + armStarts[ai*2+1])/2 + spiralTwist*0.85;
-      const s1 = {x: cx + sharedR1*Math.cos(midAngle), y: cy + sharedR1*Math.sin(midAngle)};
-      const s2 = {x: cx + sharedR2*Math.cos(midAngle-0.25), y: cy + sharedR2*Math.sin(midAngle-0.25)};
+      const midAngle=(armStarts[ai*2]+armStarts[ai*2+1])/2+spiralTwist*0.85;
+      const s1={x:cx+sharedR1*Math.cos(midAngle),y:cy+sharedR1*Math.sin(midAngle)};
+      const s2={x:cx+sharedR2*Math.cos(midAngle-0.25),y:cy+sharedR2*Math.sin(midAngle-0.25)};
       dots+=`<circle cx="${s1.x.toFixed(1)}" cy="${s1.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
       dots+=`<circle cx="${s2.x.toFixed(1)}" cy="${s2.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
-      armPositions[0].push(s1, s2);
-      armPositions[1].push(s1, s2);
-
-      // Draw curved path for each arm
-      armPositions.forEach((posArr)=>{
-        if(posArr.length < 2) return;
-        let pathD = `M${posArr[0].x.toFixed(1)},${posArr[0].y.toFixed(1)}`;
-        for(let i=1; i<posArr.length; i++){
-          const prev = posArr[i-1];
-          const curr = posArr[i];
-          const mx = (prev.x+curr.x)/2;
-          const my = (prev.y+curr.y)/2;
-          const dx = curr.x-prev.x;
-          const dy = curr.y-prev.y;
-          const curveAmt = 0.15;
-          const cpx = mx + dy*curveAmt;
-          const cpy = my - dx*curveAmt;
-          pathD += ` Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${curr.x.toFixed(1)},${curr.y.toFixed(1)}`;
-        }
+      armPositions[0].push(s1,s2);armPositions[1].push(s1,s2);
+      armPositions.forEach(posArr=>{
+        if(posArr.length<2)return;
+        let pathD=`M${posArr[0].x.toFixed(1)},${posArr[0].y.toFixed(1)}`;
+        for(let i=1;i<posArr.length;i++){const prev=posArr[i-1];const curr=posArr[i];const mx=(prev.x+curr.x)/2;const my=(prev.y+curr.y)/2;const dx=curr.x-prev.x;const dy=curr.y-prev.y;const cpx=mx+dy*0.15;const cpy=my-dx*0.15;pathD+=` Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${curr.x.toFixed(1)},${curr.y.toFixed(1)}`;}
         paths+=`<path d="${pathD}" fill="none" stroke="${asp.stroke}" stroke-width="2.5" stroke-opacity="0.3" stroke-linecap="round"/>`;
       });
     });
-
     let legend='<div class="spiral-legend">';
-    aspects.forEach(asp=>{
-      const aspTotal = asp.col1 + asp.col2 + 2;
-      legend+=`<div class="spiral-legend-item"><div class="spiral-legend-dot" style="background:${asp.stroke}44;border-color:${asp.stroke}"></div>${asp.name}: ${aspTotal}</div>`;
-    });
+    aspects.forEach(asp=>{const aspTotal=asp.col1+asp.col2+2;legend+=`<div class="spiral-legend-item"><div class="spiral-legend-dot" style="background:${asp.stroke}44;border-color:${asp.stroke}"></div>${asp.name}: ${aspTotal}</div>`});
     legend+='</div>';
-
-    return `<div class="spiral-wrap">
-      <div class="spiral-total">♥${total}</div>
-      <div class="spiral-hdr">
-        ${aspects.map(a=>`<span class="spiral-hdr-label" style="background:${a.color}30;color:${a.stroke};border:1px solid ${a.stroke}55">${a.short}</span>`).join('')}
-      </div>
-      <div class="spiral-diagram">
-        <svg class="spiral-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-          ${paths}${dots}${labels}
-        </svg>
-      </div>
-      ${legend}
-    </div>`;
+    return`<div class="spiral-wrap"><div class="spiral-total">♥${total}</div><div class="spiral-hdr">${aspects.map(a=>`<span class="spiral-hdr-label" style="background:${a.color}30;color:${a.stroke};border:1px solid ${a.stroke}55">${a.short}</span>`).join('')}</div><div class="spiral-diagram"><svg class="spiral-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${paths}${dots}${labels}</svg></div>${legend}</div>`;
   }
-
   if(t==='Box'||t==='Box Multi'){
     const ns=h.names||[],vs=h.values||[];
     let o='<div class="hs">';
@@ -567,28 +708,17 @@ function rH(h){
     return o+'</div>';
   }
   if(t==='Grid'||t==='Grid Large'){
-    const rows=h.values||[];
-    const isLarge=t==='Grid Large';
-    // Detect column count from first row
-    const colCount=rows.length?rows[0].split(',').length:6;
-    const halfCol=isLarge?colCount/2:colCount;
-    let tb=0;
-    rows.forEach(r=>r.split(',').forEach(c=>{if(c.trim()!=='-')tb++}));
-    let o='<div class="hs">';
-    o+=`<div class="hl"><span class="hhp">♥${tb}</span></div>`;
-    // Column headers - for Large grids, show two sets of 1-6
+    const rows=h.values||[];const isLarge=t==='Grid Large';
+    const colCount=rows.length?rows[0].split(',').length:6;const halfCol=isLarge?colCount/2:colCount;
+    let tb=0;rows.forEach(r=>r.split(',').forEach(c=>{if(c.trim()!=='-')tb++}));
+    let o='<div class="hs">';o+=`<div class="hl"><span class="hhp">♥${tb}</span></div>`;
     o+=`<div class="gh${isLarge?' lg':''}"><div class="gcl"></div>`;
     if(isLarge){for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`;for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`}
     else{for(let i=1;i<=colCount;i++)o+=`<div class="gcl">${i}</div>`}
     o+=`</div><div class="grs${isLarge?' lg':''}">`;
     rows.forEach((row,ri)=>{
-      const cells=row.split(',');
-      o+=`<div class="gr"><div class="grl">${ri+1}</div>`;
-      cells.forEach(cell=>{
-        const val=cell.trim(),miss=val==='-',letter=val&&val!==' '&&!miss?val:'',color=GC[val]||'#4a6a5a';
-        if(miss)o+='<div class="gc ms"></div>';
-        else o+=`<div class="gc" style="background:${color}25;border:1px solid ${color}55;color:${color}">${letter&&GN[letter]?letter:''}</div>`;
-      });
+      const cells=row.split(',');o+=`<div class="gr"><div class="grl">${ri+1}</div>`;
+      cells.forEach(cell=>{const val=cell.trim(),miss=val==='-',letter=val&&val!==' '&&!miss?val:'',color=GC[val]||'#4a6a5a';if(miss)o+='<div class="gc ms"></div>';else o+=`<div class="gc" style="background:${color}25;border:1px solid ${color}55;color:${color}">${letter&&GN[letter]?letter:''}</div>`;});
       o+='</div>';
     });
     o+='</div>';
@@ -596,10 +726,10 @@ function rH(h){
     if(used.size){o+='<div class="gl">';used.forEach(l=>{o+=`<span style="color:${GC[l]}">■ ${GN[l]}</span>`});o+='</div>'}
     return o+'</div>';
   }
-  return '';
+  return'';
 }
 
-// Weapon
+// ── Weapon ──────────────────────────────────────────────────────────────────
 function rW(w,pr){
   const isR=w.type==='Ranged',cls=isR?'rng':'mel';
   const so=isR?['rat','rng','rof','aoe','pow']:['mat','rng','pow'];
@@ -617,12 +747,11 @@ function rW(w,pr){
   return o+'</div></div>';
 }
 
-// Full card
-function rCard(card){
+// ── Full Card ────────────────────────────────────────────────────────────────
+function rCard(card,idx){
   const sp=D.spells||{},ab=D.abilities||{},pr=D.properties||{};
   const col=tc(card.type);
   let o='<div class="card">';
-  // Header
   o+='<div class="card-hdr">';
   o+=`<div class="card-nm">${E(card.name)}</div>`;
   o+=`<div class="card-sub">${E(card.faction)} ${E(card.type)}</div>`;
@@ -632,18 +761,12 @@ function rCard(card){
   if(card.composition)o+=`<span>${E(card.composition)}</span>`;
   if(card.keywords&&card.keywords.filter(k=>k).length)o+=`<span class="card-kw">${card.keywords.filter(k=>k).map(E).join(', ')}</span>`;
   o+='</div></div>';
-
-  // Health
   if(card.health&&card.health.type){o+='<div class="sh"><span class="si">♥</span>Health</div>';o+=rH(card.health)}
-
-  // Rules
   if(card.rules&&Object.keys(card.rules).length){
     o+='<div class="sh"><span class="si">📋</span>Card Rules</div><div class="rw">';
     Object.entries(card.rules).forEach(([n,d])=>{o+=`<div class="rb"><span class="rn">${E(n)}</span><span class="rd">— ${E(d)}</span></div>`});
     o+='</div>';
   }
-
-  // Profiles
   (card.profiles||[]).forEach(p=>{
     o+=`<div class="sh"><span class="si">👤</span>${E(p.name)} ${rIco(p.icons)}</div><div class="aw">`;
     o+=rSB(p.stats,false);
@@ -656,13 +779,11 @@ function rCard(card){
     o+='</div>';
     if(p.weapons&&p.weapons.length){o+='<div class="sh"><span class="si">⚔</span>Weapons</div><div class="ww">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
   });
-
-  // Spells
   if(card.spells&&card.spells.length){
     o+='<div class="sh"><span class="si">✦</span>Spells</div><div class="sw">';
     card.spells.forEach(sn=>{
       const s=sp[sn];
-      if(!s){o+=`<div class="spb"><div class="spn">${E(sn)}</div><div class="spx" style="color:var(--red)">Not found</div></div>`;return}
+      if(!s){o+=`<div class="spb"><div class="spn">${E(sn)}</div><div class="spx" style="color:var(--red)">Not found in spell list</div></div>`;return}
       o+='<div class="spb"><div class="spt">';
       o+=`<div class="spn">${E(sn)}</div><div class="sps">`;
       XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;o+=`<div class="spc"><div class="spl">${XL[k]}</div><div class="spv">${E(v)}</div></div>`});
@@ -672,8 +793,6 @@ function rCard(card){
     });
     o+='</div>';
   }
-
-  // Animus
   if(card.animus&&Object.keys(card.animus).length){
     const an=card.animus;
     o+='<div class="sh"><span class="si">🔮</span>Animus</div><div class="anw">';
@@ -687,28 +806,16 @@ function rCard(card){
     });
     o+='</div>';
   }
-
-  // Rack
   if(card.rack&&card.rack!=='')o+=`<div style="padding:2px 14px 6px"><span style="font-size:10px;color:var(--text-muted);font-family:'Oswald'">Spell Rack: ${E(card.rack)} slots</span></div>`;
-
-  // Feat
   if(card.feat&&Object.keys(card.feat).length){
     o+='<div class="sh"><span class="si">🔥</span>Feat</div><div class="fw">';
     Object.entries(card.feat).forEach(([n,d])=>{o+=`<div class="fb"><div class="fn">${E(n)}</div><div class="fd">${E(d)}</div></div>`});
     o+='</div>';
   }
-
-  // Options
   if(card.options&&card.options.length){
-    // Group by slot if present
     const slots=new Map();
-    card.options.forEach(opt=>{
-      const s=opt.slot||'';
-      if(!slots.has(s))slots.set(s,[]);
-      slots.get(s).push(opt);
-    });
+    card.options.forEach(opt=>{const s=opt.slot||'';if(!slots.has(s))slots.set(s,[]);slots.get(s).push(opt)});
     slots.forEach((opts,slot)=>{
-      const slotLabel=slot?`🔧 ${slot} Options`:'🔧 Options';
       o+=`<div class="sh"><span class="si">🔧</span>${E(slot?slot+' Options':'Options')}</div><div class="ow">`;
       opts.forEach(opt=>{
         o+='<div class="ob"><div class="ot"><div>';
@@ -734,9 +841,714 @@ function rCard(card){
       o+='</div>';
     });
   }
-
-  o+=`<div class="cf">${E(card.faction)} — ${E(card.type)}</div></div>`;
+  o+=`<div class="card-cf"><span>${E(card.faction)} — ${E(card.type)}</span>${idx>=0?`<button class="card-ed-btn" onclick="openEdit(${idx})">✏ EDIT</button>`:''}</div>`;
+  o+='</div>';
   return o;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  EDITOR
+// ═══════════════════════════════════════════════════════════════════════════
+
+function openEdit(idx){
+  EDIT_IDX=idx;
+  EDIT_CARD=JSON.parse(JSON.stringify(D.cards[idx]));
+  renderEditModal();
+}
+
+function openNewCard(){
+  EDIT_IDX=-1;
+  EDIT_CARD={
+    name:'New Model',type:'Solo',faction:'',armies:[],portrait:'',
+    attachments:[],health:{type:'Box',names:['New Model'],values:[['10']]},
+    keywords:[],cost:'0',fa:'u',composition:'',rules:{},
+    profiles:[{name:'Profile 1',stats:{spd:'',aat:'',mat:'',rat:'',def:'',arm:'',arc:'',fury:'',ctrl:'',thr:'',ess:''},icons:[],abilities:[],weapons:[]}],
+    spells:[],rack:'',feat:{},options:[]
+  };
+  renderEditModal();
+}
+
+function closeEdit(){document.getElementById('editModal').style.display='none'}
+
+function renderEditModal(){
+  document.getElementById('editModal').style.display='flex';
+  document.getElementById('editTitle').textContent=EDIT_IDX>=0?'EDIT CARD':'NEW CARD';
+  reRenderEditBody();
+  // Foot buttons
+  let foot=`<button class="ed-save" onclick="commitEdit()">SAVE CHANGES</button>`;
+  if(EDIT_IDX>=0)foot+=`<button class="ed-del" onclick="deleteCard()">DELETE CARD</button>`;
+  foot+=`<button class="ed-cancel" onclick="closeEdit()">CANCEL</button>`;
+  document.getElementById('editFoot').innerHTML=foot;
+}
+
+function reRenderEditBody(){
+  const body=document.getElementById('editBody');
+  const st=body.scrollTop;
+  body.innerHTML=edBasic()+edHealth()+edRules()+edProfiles()+edSpells()+edAnimus()+edFeat()+edOptions();
+  body.scrollTop=st;
+}
+
+// ── Path helper ──────────────────────────────────────────────────────────────
+function setP(path,value){
+  const keys=path.split('.');
+  let obj=EDIT_CARD;
+  for(let i=0;i<keys.length-1;i++){
+    const k=/^\d+$/.test(keys[i])?parseInt(keys[i]):keys[i];
+    obj=obj[k];
+  }
+  const lk=keys[keys.length-1];
+  obj[/^\d+$/.test(lk)?parseInt(lk):lk]=value;
+}
+
+function getP(path){
+  const keys=path.split('.');
+  let obj=EDIT_CARD;
+  for(const k of keys)obj=obj[/^\d+$/.test(k)?parseInt(k):k];
+  return obj;
+}
+
+// Generic array operations
+function addArrItem(path,value){
+  const keys=path.split('.');
+  let obj=EDIT_CARD;
+  for(let i=0;i<keys.length-1;i++){
+    const k=/^\d+$/.test(keys[i])?parseInt(keys[i]):keys[i];
+    if(obj[k]==null)obj[k]=[];
+    obj=obj[k];
+  }
+  const lk=keys[keys.length-1];
+  if(!obj[lk])obj[lk]=[];
+  obj[lk].push(value);
+  reRenderEditBody();
+}
+
+function rmArrItem(path,idx){
+  const keys=path.split('.');
+  let obj=EDIT_CARD;
+  for(let i=0;i<keys.length-1;i++){
+    const k=/^\d+$/.test(keys[i])?parseInt(keys[i]):keys[i];
+    obj=obj[k];
+  }
+  const lk=keys[keys.length-1];
+  obj[lk].splice(idx,1);
+  reRenderEditBody();
+}
+
+// ── Datalists ────────────────────────────────────────────────────────────────
+function dlIcons(){return`<datalist id="dlIco">${KNOWN_ICONS.map(i=>`<option value="${av(i)}">`).join('')}</datalist>`}
+function dlSpells(){return`<datalist id="dlSp">${KNOWN_SPELLS.map(s=>`<option value="${av(s)}">`).join('')}</datalist>`}
+function dlAbilities(){return`<datalist id="dlAb">${KNOWN_ABILITIES.map(a=>`<option value="${av(a)}">`).join('')}</datalist>`}
+function dlProps(){return`<datalist id="dlPr">${KNOWN_PROPS.map(p=>`<option value="${av(p)}">`).join('')}</datalist>`}
+
+// ── Sections ─────────────────────────────────────────────────────────────────
+function edBasic(){
+  const c=EDIT_CARD;
+  const typeOpts=CARD_TYPES.map(t=>`<option value="${av(t)}"${t===c.type?' selected':''}>${E(t)}</option>`).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">⬡ Basic Info</div>
+    <div class="ed-row">
+      <div class="ed-field grow"><div class="ed-lbl">Name</div><input class="ed-in" value="${av(c.name)}" oninput="EDIT_CARD.name=this.value"></div>
+      <div class="ed-field grow"><div class="ed-lbl">Faction</div><input class="ed-in" value="${av(c.faction)}" oninput="EDIT_CARD.faction=this.value"></div>
+      <div class="ed-field"><div class="ed-lbl">Type</div><select class="ed-sel" onchange="EDIT_CARD.type=this.value">${typeOpts}</select></div>
+    </div>
+    <div class="ed-row">
+      <div class="ed-field"><div class="ed-lbl">Cost (pts)</div><input class="ed-in" style="width:70px" value="${av(c.cost||'0')}" oninput="EDIT_CARD.cost=this.value"></div>
+      <div class="ed-field"><div class="ed-lbl">FA</div><input class="ed-in" style="width:55px" value="${av(c.fa||'u')}" oninput="EDIT_CARD.fa=this.value"></div>
+      <div class="ed-field grow"><div class="ed-lbl">Composition</div><input class="ed-in" value="${av(c.composition||'')}" oninput="EDIT_CARD.composition=this.value"></div>
+      <div class="ed-field"><div class="ed-lbl">Rack Slots</div><input class="ed-in" style="width:65px" value="${av(c.rack||'')}" oninput="EDIT_CARD.rack=this.value"></div>
+    </div>
+    <div class="ed-row">
+      <div class="ed-field grow"><div class="ed-lbl">Keywords (comma-separated)</div><input class="ed-in" value="${av((c.keywords||[]).join(', '))}" oninput="EDIT_CARD.keywords=this.value.split(',').map(s=>s.trim()).filter(Boolean)"></div>
+      <div class="ed-field grow"><div class="ed-lbl">Armies (comma-separated)</div><input class="ed-in" value="${av((c.armies||[]).join(', '))}" oninput="EDIT_CARD.armies=this.value.split(',').map(s=>s.trim()).filter(Boolean)"></div>
+    </div>
+  </div>`;
+}
+
+function edHealth(){
+  const h=EDIT_CARD.health||{type:'Box',names:[],values:[]};
+  const type=h.type||'Box';
+  const typeOpts=['Box','Box Multi','Ring','Spiral','Grid','Grid Large'].map(t=>`<option value="${t}"${t===type?' selected':''}>${t}</option>`).join('');
+  let details='';
+  if(type==='Box'||type==='Box Multi'){
+    const names=h.names||[],vals=h.values||[];
+    details=names.map((n,i)=>{
+      const hp=Array.isArray(vals[i])?vals[i][0]:vals[i]||'0';
+      return`<div class="ed-li">
+        <input class="ed-in" style="flex:2" placeholder="Name" value="${av(n)}" oninput="EDIT_CARD.health.names[${i}]=this.value">
+        <input class="ed-in" style="width:65px" placeholder="HP" value="${av(hp)}" oninput="if(!Array.isArray(EDIT_CARD.health.values[${i}]))EDIT_CARD.health.values[${i}]=[''];EDIT_CARD.health.values[${i}][0]=this.value">
+        <button class="ed-rm" onclick="EDIT_CARD.health.names.splice(${i},1);EDIT_CARD.health.values.splice(${i},1);reRenderEditBody()">✕</button>
+      </div>`;
+    }).join('');
+    details+=`<button class="ed-add" onclick="if(!EDIT_CARD.health.names)EDIT_CARD.health.names=[];if(!EDIT_CARD.health.values)EDIT_CARD.health.values=[];EDIT_CARD.health.names.push('');EDIT_CARD.health.values.push(['10']);reRenderEditBody()">+ ADD ROW</button>`;
+  }else if(type==='Ring'){
+    const vals=h.values||['0','0','0'];
+    details=`<div class="ed-row" style="margin-top:4px">
+      ${['Outer','Middle','Inner'].map((l,i)=>`<div class="ed-field"><div class="ed-lbl">${l}</div><input class="ed-in" style="width:70px" value="${av(vals[i]||'0')}" oninput="if(!EDIT_CARD.health.values)EDIT_CARD.health.values=[];EDIT_CARD.health.values[${i}]=this.value"></div>`).join('')}
+    </div>`;
+  }else if(type==='Spiral'){
+    const vals=h.values||['0','0','0','0','0','0'];
+    const labels=['Mind Col 1','Mind Col 2','Body Col 1','Body Col 2','Spirit Col 1','Spirit Col 2'];
+    details=`<div class="ed-row" style="margin-top:4px">
+      ${labels.map((l,i)=>`<div class="ed-field"><div class="ed-lbl">${l}</div><input class="ed-in" style="width:72px" value="${av(vals[i]||'0')}" oninput="if(!EDIT_CARD.health.values)EDIT_CARD.health.values=[];EDIT_CARD.health.values[${i}]=this.value"></div>`).join('')}
+    </div>`;
+  }else{
+    const rows=h.values||[];
+    details=`<div class="ed-field" style="margin-top:6px"><div class="ed-lbl">Grid Rows (one per line, comma-separated cells, use – for missing)</div>
+    <textarea class="ed-ta" style="min-height:80px;font-family:monospace;font-size:12px" oninput="EDIT_CARD.health.values=this.value.split('\\n').map(r=>r.trim()).filter(Boolean)">${av((rows).join('\n'))}</textarea></div>`;
+  }
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">♥ Health</div>
+    <div class="ed-field" style="margin-bottom:8px"><div class="ed-lbl">Health Type</div>
+      <select class="ed-sel" onchange="EDIT_CARD.health=Object.assign({type:this.value},initHealth(this.value));reRenderEditBody()">${typeOpts}</select>
+    </div>
+    ${details}
+  </div>`;
+}
+
+function initHealth(type){
+  if(type==='Box'||type==='Box Multi')return{names:[''],values:[['10']]};
+  if(type==='Ring')return{values:['6','4','2']};
+  if(type==='Spiral')return{values:['3','3','3','3','3','3']};
+  return{values:['L,L,C,R,R,-']};
+}
+
+function edRules(){
+  const rules=EDIT_CARD.rules||{};
+  const entries=Object.entries(rules);
+  const rows=entries.map(([k,v],i)=>`
+    <div class="ed-sub" style="margin-bottom:6px">
+      <div class="ed-sub-hdr">
+        <div class="ed-field grow"><div class="ed-lbl">Rule Name</div><input class="ed-in" value="${av(k)}" oninput="renameObjKey(EDIT_CARD.rules,${i},this.value)"></div>
+        <button class="ed-rm" onclick="rmObjKey(EDIT_CARD,'rules',${i});reRenderEditBody()">✕ Remove</button>
+      </div>
+      <div class="ed-field"><div class="ed-lbl">Description</div><textarea class="ed-ta" oninput="setObjVal(EDIT_CARD.rules,${i},this.value)">${av(v)}</textarea></div>
+    </div>`).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">📋 Card Rules</div>
+    ${rows}
+    <button class="ed-add" onclick="addObjEntry(EDIT_CARD,'rules','New Rule','');reRenderEditBody()">+ ADD RULE</button>
+  </div>`;
+}
+
+function edProfiles(){
+  const profiles=EDIT_CARD.profiles||[];
+  const sections=profiles.map((p,pi)=>{
+    // Stats
+    const statsHtml=SO.map(k=>`<div class="ed-stat"><span>${SL[k]}</span><input type="text" value="${av(p.stats?.[k]||'')}" oninput="setP('profiles.${pi}.stats.${k}',this.value)"></div>`).join('');
+    // Icons
+    const iconsHtml=(p.icons||[]).map((ico,ii)=>`<div class="ed-li">
+      <img class="ed-ico-prev" src="${icoUrl(ico)}" onerror="this.style.opacity='0.15'" title="${av(ico)}">
+      <input class="ed-in" list="dlIco" value="${av(ico)}" oninput="setP('profiles.${pi}.icons.${ii}',this.value);this.previousElementSibling.src=icoUrl(this.value)">
+      <button class="ed-rm" onclick="rmArrItem('profiles.${pi}.icons',${ii})">✕</button>
+    </div>`).join('');
+    // Abilities
+    const abHtml=(p.abilities||[]).map((a,ai)=>`<div class="ed-li">
+      <input class="ed-in" list="dlAb" value="${av(a)}" oninput="setP('profiles.${pi}.abilities.${ai}',this.value)">
+      <button class="ed-rm" onclick="rmArrItem('profiles.${pi}.abilities',${ai})">✕</button>
+    </div>`).join('');
+    // Weapons
+    const wepsHtml=(p.weapons||[]).map((w,wi)=>edWeapon(`profiles.${pi}.weapons`,wi,w)).join('');
+    return`<div class="ed-sub" style="margin-bottom:8px">
+      <div class="ed-sub-hdr">
+        <div class="ed-field grow"><div class="ed-lbl">Profile Name</div><input class="ed-in" value="${av(p.name)}" oninput="setP('profiles.${pi}.name',this.value)"></div>
+        <button class="ed-rm" onclick="rmArrItem('profiles',${pi})" title="Remove Profile">✕ Remove</button>
+      </div>
+      <div class="ed-lbl" style="margin-bottom:5px">Stats</div>
+      <div class="ed-stats">${statsHtml}</div>
+      <span class="ed-sublbl">Icons / Logos</span>
+      ${iconsHtml}
+      <button class="ed-add" onclick="addArrItem('profiles.${pi}.icons','')">+ ADD ICON</button>
+      <span class="ed-sublbl">Abilities</span>
+      ${abHtml}
+      <button class="ed-add" onclick="addArrItem('profiles.${pi}.abilities','')">+ ADD ABILITY</button>
+      <span class="ed-sublbl">Weapons / Attacks</span>
+      ${wepsHtml}
+      <button class="ed-add" onclick="addNewWeapon('profiles.${pi}.weapons')">+ ADD WEAPON</button>
+    </div>`;
+  }).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">👤 Profiles</div>
+    ${dlIcons()}${dlAbilities()}
+    ${sections}
+    <button class="ed-add" onclick="addNewProfile()">+ ADD PROFILE</button>
+  </div>`;
+}
+
+function edWeapon(basePath,wi,w){
+  const typeOpts=['Melee','Ranged'].map(t=>`<option value="${t}"${t===w.type?' selected':''}>${t}</option>`).join('');
+  const wStatKeys=['rng','rof','aoe','pow'];
+  const statsHtml=wStatKeys.map(k=>`<div class="ed-field"><div class="ed-lbl">${k.toUpperCase()}</div><input class="ed-in" style="width:60px" value="${av(w.stats?.[k]||'')}" oninput="setP('${basePath}.${wi}.stats.${k}',this.value)"></div>`).join('');
+  const propHtml=(w.properties||[]).map((pr,pri)=>`<div class="ed-li">
+    <input class="ed-in" list="dlPr" value="${av(pr)}" oninput="setP('${basePath}.${wi}.properties.${pri}',this.value)">
+    <button class="ed-rm" onclick="rmArrItem('${basePath}.${wi}.properties',${pri})">✕</button>
+  </div>`).join('');
+  const wicoHtml=(w.icons||[]).map((ico,ii)=>`<div class="ed-li">
+    <img class="ed-ico-prev" src="${icoUrl(ico)}" onerror="this.style.opacity='0.15'">
+    <input class="ed-in" list="dlIco" value="${av(ico)}" oninput="setP('${basePath}.${wi}.icons.${ii}',this.value);this.previousElementSibling.src=icoUrl(this.value)">
+    <button class="ed-rm" onclick="rmArrItem('${basePath}.${wi}.icons',${ii})">✕</button>
+  </div>`).join('');
+  const wColor=w.type==='Ranged'?'var(--ranged-color)':'var(--melee-color)';
+  return`<div class="ed-sub2">
+    <div class="ed-sub-hdr">
+      <div class="ed-wep-hdr" style="color:${wColor}">${E(w.name||'Weapon')}</div>
+      <button class="ed-rm" onclick="rmArrItem('${basePath}',${wi})">✕ Remove</button>
+    </div>
+    <div class="ed-row">
+      <div class="ed-field grow"><div class="ed-lbl">Name</div><input class="ed-in" value="${av(w.name||'')}" oninput="setP('${basePath}.${wi}.name',this.value)"></div>
+      <div class="ed-field"><div class="ed-lbl">Type</div><select class="ed-sel" onchange="setP('${basePath}.${wi}.type',this.value)">${typeOpts}</select></div>
+      <div class="ed-field"><div class="ed-lbl">Count</div><input class="ed-in" style="width:55px" value="${av(w.count||'1')}" oninput="setP('${basePath}.${wi}.count',this.value)"></div>
+      <div class="ed-field grow"><div class="ed-lbl">Location</div><input class="ed-in" value="${av(w.location||'')}" oninput="setP('${basePath}.${wi}.location',this.value)"></div>
+    </div>
+    <div class="ed-row">${statsHtml}</div>
+    <span class="ed-sublbl">Weapon Icons</span>
+    ${wicoHtml}
+    <button class="ed-add" onclick="addArrItem('${basePath}.${wi}.icons','')">+ ADD ICON</button>
+    <span class="ed-sublbl">Properties / Special Rules</span>
+    ${dlProps()}
+    ${propHtml}
+    <button class="ed-add" onclick="addArrItem('${basePath}.${wi}.properties','')">+ ADD PROPERTY</button>
+  </div>`;
+}
+
+function edSpells(){
+  const spells=EDIT_CARD.spells||[];
+  const rows=spells.map((s,i)=>`<div class="ed-li">
+    <input class="ed-in" list="dlSp" value="${av(s)}" oninput="setP('spells.${i}',this.value)">
+    <button class="ed-rm" onclick="rmArrItem('spells',${i})">✕</button>
+  </div>`).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">✦ Spells</div>
+    ${dlSpells()}
+    ${rows}
+    <button class="ed-add" onclick="addArrItem('spells','')">+ ADD SPELL</button>
+  </div>`;
+}
+
+function edAnimus(){
+  const animus=EDIT_CARD.animus||{};
+  const entries=Object.entries(animus);
+  const rows=entries.map(([name,s],i)=>`
+    <div class="ed-sub" style="margin-bottom:6px">
+      <div class="ed-sub-hdr">
+        <div class="ed-field grow"><div class="ed-lbl">Animus Name</div><input class="ed-in" value="${av(name)}" oninput="renameObjKey(EDIT_CARD.animus,${i},this.value)"></div>
+        <button class="ed-rm" onclick="rmObjKey(EDIT_CARD,'animus',${i});reRenderEditBody()">✕</button>
+      </div>
+      <div class="ed-row">
+        ${XO.map(k=>`<div class="ed-field"><div class="ed-lbl">${XL[k]}</div><input class="ed-in" style="width:55px" value="${av(s.stats?.[k]||'')}" oninput="setAnimStat(${i},'${k}',this.value)"></div>`).join('')}
+      </div>
+      <div class="ed-field" style="margin-top:4px"><div class="ed-lbl">Text</div>
+        <textarea class="ed-ta" oninput="setAnimText(${i},this.value)">${av(s.text||'')}</textarea></div>
+    </div>`).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">🔮 Animus</div>
+    ${rows}
+    <button class="ed-add" onclick="addObjEntry(EDIT_CARD,'animus','New Animus',{stats:{},text:''});reRenderEditBody()">+ ADD ANIMUS</button>
+  </div>`;
+}
+
+function edFeat(){
+  const feat=EDIT_CARD.feat||{};
+  const entries=Object.entries(feat);
+  const rows=entries.map(([name,text],i)=>`
+    <div class="ed-sub">
+      <div class="ed-sub-hdr">
+        <div class="ed-field grow"><div class="ed-lbl">Feat Name</div><input class="ed-in" value="${av(name)}" oninput="renameObjKey(EDIT_CARD.feat,${i},this.value)"></div>
+        <button class="ed-rm" onclick="rmObjKey(EDIT_CARD,'feat',${i});reRenderEditBody()">✕</button>
+      </div>
+      <div class="ed-field"><div class="ed-lbl">Description</div>
+        <textarea class="ed-ta" style="min-height:80px" oninput="setObjVal(EDIT_CARD.feat,${i},this.value)">${av(text)}</textarea></div>
+    </div>`).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">🔥 Feat</div>
+    ${rows}
+    ${!entries.length?`<button class="ed-add" onclick="addObjEntry(EDIT_CARD,'feat','Feat Name','');reRenderEditBody()">+ ADD FEAT</button>`:''}
+  </div>`;
+}
+
+function edOptions(){
+  const options=EDIT_CARD.options||[];
+  const rows=options.map((opt,oi)=>{
+    const iconsHtml=(opt.icons||[]).map((ico,ii)=>`<div class="ed-li">
+      <img class="ed-ico-prev" src="${icoUrl(ico)}" onerror="this.style.opacity='0.15'">
+      <input class="ed-in" list="dlIco" value="${av(ico)}" oninput="setP('options.${oi}.icons.${ii}',this.value);this.previousElementSibling.src=icoUrl(this.value)">
+      <button class="ed-rm" onclick="rmArrItem('options.${oi}.icons',${ii})">✕</button>
+    </div>`).join('');
+    const abHtml=(opt.abilities||[]).map((a,ai)=>`<div class="ed-li">
+      <input class="ed-in" list="dlAb" value="${av(a)}" oninput="setP('options.${oi}.abilities.${ai}',this.value)">
+      <button class="ed-rm" onclick="rmArrItem('options.${oi}.abilities',${ai})">✕</button>
+    </div>`).join('');
+    const wHtml=(opt.weapons||[]).map((w,wi)=>edWeapon(`options.${oi}.weapons`,wi,w)).join('');
+    // Option profiles (simplified)
+    const profHtml=(opt.profiles||[]).map((p,pi)=>{
+      const statsHtml=SO.map(k=>`<div class="ed-stat"><span>${SL[k]}</span><input type="text" value="${av(p.stats?.[k]||'')}" oninput="setP('options.${oi}.profiles.${pi}.stats.${k}',this.value)"></div>`).join('');
+      return`<div class="ed-sub2">
+        <div class="ed-sub-hdr">
+          <div class="ed-field grow"><div class="ed-lbl">Profile Name</div><input class="ed-in" value="${av(p.name||'')}" oninput="setP('options.${oi}.profiles.${pi}.name',this.value)"></div>
+          <button class="ed-rm" onclick="rmArrItem('options.${oi}.profiles',${pi})">✕</button>
+        </div>
+        <div class="ed-stats">${statsHtml}</div>
+      </div>`;
+    }).join('');
+    return`<div class="ed-sub" style="margin-bottom:8px">
+      <div class="ed-sub-hdr">
+        <div class="ed-row" style="flex:1;margin-bottom:0;gap:6px">
+          <div class="ed-field grow"><div class="ed-lbl">Name</div><input class="ed-in" value="${av(opt.name||'')}" oninput="setP('options.${oi}.name',this.value)"></div>
+          <div class="ed-field"><div class="ed-lbl">Cost</div><input class="ed-in" style="width:60px" value="${av(opt.cost||'0')}" oninput="setP('options.${oi}.cost',this.value)"></div>
+          <div class="ed-field grow"><div class="ed-lbl">Slot</div><input class="ed-in" value="${av(opt.slot||'')}" oninput="setP('options.${oi}.slot',this.value)"></div>
+        </div>
+        <button class="ed-rm" onclick="rmArrItem('options',${oi})" style="margin-left:6px">✕ Remove</button>
+      </div>
+      <span class="ed-sublbl">Icons</span>
+      ${iconsHtml}
+      <button class="ed-add" onclick="addArrItem('options.${oi}.icons','')">+ ADD ICON</button>
+      <span class="ed-sublbl">Abilities</span>
+      ${abHtml}
+      <button class="ed-add" onclick="addArrItem('options.${oi}.abilities','')">+ ADD ABILITY</button>
+      <span class="ed-sublbl">Weapons</span>
+      ${wHtml}
+      <button class="ed-add" onclick="addNewWeapon('options.${oi}.weapons')">+ ADD WEAPON</button>
+      <span class="ed-sublbl">Profiles</span>
+      ${profHtml}
+      <button class="ed-add" onclick="addArrItem('options.${oi}.profiles',{name:'Profile',stats:{spd:'',aat:'',mat:'',rat:'',def:'',arm:'',arc:'',fury:'',ctrl:'',thr:'',ess:''},icons:[],abilities:[],weapons:[]})">+ ADD PROFILE</button>
+      <span class="ed-sublbl">🔮 Animus</span>
+      ${(()=>{
+        const animEntries=Object.entries(opt.animus||{});
+        return animEntries.map(([aname,s],ai)=>`<div class="ed-sub2">
+          <div class="ed-sub-hdr">
+            <div class="ed-field grow"><div class="ed-lbl">Animus Name</div>
+              <input class="ed-in" value="${av(aname)}" oninput="renameOptAnim(${oi},${ai},this.value)"></div>
+            <button class="ed-rm" onclick="rmOptAnim(${oi},${ai})">✕</button>
+          </div>
+          <div class="ed-row">
+            ${XO.map(k=>`<div class="ed-field"><div class="ed-lbl">${XL[k]}</div>
+              <input class="ed-in" style="width:55px" value="${av(s.stats?.[k]||'')}" oninput="setOptAnimStat(${oi},${ai},'${k}',this.value)"></div>`).join('')}
+          </div>
+          <div class="ed-field" style="margin-top:4px"><div class="ed-lbl">Text</div>
+            <textarea class="ed-ta" oninput="setOptAnimText(${oi},${ai},this.value)">${av(s.text||'')}</textarea></div>
+        </div>`).join('');
+      })()}
+      <button class="ed-add" onclick="addOptAnimus(${oi})">+ ADD ANIMUS</button>
+    </div>`;
+  }).join('');
+  return`<div class="ed-sec">
+    <div class="ed-sec-hdr">🔧 Upgrades / Options</div>
+    ${rows}
+    <button class="ed-add" onclick="addNewOption()">+ ADD UPGRADE</button>
+  </div>`;
+}
+
+// ── Object helpers ────────────────────────────────────────────────────────────
+function renameObjKey(obj,idx,newKey){
+  const entries=Object.entries(obj);
+  if(idx>=entries.length||entries[idx][0]===newKey)return;
+  const rebuilt={};
+  entries.forEach(([k,v],i)=>{rebuilt[i===idx?newKey:k]=v});
+  Object.keys(obj).forEach(k=>delete obj[k]);
+  Object.assign(obj,rebuilt);
+}
+
+function setObjVal(obj,idx,val){
+  const keys=Object.keys(obj);
+  if(idx<keys.length)obj[keys[idx]]=val;
+}
+
+function rmObjKey(parent,field,idx){
+  const obj=parent[field];
+  if(!obj)return;
+  const keys=Object.keys(obj);
+  if(idx<keys.length)delete obj[keys[idx]];
+}
+
+function addObjEntry(parent,field,key,val){
+  if(!parent[field])parent[field]={};
+  // avoid duplicate keys
+  let k=key,n=1;
+  while(parent[field][k]!==undefined)k=key+' '+(++n);
+  parent[field][k]=val;
+}
+
+function setAnimStat(i,k,v){
+  const keys=Object.keys(EDIT_CARD.animus||{});
+  if(i>=keys.length)return;
+  if(!EDIT_CARD.animus[keys[i]].stats)EDIT_CARD.animus[keys[i]].stats={};
+  EDIT_CARD.animus[keys[i]].stats[k]=v;
+}
+function setAnimText(i,v){
+  const keys=Object.keys(EDIT_CARD.animus||{});
+  if(i<keys.length)EDIT_CARD.animus[keys[i]].text=v;
+}
+
+// ── Option-level Animus helpers ───────────────────────────────────────────────
+function addOptAnimus(oi){
+  const opt=EDIT_CARD.options[oi];
+  if(!opt.animus)opt.animus={};
+  let key='New Animus',n=1;
+  while(opt.animus[key]!==undefined)key='New Animus '+(++n);
+  opt.animus[key]={stats:{cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No'},text:''};
+  reRenderEditBody();
+}
+function rmOptAnim(oi,ai){
+  const opt=EDIT_CARD.options[oi];
+  if(!opt.animus)return;
+  const keys=Object.keys(opt.animus);
+  if(ai<keys.length)delete opt.animus[keys[ai]];
+  reRenderEditBody();
+}
+function renameOptAnim(oi,ai,newKey){
+  const opt=EDIT_CARD.options[oi];
+  if(!opt.animus)return;
+  renameObjKey(opt.animus,ai,newKey);
+}
+function setOptAnimStat(oi,ai,k,v){
+  const opt=EDIT_CARD.options[oi];
+  if(!opt.animus)return;
+  const keys=Object.keys(opt.animus);
+  if(ai>=keys.length)return;
+  if(!opt.animus[keys[ai]].stats)opt.animus[keys[ai]].stats={};
+  opt.animus[keys[ai]].stats[k]=v;
+}
+function setOptAnimText(oi,ai,v){
+  const opt=EDIT_CARD.options[oi];
+  if(!opt.animus)return;
+  const keys=Object.keys(opt.animus);
+  if(ai<keys.length)opt.animus[keys[ai]].text=v;
+}
+
+function addNewProfile(){
+  if(!EDIT_CARD.profiles)EDIT_CARD.profiles=[];
+  EDIT_CARD.profiles.push({
+    name:'Profile '+(EDIT_CARD.profiles.length+1),
+    stats:{spd:'',aat:'',mat:'',rat:'',def:'',arm:'',arc:'',fury:'',ctrl:'',thr:'',ess:''},
+    icons:[],abilities:[],weapons:[]
+  });
+  reRenderEditBody();
+}
+
+function addNewWeapon(path){
+  const keys=path.split('.');
+  let obj=EDIT_CARD;
+  for(const k of keys)obj=(obj[/^\d+$/.test(k)?parseInt(k):k]||(obj[/^\d+$/.test(k)?parseInt(k):k]=[]));
+  obj.push({name:'New Weapon',type:'Melee',count:'1',location:'',icons:[],stats:{rng:'1',rof:'',aoe:'',pow:'10'},properties:[]});
+  reRenderEditBody();
+}
+
+function addNewOption(){
+  if(!EDIT_CARD.options)EDIT_CARD.options=[];
+  EDIT_CARD.options.push({name:'New Upgrade',cost:'0',slot:'',icons:[],hardpoints:[],abilities:[],weapons:[],profiles:[],animus:{}});
+  reRenderEditBody();
+}
+
+// ── Commit / Delete ───────────────────────────────────────────────────────────
+function commitEdit(){
+  if(EDIT_IDX>=0){
+    D.cards[EDIT_IDX]=EDIT_CARD;
+    SEL=D.cards[EDIT_IDX];
+  }else{
+    D.cards.push(EDIT_CARD);
+    SEL=EDIT_CARD;
+  }
+  buildKnownLists();
+  closeEdit();
+  document.getElementById('sbCount').textContent=`Card Viewer — ${D.cards.length} models`;
+  rFilt();rList();rMain();uPB();
+}
+
+function deleteCard(){
+  if(EDIT_IDX<0){closeEdit();return}
+  if(!confirm(`Delete "${EDIT_CARD.name}"?\nThis cannot be undone.`))return;
+  D.cards.splice(EDIT_IDX,1);
+  SEL=D.cards[Math.min(EDIT_IDX,D.cards.length-1)]||null;
+  buildKnownLists();
+  closeEdit();
+  document.getElementById('sbCount').textContent=`Card Viewer — ${D.cards.length} models`;
+  rFilt();rList();rMain();uPB();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  DATABASE EDITOR  (Spells / Abilities / Properties)
+// ═══════════════════════════════════════════════════════════════════════════
+
+let DB_TAB='spells', DB_SEARCH='', DB_KEY=null;
+
+function openDBModal(){
+  if(!D)return;
+  if(!D.spells)D.spells={};
+  if(!D.abilities)D.abilities={};
+  if(!D.properties)D.properties={};
+  DB_TAB='spells';DB_SEARCH='';DB_KEY=null;
+  document.getElementById('dbModal').style.display='flex';
+  document.getElementById('dbSearch').value='';
+  dbRender();
+}
+
+function closeDBModal(){document.getElementById('dbModal').style.display='none'}
+
+function dbSetTab(tab){
+  DB_TAB=tab;DB_SEARCH='';DB_KEY=null;
+  document.getElementById('dbSearch').value='';
+  dbRender();
+}
+
+function dbRender(){
+  // Update tab active states
+  document.getElementById('dbTabSpells').className='db-tab'+(DB_TAB==='spells'?' active':'');
+  document.getElementById('dbTabAbilities').className='db-tab'+(DB_TAB==='abilities'?' active':'');
+  document.getElementById('dbTabProps').className='db-tab gold'+(DB_TAB==='properties'?' active':'');
+  dbRenderList();
+  dbRenderEditor();
+}
+
+function dbSection(){return D[DB_TAB]||(D[DB_TAB]={})}
+
+function dbRenderList(){
+  const section=dbSection();
+  const allKeys=Object.keys(section);
+  const q=DB_SEARCH.toLowerCase();
+  const filtered=allKeys.filter(k=>!q||k.toLowerCase().includes(q)).sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()));
+  const isSel=(k)=>DB_KEY===k;
+  const selClass=DB_TAB==='properties'?' gold':'';
+  let html='';
+  if(!filtered.length){
+    html=`<div style="color:var(--text-muted);padding:12px 8px;font-style:italic;font-size:12px;text-align:center">${DB_SEARCH?'No matches':'Empty — add one below'}</div>`;
+  }else{
+    html=filtered.map(k=>`<div class="db-list-item${isSel(k)?' sel'+selClass:''}" data-dbkey="${av(k)}" onclick="dbSelect(this.dataset.dbkey)" title="${av(k)}">${E(k)}</div>`).join('');
+  }
+  document.getElementById('dbList').innerHTML=html;
+  document.getElementById('dbCount').textContent=`${filtered.length} of ${allKeys.length} entries`;
+}
+
+function dbRenderEditor(){
+  const el=document.getElementById('dbEditor');
+  if(!DB_KEY){
+    const labels={spells:'spell',abilities:'ability',properties:'property'};
+    el.innerHTML=`<div class="db-empty">← Select a ${labels[DB_TAB]} to edit<br>or click <strong style="color:var(--accent)">＋ ADD NEW</strong> to create one.</div>`;
+    return;
+  }
+  const section=dbSection();
+  if(!(DB_KEY in section)){DB_KEY=null;dbRenderEditor();return}
+  const val=section[DB_KEY];
+  let html='';
+  if(DB_TAB==='spells'){
+    const stats=(val&&val.stats)||{};
+    html=`
+    <div class="ed-field" style="margin-bottom:12px">
+      <div class="ed-lbl">Spell Name</div>
+      <input class="ed-in" id="dbNameIn" value="${av(DB_KEY)}" onchange="dbRename(this.value)">
+      <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-family:'Oswald'">Press Enter or click away to rename</div>
+    </div>
+    <div class="ed-row" style="margin-bottom:12px">
+      ${XO.map(k=>`<div class="ed-field">
+        <div class="ed-lbl">${XL[k]}</div>
+        <input class="ed-in" style="width:60px" value="${av(stats[k]||'')}" oninput="dbSetSpellStat('${k}',this.value)">
+      </div>`).join('')}
+    </div>
+    <div class="ed-field">
+      <div class="ed-lbl">Spell Text</div>
+      <textarea class="ed-ta" style="min-height:140px" oninput="dbSetSpellText(this.value)">${av((val&&val.text)||'')}</textarea>
+    </div>
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border)">
+      <button class="ed-del" onclick="dbDelete()">🗑 DELETE SPELL</button>
+    </div>`;
+  }else{
+    const label=DB_TAB==='abilities'?'Ability':'Property';
+    html=`
+    <div class="ed-field" style="margin-bottom:12px">
+      <div class="ed-lbl">${label} Name</div>
+      <input class="ed-in" id="dbNameIn" value="${av(DB_KEY)}" onchange="dbRename(this.value)">
+      <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-family:'Oswald'">Press Enter or click away to rename</div>
+    </div>
+    <div class="ed-field">
+      <div class="ed-lbl">Description</div>
+      <textarea class="ed-ta" style="min-height:160px" oninput="dbSetText(this.value)">${av(typeof val==='string'?val:'')}</textarea>
+    </div>
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border)">
+      <button class="ed-del" onclick="dbDelete()">🗑 DELETE ${label.toUpperCase()}</button>
+    </div>`;
+  }
+  el.innerHTML=html;
+}
+
+function dbSelect(key){
+  DB_KEY=key;
+  dbRenderList();
+  dbRenderEditor();
+}
+
+function dbRename(newKey){
+  newKey=(newKey||'').trim();
+  if(!newKey||newKey===DB_KEY)return;
+  const section=dbSection();
+  if(newKey in section){
+    alert(`"${newKey}" already exists in ${DB_TAB}.\nPlease choose a different name.`);
+    const ni=document.getElementById('dbNameIn');
+    if(ni)ni.value=DB_KEY;
+    return;
+  }
+  // Rebuild the object preserving insertion order, swapping the key
+  const rebuilt={};
+  Object.entries(section).forEach(([k,v])=>{rebuilt[k===DB_KEY?newKey:k]=v});
+  D[DB_TAB]=rebuilt;
+  DB_KEY=newKey;
+  buildKnownLists();
+  dbRenderList();
+  // Scroll the renamed item into view
+  setTimeout(()=>{const s=document.querySelector('.db-list-item.sel');if(s)s.scrollIntoView({block:'nearest'})},30);
+}
+
+function dbSetSpellStat(statKey,val){
+  if(!DB_KEY)return;
+  const s=dbSection();
+  if(!s[DB_KEY])s[DB_KEY]={stats:{},text:''};
+  if(!s[DB_KEY].stats)s[DB_KEY].stats={};
+  s[DB_KEY].stats[statKey]=val;
+}
+function dbSetSpellText(val){
+  if(!DB_KEY)return;
+  const s=dbSection();
+  if(!s[DB_KEY])s[DB_KEY]={stats:{},text:''};
+  s[DB_KEY].text=val;
+}
+function dbSetText(val){
+  if(!DB_KEY)return;
+  dbSection()[DB_KEY]=val;
+}
+
+function dbDelete(){
+  if(!DB_KEY)return;
+  const labels={spells:'spell',abilities:'ability',properties:'property'};
+  if(!confirm(`Delete ${labels[DB_TAB]} "${DB_KEY}"?\n\nCards referencing it will show "Not found" until re-linked.`))return;
+  delete dbSection()[DB_KEY];
+  DB_KEY=null;
+  buildKnownLists();
+  dbRenderList();
+  dbRenderEditor();
+}
+
+function dbAddNew(){
+  if(!D.spells)D.spells={};
+  if(!D.abilities)D.abilities={};
+  if(!D.properties)D.properties={};
+  const labels={spells:'New Spell',abilities:'New Ability',properties:'New Property'};
+  let key=labels[DB_TAB],n=1;
+  const section=dbSection();
+  while(key in section)key=labels[DB_TAB]+' '+(++n);
+  if(DB_TAB==='spells'){
+    section[key]={stats:{cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No'},text:''};
+  }else{
+    section[key]='';
+  }
+  DB_KEY=key;
+  DB_SEARCH='';
+  document.getElementById('dbSearch').value='';
+  buildKnownLists();
+  dbRenderList();
+  dbRenderEditor();
+  setTimeout(()=>{
+    const sel=document.querySelector('.db-list-item.sel');
+    if(sel)sel.scrollIntoView({block:'nearest'});
+    const ni=document.getElementById('dbNameIn');
+    if(ni){ni.select();ni.focus();}
+  },40);
 }
 </script>
 </body>
