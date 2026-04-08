@@ -3624,10 +3624,10 @@
     },
     {
       "name": "maulgreth the charnel plague",
-      "type": "Mercenary",
-      "faction": "Necrofactorium",
+      "type": "Solo",
+      "faction": "Mercenary",
       "armies": [
-        "Necrofactorium"
+        "Mercenary"
       ],
       "portrait": "ModelArt\\maulgreth the charnel plague.png",
       "attachments": [],
@@ -8068,10 +8068,10 @@
     },
     {
       "name": "eilish garrity the dark traitor",
-      "type": "Mercenary",
-      "faction": "Storm Legion",
+      "type": "Solo",
+      "faction": "Mercenary",
       "armies": [
-        "Storm Legion"
+        "Mercenary"
       ],
       "portrait": "ModelArt\\eilish garrity the dark traitor.png",
       "attachments": [],
@@ -8338,9 +8338,9 @@
     {
       "name": "sky bomber",
       "type": "Mercenary",
-      "faction": "Storm Legion",
+      "faction": "Mercenary",
       "armies": [
-        "Storm Legion"
+        "Mercenary"
       ],
       "portrait": "ModelArt\\sky bomber.png",
       "attachments": [],
@@ -8458,9 +8458,9 @@
     {
       "name": "sky raider",
       "type": "Mercenary",
-      "faction": "Storm Legion",
+      "faction": "Mercenary",
       "armies": [
-        "Storm Legion"
+        "Mercenary"
       ],
       "portrait": "ModelArt\\sky raider.png",
       "attachments": [],
@@ -17159,88 +17159,6 @@
               },
               "properties": [
                 "Freeze"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "maulgreth the charnel plague",
-      "type": "Mercenary",
-      "faction": "House Kallyss",
-      "armies": [
-        "House Kallyss"
-      ],
-      "portrait": "ModelArt\\maulgreth the charnel plague.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "maulgreth the charnel plague"
-        ],
-        "values": [
-          [
-            "8"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "4",
-      "fa": "c",
-      "composition": "",
-      "rules": {
-        "Cleave": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, immediately after the attack is resolved this model can make one additional melee attack. This model can gain only one additional attack from Cleave each activation.",
-        "Defensive Strike": "Once per turn, when an enemy model advances into and ends its movement or is placed in this model's melee range, this model can immediately make one basic melee attack against it.",
-        "Entropic Force": "While within 5\" of this model, enemy models lose Tough and cannot have damage removed from them.",
-        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
-        "Spell Ward": "This model cannot be targeted by spells."
-      },
-      "profiles": [
-        {
-          "name": "Maulgreth 1",
-          "stats": {
-            "spd": "5",
-            "aat": "",
-            "mat": "7",
-            "rat": "",
-            "def": "12",
-            "arm": "18",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 40mm.png",
-            "Assets/Icons/model adv undead.png"
-          ],
-          "abilities": [
-            "Cleave",
-            "Defensive Strike",
-            "Entropic Force",
-            "Hell Marked",
-            "Spell Ward"
-          ],
-          "weapons": [
-            {
-              "name": "Reaper",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual weapon master.png",
-                "Assets\\Icons\\weapon qual dam type magical.png"
-              ],
-              "stats": {
-                "rng": "2",
-                "rof": "",
-                "aoe": "",
-                "pow": "13"
-              },
-              "properties": [
-                "Life Drinker"
               ]
             }
           ]
@@ -33310,9 +33228,9 @@
     {
       "name": "koldun lord damien korovnik",
       "type": "Mercenary",
-      "faction": "Winter Korps",
+      "faction": "Mercenary",
       "armies": [
-        "Winter Korps"
+        "Mercenary"
       ],
       "portrait": "ModelArt\\koldun lord damien korovnik.png",
       "attachments": [],
@@ -35382,7 +35300,7 @@
       "fa": "4",
       "composition": "",
       "rules": {
-        "Body Snatcher: Trophy Hunter": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has:\n• 1 or more corpse tokens - When this model has at least one corpse it can run or charge without being forced.\n• 3 or more corpse tokens - When this model has at least three corpse tokens, it's weapons gain Grievous Wounds. (On a direct hit, a model hit by a weapon with Grievous Wounds loses Tough and cannot have damage removed from it for one round.)\n• 5 or more corpse tokens - When this model has at least five corpse tokens this model gains +2 on damage rolls",
+        "Body Snatcher: Trophy Hunter": "",
         "Sacred Ward": "This model cannot be targeted by enemy spells."
       },
       "profiles": [
@@ -44903,9 +44821,9 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv stealth.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets/Icons/model adv pathfinder.png",
+            "Assets\\Icons\\model adv gunfighter.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Hell Hunter",
@@ -44922,7 +44840,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets\\Icons\\weapon qual crit fire.png"
               ],
               "stats": {
                 "rng": "10",
@@ -44941,7 +44859,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets\\Icons\\weapon qual crit fire.png"
               ],
               "stats": {
                 "rng": "1",
@@ -45019,9 +44937,9 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv pathfinder.png",
-            "Assets\\Icons\\model adv stealth.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv soulless.png",
+            "Assets\\Icons\\model res cold.png",
+            "Assets/Icons/model adv eyeless sight.png"
           ],
           "abilities": [
             "Fate Blessed",
@@ -45121,8 +45039,7 @@
           },
           "icons": [
             "Assets\\Icons\\base size 50mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv pathfinder.png",
+            "Assets\\Icons\\model adv cavalry.png",
             "Assets\\Icons\\model adv tough.png",
             "Assets\\Icons\\model adv unstoppable.png"
           ],
@@ -45236,8 +45153,8 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv stealth.png"
+            "Assets/Icons/model adv unstoppable.png",
+            "Assets/Icons/model adv pathfinder.png"
           ],
           "abilities": [
             "Field Marshal [Overtake]",
@@ -45294,7 +45211,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "34"
+          "-, , , , ,-",
+          ", , , , ,",
+          ", , , , ,",
+          ", ,H,H, ,",
+          ", ,M,C, ,",
+          ",M,M,C,C,"
         ]
       },
       "keywords": [
@@ -45330,13 +45252,14 @@
           },
           "icons": [
             "Assets\\Icons\\base size 80mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets\\Icons\\model adv flight.png",
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
             "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\weapon qual dam type fire.png",
+            "Assets/Icons/model adv dual attack.png",
             "Assets\\Icons\\model res fire.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv unstoppable.png",
+            "Assets/Icons/model adv construct.png"
           ],
           "abilities": [
             "Blade Glide",
@@ -45417,7 +45340,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "26"
+          "-,-,-,-,-,-",
+          "-, , , , ,-",
+          "-, , , , ,-",
+          ",L,H,H,R,",
+          ",L,M,C,R,",
+          "L,M,M,C,C,R"
         ]
       },
       "keywords": [
@@ -45450,8 +45378,8 @@
             "Assets\\Icons\\base size 40mm.png",
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
-            "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets/Icons/model adv dual attack.png",
+            "Assets/Icons/model adv construct.png"
           ],
           "abilities": [
             "Aggressive"
@@ -45625,7 +45553,290 @@
             }
           }
         ]
-      }
+      },
+      "options": [
+        {
+          "name": "Advanced Deployment",
+          "cost": "1",
+          "slot": "Head",
+          "icons": [
+            "Assets\\Icons\\model adv advance deployment.png"
+          ],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Arc Node",
+          "cost": "2",
+          "slot": "Head",
+          "icons": [
+            "Assets\\Icons\\model adv arc node.png"
+          ],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Berserk",
+          "cost": "2",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Berserk"
+          ],
+          "weapons": [],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Bloodthirst",
+          "cost": "0",
+          "slot": "",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Bloodthirst"
+          ],
+          "weapons": [],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Flamethrower",
+          "cost": "4",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Flamethrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png",
+                "Assets\\Icons\\weapon qual cont eff fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Hunter Rifle",
+          "cost": "5",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Hunter Rifle",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "14",
+                "rof": "1",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Critical Brutal Damage"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Mace",
+          "cost": "3",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Mace",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Beat Back",
+                "Critical Dispel"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Pole Arm",
+          "cost": "4",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Set Defense"
+          ],
+          "weapons": [
+            {
+              "name": "Pole Arm",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Brutal Charge"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Assault Shield",
+          "cost": "3",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Assault Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Clawed Fist",
+          "cost": "1",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Clawed Fist",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Heavy Bolt thrower",
+          "cost": "4",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Heavy Bolt thrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Reload [1]"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Pneumatic Spike",
+          "cost": "2",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Pneumatic Spike",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Sustained Attack"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        }
+      ]
     },
     {
       "name": "molok",
@@ -45640,7 +45851,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "32"
+          "-, , , , ,-",
+          "-, , , , ,-",
+          ", , , , ,",
+          ",L,H,H,R,",
+          ",L,M,C,R,",
+          "L,M,M,C,C,R"
         ]
       },
       "keywords": [
@@ -45679,7 +45895,7 @@
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
             "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets/Icons/model adv construct.png"
           ],
           "abilities": [
             "Hyper-Aggressive",
@@ -45752,7 +45968,98 @@
             }
           }
         ]
-      }
+      },
+      "options": [
+        {
+          "name": "Molok",
+          "cost": "0",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Poltergeist"
+          ],
+          "weapons": [
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Hand of Ruin",
+          "cost": "0",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Hand of Ruin",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Possession"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Abyssal Mace",
+          "cost": "0",
+          "slot": "Right arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Abyssal Mace",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "19"
+              },
+              "properties": [
+                "Gates of Hell"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        }
+      ]
     },
     {
       "name": "tyrant",
@@ -45767,7 +46074,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "32"
+          "-, , , , ,-",
+          "-, , , , ,-",
+          ", , , , ,",
+          ",L,H,H,R,",
+          ",L,M,C,R,",
+          "L,M,M,C,C,R"
         ]
       },
       "keywords": [
@@ -45801,7 +46113,8 @@
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
             "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets/Icons/model adv dual attack.png",
+            "Assets/Icons/model adv construct.png"
           ],
           "abilities": [
             "Hyper-Aggressive"
@@ -46008,7 +46321,397 @@
             }
           }
         ]
-      }
+      },
+      "options": [
+        {
+          "name": "Arcane Vortex",
+          "cost": "3",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Arcane Vortex"
+          ],
+          "weapons": [
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Hunter",
+          "cost": "3",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Hunter"
+          ],
+          "weapons": [
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Overtake",
+          "cost": "2",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Overtake"
+          ],
+          "weapons": [
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Relentless Charge",
+          "cost": "1",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [
+            "Relentless Charge"
+          ],
+          "weapons": [
+            {
+              "name": "Gore",
+              "type": "Melee",
+              "count": "1",
+              "location": "H",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Belcher",
+          "cost": "6",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Belcher",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type fire.png",
+                "Assets\\Icons\\weapon qual crit fire.png"
+              ],
+              "stats": {
+                "rng": "12",
+                "rof": "1",
+                "aoe": "3",
+                "pow": "14/10"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Harpoon",
+          "cost": "6",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Harpoon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": [
+                "Skewer"
+              ]
+            },
+            {
+              "name": "Harpoon",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "14"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Scything Flail",
+          "cost": "7",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Scything Flail",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual chain weapon.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "18"
+              },
+              "properties": [
+                "Thresher (★Attack)"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Shredder",
+          "cost": "8",
+          "slot": "Right Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Shredder",
+              "type": "Ranged",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets/Icons/weapon qual blessed.png"
+              ],
+              "stats": {
+                "rng": "14",
+                "rof": "1",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            },
+            {
+              "name": "Blade",
+              "type": "Melee",
+              "count": "1",
+              "location": "R",
+              "icons": [
+                "Assets/Icons/weapon qual blessed.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "16"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Cannon Shield",
+          "cost": "6",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            },
+            {
+              "name": "Shield",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual shield.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Quad Bolt Thrower",
+          "cost": "3",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Quad Bolt Thrower",
+              "type": "Ranged",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "10",
+                "rof": "D3+1",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": [
+                "Volume Fire"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Ripper",
+          "cost": "6",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Ripper",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "17"
+              },
+              "properties": [
+                "Critical Shred"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Claw",
+          "cost": "5",
+          "slot": "Left Arm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
+            {
+              "name": "Claw",
+              "type": "Melee",
+              "count": "1",
+              "location": "L",
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": []
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        }
+      ]
     },
     {
       "name": "gharlghast",
@@ -46023,7 +46726,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "72"
+          ", , , , , , , , , , ,",
+          ", , , ,H,H,H,H, , , ,",
+          ", , ,H,S,S,S,S,H, , ,",
+          ",L,L,L,S,B,B,S,R,R,R,",
+          "L,L,B,B,B,B,B,B,B,B,R,R",
+          "L,M,M,M,H,H,H,H,M,M,M,R"
         ]
       },
       "keywords": [
@@ -46058,7 +46766,11 @@
             "Assets\\Icons\\base size 120mm.png",
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
-            "Assets\\Icons\\model adv trample power attack.png"
+            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets/Icons/model adv unstoppable.png",
+            "Assets/Icons/model adv pathfinder.png",
+            "Assets/Icons/model adv eyeless sight.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Bulldoze",
@@ -46081,7 +46793,24 @@
               "properties": [
                 "Arcing Fire"
               ]
-            },
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "name": "Frother",
+          "cost": "6",
+          "slot": "Head",
+          "icons": [
+            "Assets\\Icons\\model adv gladiator.png"
+          ],
+          "hardpoints": [],
+          "abilities": [
+            "Aggressive",
+            "Snacking"
+          ],
+          "weapons": [
             {
               "name": "Crushing Jaws",
               "type": "Melee",
@@ -46095,18 +46824,30 @@
                 "pow": "23"
               },
               "properties": []
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Spider",
+          "cost": "0",
+          "slot": "Head",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Web Spinner",
               "type": "Ranged",
               "count": "1",
-              "location": "H",
+              "location": "",
               "icons": [],
               "stats": {
                 "rng": "9",
                 "rof": "D3",
                 "aoe": "",
-                "pow": ""
+                "pow": "0"
               },
               "properties": [
                 "Drag",
@@ -46115,9 +46856,9 @@
             },
             {
               "name": "Skull Splitter",
-              "type": "Ranged",
+              "type": "Melee",
               "count": "1",
-              "location": "H",
+              "location": "",
               "icons": [],
               "stats": {
                 "rng": "2",
@@ -46125,28 +46866,62 @@
                 "aoe": "",
                 "pow": "18"
               },
-              "properties": []
-            },
+              "properties": [
+                "RAT +1"
+              ]
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Bile Jet Right",
+          "cost": "5",
+          "slot": "Right Forearm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Bile Jet",
               "type": "Ranged",
               "count": "1",
               "location": "R",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png",
+                "Assets\\Icons\\weapon qual cont eff corrosion.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
               "stats": {
                 "rng": "Sp 8",
                 "rof": "1",
-                "aoe": "-",
+                "aoe": "",
                 "pow": "14"
               },
               "properties": []
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Infernus Cannon Right",
+          "cost": "5",
+          "slot": "Right Forearm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
-              "name": "Infernus Cannon",
+              "name": "Infernus Cannon Right",
               "type": "Ranged",
               "count": "1",
               "location": "R",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png",
+                "Assets\\Icons\\weapon qual crit fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
               "stats": {
                 "rng": "10",
                 "rof": "1",
@@ -46156,13 +46931,27 @@
               "properties": [
                 "Choking Ash"
               ]
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Demolisher Fist Right",
+          "cost": "8",
+          "slot": "Right Fist",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
-              "name": "Demolisher Fist",
+              "name": "Demolisher Fist Right",
               "type": "Melee",
               "count": "1",
               "location": "R",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
               "stats": {
                 "rng": "2",
                 "rof": "",
@@ -46173,15 +46962,29 @@
                 "Critical Knockdown",
                 "Siege Weapon"
               ]
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Rending Claws Right",
+          "cost": "6",
+          "slot": "Right Fist",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Rending Claws",
               "type": "Melee",
               "count": "1",
               "location": "R",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual open fist.png"
+              ],
               "stats": {
-                "rng": "2",
+                "rng": "12",
                 "rof": "",
                 "aoe": "",
                 "pow": "19"
@@ -46189,27 +46992,59 @@
               "properties": [
                 "Critical Grievous Wounds"
               ]
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Bile Jet Left",
+          "cost": "0",
+          "slot": "Left Forearm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Bile Jet",
-              "type": "Ranged",
+              "type": "Melee",
               "count": "1",
               "location": "L",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png",
+                "Assets\\Icons\\weapon qual cont eff corrosion.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
               "stats": {
-                "rng": "Sp 8",
+                "rng": "8",
                 "rof": "1",
-                "aoe": "-",
+                "aoe": "",
                 "pow": "14"
               },
               "properties": []
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Infernus Cannon Left",
+          "cost": "0",
+          "slot": "Left Forearm",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
-              "name": "Infernus Cannon",
-              "type": "Ranged",
+              "name": "Infernus Cannon Left",
+              "type": "Melee",
               "count": "1",
               "location": "L",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual pistol weapon.png",
+                "Assets\\Icons\\weapon qual crit fire.png",
+                "Assets\\Icons\\weapon qual dam type fire.png"
+              ],
               "stats": {
                 "rng": "10",
                 "rof": "1",
@@ -46219,7 +47054,19 @@
               "properties": [
                 "Choking Ash"
               ]
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Demolisher Fist Left",
+          "cost": "8",
+          "slot": "Left  Fist",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Demolisher Fist",
               "type": "Melee",
@@ -46236,7 +47083,19 @@
                 "Critical Knockdown",
                 "Siege Weapon"
               ]
-            },
+            }
+          ],
+          "profiles": [],
+          "animus": {}
+        },
+        {
+          "name": "Rending Claws Left",
+          "cost": "6",
+          "slot": "Left  Fist",
+          "icons": [],
+          "hardpoints": [],
+          "abilities": [],
+          "weapons": [
             {
               "name": "Rending Claws",
               "type": "Melee",
@@ -46253,7 +47112,9 @@
                 "Critical Grievous Wounds"
               ]
             }
-          ]
+          ],
+          "profiles": [],
+          "animus": {}
         }
       ]
     },
@@ -46270,7 +47131,12 @@
         "type": "Grid",
         "names": [],
         "values": [
-          "30"
+          "-,-, , ,-,-",
+          "-, , , , ,-",
+          ", , , , ,",
+          ",L, , ,R,",
+          ",L,M,B,R,",
+          "L,M,M,B,B,R"
         ]
       },
       "keywords": [
@@ -46307,7 +47173,7 @@
             "Assets\\Icons\\model adv slam power attack.png",
             "Assets\\Icons\\model adv headbutt power attack.png",
             "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets/Icons/model adv eyeless sight.png"
           ],
           "abilities": [
             "Berserk",
@@ -46322,7 +47188,7 @@
               "count": "1",
               "location": "L",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual weapon master.png",
                 "Assets\\Icons\\weapon qual open fist.png",
                 "Assets\\Icons\\weapon qual dam type magical.png"
               ],
@@ -46428,7 +47294,7 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets/Icons/model adv unstoppable.png",
             "Assets\\Icons\\model adv undead.png"
           ],
           "abilities": [
@@ -46449,7 +47315,7 @@
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
                 "Assets\\Icons\\weapon qual chain weapon.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "3",
@@ -46536,7 +47402,7 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual weapon master.png",
                 "Assets\\Icons\\weapon qual dam type magical.png"
               ],
               "stats": {
@@ -46704,7 +47570,7 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets/Icons/model adv unstoppable.png",
             "Assets\\Icons\\model adv tough.png"
           ],
           "abilities": [
@@ -46723,9 +47589,9 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual weapon master.png",
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type fire.png"
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "2",
@@ -46793,7 +47659,7 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv stealth.png"
+            "Assets/Icons/model adv pathfinder.png"
           ],
           "abilities": [
             "Battle Plan",
@@ -46811,7 +47677,7 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png"
+                "Assets\\Icons\\weapon qual pistol weapon.png"
               ],
               "stats": {
                 "rng": "12",
@@ -46827,8 +47693,8 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type corrosion.png",
-                "Assets\\Icons\\weapon qual dam type fire.png"
+                "Assets\\Icons\\weapon qual weapon master.png",
+                "Assets\\Icons\\weapon qual crit fire.png"
               ],
               "stats": {
                 "rng": "1",
@@ -46911,7 +47777,7 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets/Icons/model adv unstoppable.png",
             "Assets\\Icons\\model adv undead.png"
           ],
           "abilities": [
@@ -47011,8 +47877,8 @@
           },
           "icons": [
             "Assets\\Icons\\base size 80mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv stealth.png",
+            "Assets/Icons/model adv dual attack.png",
+            "Assets/Icons/model adv pathfinder.png",
             "Assets\\Icons\\model adv unstoppable.png"
           ],
           "abilities": [
@@ -47125,8 +47991,8 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv soulless.png",
+            "Assets/Icons/model adv unstoppable.png",
+            "Assets/Icons/model adv pathfinder.png",
             "Assets\\Icons\\model adv stealth.png"
           ],
           "abilities": [
@@ -47340,11 +48206,10 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv stealth.png",
-            "Assets\\Icons\\model adv unstoppable.png",
+            "Assets/Icons/model adv pathfinder.png",
+            "Assets/Icons/model adv dual attack.png",
             "Assets\\Icons\\model adv combined ranged attack.png",
-            "Assets\\Icons\\model adv gunfighter.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv advance deployment.png"
           ],
           "abilities": [
             "Last Word"
@@ -47451,7 +48316,7 @@
             "Assets\\Icons\\base size 40mm.png",
             "Assets\\Icons\\model adv tough.png",
             "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv ambush.png"
           ],
           "abilities": [
             "Berserk",
@@ -47465,7 +48330,7 @@
               "count": "2",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type corrosion.png",
+                "Assets\\Icons\\weapon qual weapon master.png",
                 "Assets\\Icons\\weapon qual dam type magical.png"
               ],
               "stats": {
@@ -47546,9 +48411,9 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv stealth.png",
+            "Assets/Icons/model adv pathfinder.png",
             "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv ambush.png"
           ],
           "abilities": [
             "Last Word",
@@ -47562,8 +48427,8 @@
               "count": "2",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type fire.png"
+                "Assets/Icons/weapon qual blessed.png",
+                "Assets\\Icons\\weapon qual crit fire.png"
               ],
               "stats": {
                 "rng": "1",
@@ -47640,9 +48505,9 @@
           },
           "icons": [
             "Assets\\Icons\\base size 50mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv soulless.png",
-            "Assets\\Icons\\model adv trample power attack.png",
+            "Assets/Icons/model adv stealth.png",
+            "Assets\\Icons\\model adv flight.png",
+            "Assets\\Icons\\model adv cavalry.png",
             "Assets\\Icons\\model adv unstoppable.png"
           ],
           "abilities": [
@@ -47750,7 +48615,7 @@
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
             "Assets\\Icons\\model adv combined ranged attack.png",
-            "Assets\\Icons\\model adv gunfighter.png"
+            "Assets\\Icons\\model adv assault.png"
           ],
           "abilities": [
             "Last Word",
@@ -47763,7 +48628,7 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png"
+                "Assets\\Icons\\weapon qual pistol weapon.png"
               ],
               "stats": {
                 "rng": "12",
@@ -47872,7 +48737,7 @@
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
             "Assets\\Icons\\model adv undead.png",
-            "Assets\\Icons\\model adv unstoppable.png"
+            "Assets\\Icons\\model adv tough.png"
           ],
           "abilities": [
             "Accursed Armor",
@@ -47887,7 +48752,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "10",
@@ -47907,7 +48772,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "1",
@@ -47926,7 +48791,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets\\Icons\\weapon qual dam type corrosion.png"
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "1",
@@ -48192,7 +49057,7 @@
           "icons": [
             "Assets\\Icons\\base size 30mm.png",
             "Assets\\Icons\\model adv advance deployment.png",
-            "Assets\\Icons\\model adv stealth.png"
+            "Assets/Icons/model adv pathfinder.png"
           ],
           "abilities": [
             "Magic Ability",
@@ -48287,446 +49152,13 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type fire.png"
+                "Assets\\Icons\\weapon qual crit fire.png"
               ],
               "stats": {
                 "rng": "1",
                 "rof": "",
                 "aoe": "",
                 "pow": "12"
-              },
-              "properties": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "eilish garrity the dark traitor",
-      "type": "Mercenary",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\eilish garrity the dark traitor.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "Eilish Garrity"
-        ],
-        "values": [
-          [
-            "5"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "3",
-      "fa": "c",
-      "composition": "",
-      "rules": {
-        "Arcane Pulse": "When this model is destroyed by an enemy attack, enemy upkeep spells on models within 8\" of it expire.",
-        "Dark Power": "This model gains an additional die on arcane attack and arcane attack damage rolls. Discard the lowest die in each roll.",
-        "Gate Walker": "Once per activation, immediately after this model casts a spell, you can place this model anywhere completely within 5\" of its current location.",
-        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
-        "Magic Ability": "Performing a Magic Ability special action or special attack counts as casting a spell.",
-        "Death Rattle (★ Attack)": "Death Rattle is a RNG 10, POW 12 arcane attack. When Death Rattle boxes a living or undead non-Leader enemy warrior model, you can immediately take control of the model. The boxed model makes one basic attack, then it is removed from play.",
-        "Marionette (★ Attack)": "Marionette is a RNG 10 arcane attack. Target enemy model/unit. You can have one affected model reroll one attack or damage roll, then Marionette expires. Marionette lasts for one round.",
-        "Puppet Master (★ Action)": "RNG 6. Target friendly model/unit. You can have one affected model reroll one attack or damage roll, then Puppet Master expires. Puppet Master lasts for one round."
-      },
-      "profiles": [
-        {
-          "name": "Garrity 3",
-          "stats": {
-            "spd": "6",
-            "aat": "7",
-            "mat": "",
-            "rat": "",
-            "def": "13",
-            "arm": "14",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png"
-          ],
-          "abilities": [
-            "Arcane Pulse",
-            "Dark Power",
-            "Gate Walker",
-            "Hell Marked",
-            "Magic Ability"
-          ],
-          "weapons": []
-        }
-      ]
-    },
-    {
-      "name": "koldun lord damien korovnik",
-      "type": "Mercenary",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\koldun lord damien korovnik.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "koldun lord damien korovnik"
-        ],
-        "values": [
-          [
-            "5"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "0",
-      "fa": "c",
-      "composition": "",
-      "rules": {},
-      "profiles": [
-        {
-          "name": "koldun lord damien korovnik",
-          "stats": {
-            "spd": "6",
-            "aat": "7",
-            "mat": "6",
-            "rat": "",
-            "def": "13",
-            "arm": "14",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png"
-          ],
-          "abilities": [],
-          "weapons": []
-        }
-      ]
-    },
-    {
-      "name": "maulgreth the charnel plague",
-      "type": "Mercenary",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\maulgreth the charnel plague.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "maulgreth the charnel plague"
-        ],
-        "values": [
-          [
-            "8"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "4",
-      "fa": "c",
-      "composition": "",
-      "rules": {
-        "Cleave": "When this model destroys one or more enemy models with a basic melee attack during its Combat Action, immediately after the attack is resolved this model can make one additional melee attack. This model can gain only one additional attack from Cleave each activation.",
-        "Defensive Strike": "Once per turn, when an enemy model advances into and ends its movement or is placed in this model's melee range, this model can immediately make one basic melee attack against it.",
-        "Entropic Force": "While within 5\" of this model, enemy models lose Tough and cannot have damage removed from them.",
-        "Hell Marked": "Models destroyed by attacks made by this model never generate soul tokens.",
-        "Spell Ward": "This model cannot be targeted by spells."
-      },
-      "profiles": [
-        {
-          "name": "Maulgreth 1",
-          "stats": {
-            "spd": "5",
-            "aat": "",
-            "mat": "7",
-            "rat": "",
-            "def": "12",
-            "arm": "18",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 40mm.png"
-          ],
-          "abilities": [
-            "Cleave",
-            "Defensive Strike",
-            "Entropic Force",
-            "Hell Marked",
-            "Spell Ward"
-          ],
-          "weapons": [
-            {
-              "name": "Reaper",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual open fist.png",
-                "Assets\\Icons\\weapon qual dam type magical.png"
-              ],
-              "stats": {
-                "rng": "2",
-                "rof": "",
-                "aoe": "",
-                "pow": "13"
-              },
-              "properties": [
-                "Life Drinker"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "sky bomber",
-      "type": "Mercenary",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\sky bomber.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "Sky Bomber"
-        ],
-        "values": [
-          [
-            "28"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "12",
-      "fa": "2",
-      "composition": "",
-      "rules": {
-        "Auto-Repair": "During your Control Phase, remove d3 damage points from this model.",
-        "Flying High": "Ranged attacks targeting this model suffer −3 RNG. Friendly models can advance through this model if they have enough movement to move completely past its base.",
-        "Propelled": "This model cannot aim, charge, or become knocked down.",
-        "Reposition [5\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 5\", then its activation ends.",
-        "Shooting Gallery": "This model gains +2 to ranged attack rolls against models within 5\" of it."
-      },
-      "profiles": [
-        {
-          "name": "Sky Bomber",
-          "stats": {
-            "spd": "7",
-            "aat": "",
-            "mat": "6",
-            "rat": "6",
-            "def": "13",
-            "arm": "18",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 120mm.png",
-            "Assets\\Icons\\model adv headbutt power attack.png",
-            "Assets\\Icons\\model adv construct.png",
-            "Assets\\Icons\\model adv pathfinder.png",
-            "Assets\\Icons\\model adv flight.png",
-            "Assets\\Icons\\model adv gunfighter.png",
-            "Assets\\Icons\\model adv unstoppable.png"
-          ],
-          "abilities": [
-            "Auto-Repair",
-            "Flying High",
-            "Propelled",
-            "Reposition [5\"]",
-            "Shooting Gallery"
-          ],
-          "weapons": [
-            {
-              "name": "Heavy Fire Breather",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png",
-                "Assets\\Icons\\weapon qual dam type fire.png"
-              ],
-              "stats": {
-                "rng": "Sp 10",
-                "rof": "2",
-                "aoe": "-",
-                "pow": "14"
-              },
-              "properties": []
-            },
-            {
-              "name": "High Explosive",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png"
-              ],
-              "stats": {
-                "rng": "4",
-                "rof": "1",
-                "aoe": "3",
-                "pow": "15/8"
-              },
-              "properties": [
-                "Crater",
-                "Critical Devastation",
-                "Siege Weapon",
-                "Sky-Dropped"
-              ]
-            },
-            {
-              "name": "Ramming Speed",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "15"
-              },
-              "properties": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "sky raider",
-      "type": "Mercenary",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\sky raider.png",
-      "attachments": [],
-      "health": {
-        "type": "Box",
-        "names": [
-          "Sky Raider"
-        ],
-        "values": [
-          [
-            "28"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "10",
-      "fa": "2",
-      "composition": "",
-      "rules": {
-        "Auto-Repair": "During your Control Phase, remove d3 damage points from this model.",
-        "Flying High": "Ranged attacks targeting this model suffer −3 RNG.",
-        "Propelled": "This model cannot aim, charge, or become knocked down.",
-        "Reposition [5\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 5\", then its activation ends.",
-        "Shooting Gallery": "This model gains +2 to ranged attack rolls against models within 5\" of it."
-      },
-      "profiles": [
-        {
-          "name": "Sky Raider",
-          "stats": {
-            "spd": "7",
-            "aat": "",
-            "mat": "6",
-            "rat": "6",
-            "def": "13",
-            "arm": "18",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 120mm.png",
-            "Assets\\Icons\\model adv headbutt power attack.png",
-            "Assets\\Icons\\model adv construct.png",
-            "Assets\\Icons\\model adv pathfinder.png",
-            "Assets\\Icons\\model adv flight.png",
-            "Assets\\Icons\\model adv gunfighter.png",
-            "Assets\\Icons\\model adv unstoppable.png"
-          ],
-          "abilities": [
-            "Auto-Repair",
-            "Flying High",
-            "Propelled",
-            "Reposition [5\"]",
-            "Shooting Gallery"
-          ],
-          "weapons": [
-            {
-              "name": "Heavy Gun",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png"
-              ],
-              "stats": {
-                "rng": "10",
-                "rof": "1",
-                "aoe": "2",
-                "pow": "15/8"
-              },
-              "properties": [
-                "Critical Knockdown"
-              ]
-            },
-            {
-              "name": "Gravity Bomb",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual cont eff fire.png"
-              ],
-              "stats": {
-                "rng": "4",
-                "rof": "3",
-                "aoe": "2",
-                "pow": "12/6"
-              },
-              "properties": [
-                "Brutal Damage",
-                "Sky-Dropped"
-              ]
-            },
-            {
-              "name": "Ramming Speed",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "15"
               },
               "properties": []
             }
@@ -100048,13 +100480,13 @@
       ]
     },
     {
-      "name": "Crucible Guard Mechanik 1",
+      "name": "Crucible Guard Mechanik",
       "type": "Solo",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\crucible guard mechanik 1.png",
+      "portrait": "ModelArt\\crucible guard mechanik.png",
       "attachments": [],
       "health": {},
       "keywords": [],
@@ -100208,13 +100640,13 @@
       ]
     },
     {
-      "name": "Suppressor 1",
+      "name": "Suppressor",
       "type": "Warjack",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\suppressor 1.png",
+      "portrait": "ModelArt\\suppressor.png",
       "attachments": [],
       "health": {
         "type": "Grid",
@@ -100303,13 +100735,13 @@
       ]
     },
     {
-      "name": "Rocketman Stinger 1",
+      "name": "Rocketman Stinger",
       "type": "Solo",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\rocketman stinger 1.png",
+      "portrait": "ModelArt\\rocketman stinger.png",
       "attachments": [],
       "health": {
         "type": "Box",
@@ -100381,15 +100813,15 @@
       ]
     },
     {
-      "name": "Crucible Guard Rocketmen 1",
+      "name": "Crucible Guard Rocketmen",
       "type": "Unit",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\crucible guard rocketmen 1.png",
+      "portrait": "ModelArt\\crucible guard rocketmen.png",
       "attachments": [
-        "Crucible Guard Rocketman Captain 1"
+        "Crucible Guard Rocketman Captain"
       ],
       "health": {},
       "keywords": [],
@@ -100460,18 +100892,18 @@
       ]
     },
     {
-      "name": "Crucible Guard Rocketman Captain 1",
+      "name": "Crucible Guard Rocketman Captain",
       "type": "Command Attachment",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\crucible guard rocketman captain 1.png",
+      "portrait": "ModelArt\\crucible guard rocketman captain.png",
       "attachments": [],
       "health": {
         "type": "Box",
         "names": [
-          "Crucible Guard Rocketman Captain 1"
+          "Crucible Guard Rocketman Captain"
         ],
         "values": [
           [
@@ -100558,7 +100990,7 @@
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\gorman di wulfe revolutionary agent.png",
+      "portrait": "ModelArt\\gorman di wolfe revolutionary agent.png",
       "attachments": [],
       "health": {
         "type": "Box",
@@ -100740,7 +101172,7 @@
       "armies": [
         "Crucible Guard"
       ],
-      "portrait": "ModelArt\\crucible guard infantry officer & standard.png",
+      "portrait": "ModelArt\\crucible guard infantry officer.png",
       "attachments": [],
       "health": {
         "type": "Box",
@@ -103562,7 +103994,7 @@
       "armies": [
         "Convergence of Cyriss"
       ],
-      "portrait": "ModelArt\\axis, the harmonic enforcer.png",
+      "portrait": "ModelArt\\axis the harmonic enforcer.png",
       "attachments": [],
       "health": {
         "type": "Box",
@@ -103744,7 +104176,7 @@
       "armies": [
         "Convergence of Cyriss"
       ],
-      "portrait": "ModelArt\\father lucant, the divinity architect.png",
+      "portrait": "ModelArt\\father lucant the divinity architect.png",
       "attachments": [],
       "health": {
         "type": "Box",
@@ -111547,7 +111979,7 @@
     "From Beneath": "Attacks with this weapon ignore cover and concealment.",
     "Shifter": "When this attack hits an enemy model, immediately after the attack is resolved place this model B2B with the enemy hit.",
     "Guard Dog": "While this model is within 3\" of its Leader and is not knocked down or stationary, its Leader gains +2 DEF against melee attack rolls and cannot become knocked down.",
-    "Body Snatcher: Trophy Hunter": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has:\n• 1 or more corpse tokens - When this model has at least one corpse it can run or charge without being forced.\n• 3 or more corpse tokens - When this model has at least three corpse tokens, it's weapons gain Grievous Wounds. (On a direct hit, a model hit by a weapon with Grievous Wounds loses Tough and cannot have damage removed from it for one round.)\n• 5 or more corpse tokens - When this model has at least five corpse tokens this model gains +2 on damage rolls",
+    "Body Snatcher: Trophy Hunter": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has (see the datasheet for details)",
     "Admonition": "Once per round when an enemy model advances and ends its movement or is placed within 6\" of this model, this model can immediately advance up to 3\".",
     "Combo Pitch (★ Attack)": "On a hit against a model with an equal or smaller base, the model hit is thrown d6\" directly away from this model. When resolving damage for this attack, the model hit suffers a damage roll with POW equal to the POW of this weapon. The POW of collateral damage is equal to the POW of this weapon.",
     "Chain Attack: Shifter": "If this model hits the same model with both its initial attacks with this weapon, after resolving the attacks it can immediately use Shifter. (Place this model B2B with the enemy hit.)",
@@ -111581,7 +112013,7 @@
     "Black Wings": "If this attack misses, nothing happens. On a direct hit against an enemy model, center a cloud effect template on the model hit. The template is a hazard that remains in play for one round. Enemy living and undead models in the template when it is placed suffer Blind for one round. Enemy living or undead models entering or ending their activations in the template suffer 1 point of magical damage. (A model suffering Blind cannot make ranged or arcane attacks, suffers −4 MAT and DEF, and cannot run, charge, or make slam or trample power attacks. It must forfeit either its Normal Movement or Combat Action during its next activation. Blind can be shaken.)",
     "Desperate Pace [Small-Based Liegemen]": "RNG 5. Target friendly small-based Liegemen trooper model. If the model is in range, models in its unit gain +2 SPD during their Normal Movement this turn.",
     "Veteran Leader [Liegemen]": "While within 10\" of this model, other friendly Liegemen models gain +1 to attack rolls.",
-    "Body Snatcher: Trophy Hunter (Lord)": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has:\n• 1 or more corpse tokens - When this model has at least one corpse token, enemy models within 10\" and LOS lose Stealth.\n• 3 or more corpse tokens - When this model has at least three corpse tokens, Lord of the Hunt gains Hunter and its Thrown Javelin becomes ROF 2. (A model with Hunter ignores concealment and cover when making ranged attacks.)\n• 5 or more corpse tokens - When this model has at least five corpse tokens it gains Hunt Eternal. (When a model with Hunt Eternal is disabled, remove all corpse tokens and damage from it; it is no longer disabled.)",
+    "Body Snatcher: Trophy Hunter (Lord)": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has (see the datasheet for details)",
     "Leadership [Lupine Shifted]": "While within 10\" of this model, friendly Lupine Shifted models gain Jump.",
     "Shapeshifter": "This model does not begin the game in play. When a friendly Marked model is disabled by an enemy attack or as the result of a continuous effect, this model can immediately replace it. The replaced model is removed from play. When a Shapeshifter model replaces a model that entered play this turn or that already activated this turn, it must forfeit its Normal Movement and Combat Action this turn. When this model replaces a disabled model, this model is not considered to have entered an area and does not trigger effects triggered by entering that area. When this model is destroyed, remove it from play.",
     "Defiant Rage": "When this model is damaged by an enemy attack, after the attack is resolved this model gains +2 ARM and +2 to its melee attack damage rolls for one round.",
