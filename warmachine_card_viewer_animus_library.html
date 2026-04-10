@@ -57,8 +57,10 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 .sb-brand{font-family:'Oswald';font-weight:700;font-size:15px;color:var(--accent-light);letter-spacing:2px}
 .sb-count{font-size:10px;color:var(--text-muted);letter-spacing:2px;font-family:'Oswald';text-transform:uppercase;margin-top:1px}
 .sb-search{padding:10px 12px 6px}
-.sb-search input{width:100%;padding:7px 10px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:12px;font-family:'Crimson Pro';outline:none;transition:border-color 0.2s}
-.sb-search input:focus{border-color:var(--accent)}
+.sb-search input,.sb-search select{width:100%;padding:7px 10px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:12px;outline:none;transition:border-color 0.2s}
+.sb-search input{font-family:'Crimson Pro'}
+.sb-search select{font-family:'Oswald';letter-spacing:0.5px;cursor:pointer;margin-top:6px}
+.sb-search input:focus,.sb-search select:focus{border-color:var(--accent)}
 .sb-filters{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
 .sb-fbtn{padding:2px 8px;border-radius:3px;border:none;font-size:10px;cursor:pointer;font-family:'Oswald';letter-spacing:0.5px;background:var(--bg);color:var(--text-dim);transition:all 0.15s}
 .sb-fbtn:hover{color:var(--accent-light)}
@@ -248,6 +250,18 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 
 .empty{color:var(--text-muted);font-style:italic;margin-top:80px;font-size:15px}
 
+/* Error handling */
+.err-sec{margin:8px 14px 12px;padding:10px 12px;border-radius:6px;border:1px solid rgba(204,68,68,0.45);background:rgba(204,68,68,0.08)}
+.err-title{font-family:'Oswald';font-size:12px;letter-spacing:1px;color:#ff9b9b;margin-bottom:4px}
+.err-msg{font-size:12px;color:#e3b3b3;line-height:1.45}
+.err-actions{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.err-btn{padding:6px 10px;border-radius:4px;border:1px solid rgba(204,68,68,0.5);background:rgba(204,68,68,0.12);color:#ffb3b3;font-family:'Oswald';font-size:10px;letter-spacing:1px;cursor:pointer;transition:all 0.15s}
+.err-btn:hover{background:rgba(204,68,68,0.22);border-color:var(--red);color:#fff}
+.card-top-err{width:100%;max-width:520px;margin:24px auto;padding:14px 16px;border-radius:8px;border:1px solid rgba(204,68,68,0.5);background:rgba(204,68,68,0.1);color:#f0c0c0}
+.card-top-err h3{font-family:'Oswald';font-size:18px;letter-spacing:1px;color:#ffb3b3;margin-bottom:6px}
+.card-top-err .name{color:#fff;font-weight:700}
+.card-top-err .small{margin-top:8px;font-size:12px;color:#d9a4a4}
+
 /* Icons */
 .ico{display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;margin-bottom:2px}
 .ico img{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);object-fit:contain;vertical-align:middle}
@@ -391,6 +405,9 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
     </div>
     <div class="sb-search">
       <input type="text" id="searchInput" placeholder="Search models...">
+      <select id="factionFilter" aria-label="Filter by faction">
+        <option value="All">All Factions</option>
+      </select>
       <div class="sb-filters" id="filterBtns"></div>
     </div>
     <div class="sb-list" id="cardList"></div>
@@ -431,6 +448,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
       <div class="db-tab active" id="dbTabSpells" onclick="dbSetTab('spells')">✦ Spells</div>
       <div class="db-tab" id="dbTabAbilities" onclick="dbSetTab('abilities')">⚡ Abilities</div>
       <div class="db-tab gold" id="dbTabProps" onclick="dbSetTab('properties')">🔧 Properties</div>
+      <div class="db-tab" id="dbTabAnimus" onclick="dbSetTab('animus')">🔮 Animus</div>
     </div>
     <div class="db-body">
       <div class="db-left">
@@ -463,10 +481,10 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 </div>
 
 <script>
-let D=null, SEL=null, TF='All', SR='', VM='single', PL=new Set();
+let D=null, SEL=null, TF='All', FF='All', SR='', VM='single', PL=new Set();
 let FILE_HANDLE=null, FILE_NAME='warmachine_data.json';
 let EDIT_CARD=null, EDIT_IDX=-1;
-let KNOWN_ICONS=[], KNOWN_SPELLS=[], KNOWN_ABILITIES=[], KNOWN_PROPS=[];
+let KNOWN_ICONS=[], KNOWN_SPELLS=[], KNOWN_ABILITIES=[], KNOWN_PROPS=[], KNOWN_ANIMUS=[];
 
 const GC={L:'#5588cc',M:'#cc8855',C:'#cc5555',R:'#55aa55',H:'#aa55aa',A:'#8888cc',S:'#aa8844',B:'#cc88cc',I:'#44aacc'};
 const GN={L:'Left',M:'Movement',C:'Cortex',R:'Right',H:'Head',A:'Arc Node',S:'Superstructure',B:'Brain',I:'Interface'};
@@ -479,6 +497,38 @@ const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Unit','Solo','Batt
 function tc(t){t=(t||'').toLowerCase();if(t.includes('warcaster')||t.includes('warlock'))return'#8b6b3d';if(t.includes('warjack')||t.includes('warbeast'))return'#3d6b8b';if(t.includes('unit'))return'#6b3d8b';if(t.includes('solo'))return'#3d8b6b';if(t.includes('battle engine'))return'#6b6b3d';if(t.includes('command'))return'#8b3d6b';return'#5a5a5a'}
 function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function av(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function errTxt(e){return e&&e.message?e.message:String(e||'Unknown error')}
+function sectionError(section,e,idx){
+  const safeSection=E(section||'Section');
+  const safeMsg=E(errTxt(e));
+  const btn=idx>=0?`<button class="err-btn" onclick="resetCardSection(${idx},'${section.replace(/'/g,"\'")}')">Reset ${safeSection}</button>`:'';
+  return `<div class="err-sec"><div class="err-title">Section error, ${safeSection}</div><div class="err-msg">${safeMsg}</div><div class="err-actions">${btn}</div></div>`;
+}
+function wrapSection(label,icon,section,idx,fn){
+  try{return `<div class="sh"><span class="si">${icon}</span>${E(label)}</div>`+fn();}
+  catch(e){return `<div class="sh"><span class="si">⚠</span>${E(label)}</div>`+sectionError(section,e,idx);}
+}
+function cloneDefaultSection(card,section){
+  switch(section){
+    case 'health': return {type:'Box',names:[card?.name||'Unknown'],values:[['0']]};
+    case 'rules': return {};
+    case 'profiles': return [];
+    case 'spells': return [];
+    case 'animus': return {};
+    case 'feat': return {};
+    case 'options': return [];
+    default: return null;
+  }
+}
+function resetCardSection(idx,section){
+  if(idx<0||!D||!D.cards||!D.cards[idx])return;
+  const card=D.cards[idx];
+  const val=cloneDefaultSection(card,section);
+  if(val===null)return;
+  card[section]=val;
+  if(SEL&&SEL.name===card.name)SEL=card;
+  rList();rMain();
+}
 
 const ICON_BASE='https://raw.githubusercontent.com/TemporalDistoriton/WarmachineTTS/main/Assets/Icons/';
 function icoUrl(path){
@@ -510,7 +560,7 @@ function parseAndLoad(text){
   try{
     const p=JSON.parse(text);
     if(!p.cards||!Array.isArray(p.cards)){sErr("Invalid: missing 'cards' array");return}
-    D=p;SEL=p.cards[0]||null;TF='All';SR='';PL.clear();hErr();
+    D=p;SEL=p.cards[0]||null;TF='All';FF='All';SR='';PL.clear();hErr();
     buildKnownLists();
     showV();
   }catch(err){sErr('JSON error: '+err.message)}
@@ -544,6 +594,7 @@ function showV(){
   document.getElementById('viewToggle').style.display='flex';
   document.getElementById('sbCount').textContent=`Card Viewer — ${D.cards.length} models`;
   document.getElementById('searchInput').value='';
+  document.getElementById('factionFilter').value='All';
   rFilt();rList();rMain();uPB();
 }
 
@@ -582,7 +633,7 @@ function showNotice(msg,type){
 
 // ── Known lists for autocomplete ────────────────────────────────────────────
 function buildKnownLists(){
-  const icons=new Set(),spells=new Set(),abilities=new Set(),props=new Set();
+  const icons=new Set(),spells=new Set(),abilities=new Set(),props=new Set(),animus=new Set();
   (D.cards||[]).forEach(c=>{
     (c.profiles||[]).forEach(p=>{
       (p.icons||[]).forEach(i=>icons.add(i));
@@ -592,22 +643,29 @@ function buildKnownLists(){
       });
     });
     (c.spells||[]).forEach(s=>spells.add(s));
-    (c.options||[]).forEach(o=>(o.icons||[]).forEach(i=>icons.add(i)));
+    Object.keys(c.animus||{}).forEach(a=>animus.add(a));
+    (c.options||[]).forEach(o=>{
+      (o.icons||[]).forEach(i=>icons.add(i));
+      Object.keys(o.animus||{}).forEach(a=>animus.add(a));
+    });
   });
   Object.keys(D.spells||{}).forEach(s=>spells.add(s));
   Object.keys(D.abilities||{}).forEach(a=>abilities.add(a));
   Object.keys(D.properties||{}).forEach(p=>props.add(p));
+  Object.keys(D.animus||{}).forEach(a=>animus.add(a));
   KNOWN_ICONS=[...icons].sort();
   KNOWN_SPELLS=[...spells].sort();
   KNOWN_ABILITIES=[...abilities].sort();
   KNOWN_PROPS=[...props].sort();
+  KNOWN_ANIMUS=[...animus].sort();
 }
 
 // ── Sidebar ──────────────────────────────────────────────────────────────────
 document.getElementById('searchInput').addEventListener('input',e=>{SR=e.target.value;rList();if(VM==='all')rMain()});
+document.getElementById('factionFilter').addEventListener('change',e=>{FF=e.target.value;rList();if(VM==='all')rMain()});
 function setTF(t){TF=t;rFilt();rList();if(VM==='all')rMain()}
 function setView(m){VM=m;document.getElementById('btnS').className='vb'+(m==='single'?' act':'');document.getElementById('btnA').className='vb'+(m==='all'?' act':'');rMain()}
-function gFilt(){return D.cards.filter(c=>(TF==='All'||c.type===TF)&&(!SR||c.name.toLowerCase().includes(SR.toLowerCase())))}
+function gFilt(){return D.cards.filter(c=>(TF==='All'||c.type===TF)&&(FF==='All'||(c.faction||'?')===FF)&&(!SR||c.name.toLowerCase().includes(SR.toLowerCase())))}
 
 function tPrint(nm,ev){ev.stopPropagation();if(PL.has(nm))PL.delete(nm);else PL.add(nm);rList();uPB()}
 function clearPrint(){PL.clear();rList();uPB()}
@@ -616,7 +674,12 @@ function doPrint(){if(!PL.size)return;const m=document.getElementById('main');co
 
 function rFilt(){
   const ts=['All',...new Set(D.cards.map(c=>c.type))];
+  const fs=['All',...new Set(D.cards.map(c=>c.faction||'?'))].sort((a,b)=>a.localeCompare(b));
   const w=document.getElementById('filterBtns');w.innerHTML='';
+  const s=document.getElementById('factionFilter');
+  s.innerHTML=fs.map(f=>`<option value="${av(f)}">${E(f==='All'?'All Factions':f)}</option>`).join('');
+  s.value=fs.includes(FF)?FF:'All';
+  FF=s.value;
   ts.forEach(t=>{const b=document.createElement('button');b.className='sb-fbtn'+(TF===t?' active':'');b.textContent=t;b.onclick=()=>setTF(t);w.appendChild(b)});
 }
 function rList(){
@@ -639,8 +702,17 @@ function rList(){
 
 function rMain(){
   const m=document.getElementById('main');
-  if(VM==='single'){m.innerHTML=SEL?rCard(SEL,D.cards.indexOf(SEL)):'<div class="empty">Select a model from the sidebar</div>'}
-  else{m.innerHTML=gFilt().map(c=>rCard(c,D.cards.indexOf(c))).join('')}
+  if(VM==='single'){
+    if(!SEL){m.innerHTML='<div class="empty">Select a model from the sidebar</div>';return}
+    try{m.innerHTML=rCard(SEL,D.cards.indexOf(SEL));}
+    catch(e){
+      const idx=D.cards.indexOf(SEL);
+      m.innerHTML=`<div class="card-top-err"><h3>Card render failed</h3><div><span class="name">${E(SEL.name||'Unknown card')}</span> could not be displayed.</div><div class="small">${E(errTxt(e))}</div><div class="err-actions" style="margin-top:12px">${idx>=0?`<button class="err-btn" onclick="resetCardSection(${idx},'health')">Reset Health</button><button class="err-btn" onclick="resetCardSection(${idx},'profiles')">Reset Profiles</button><button class="err-btn" onclick="resetCardSection(${idx},'animus')">Reset Animus</button>`:''}</div></div>`;
+    }
+  }
+  else{
+    m.innerHTML=gFilt().map(c=>{try{return rCard(c,D.cards.indexOf(c))}catch(e){return `<div class="card-top-err"><h3>Card render failed</h3><div><span class="name">${E(c.name||'Unknown card')}</span></div><div class="small">${E(errTxt(e))}</div></div>`}}).join('')
+  }
 }
 
 // ── Stat bar ────────────────────────────────────────────────────────────────
@@ -651,15 +723,16 @@ function rH(h){
   if(!h||!h.type)return'';
   const t=h.type;
   if(t==='Ring'){
-    const vals=h.values||[];
+    const vals=Array.isArray(h.values)?h.values:[];
+    if(vals.length<3)throw new Error('Ring health requires three numeric values, outer, middle, inner.');
     const outer=parseInt(vals[0]||0),mid=parseInt(vals[1]||0),inner=parseInt(vals[2]||0);
     const total=outer+mid+inner;
     const isLarge=total>30;
     const W=isLarge?320:280,H=isLarge?320:280,cx=W/2,cy=H/2;
     const rO=isLarge?130:108,rM=isLarge?88:72,rI=isLarge?46:37;
-    const rings=[{count:outer,r:rO,color:'#8b3030',stroke:'#c44',label:'Outer',dotR:5.5},{count:mid,r:rM,color:'#7a2a2a',stroke:'#b33',label:'Middle',dotR:5.5},{count:inner,r:rI,color:'#6a1f1f',stroke:'#a22',label:'Inner',dotR:isLarge?5.5:4.5}];
+    const rings=[{count:outer,r:rO,stroke:'#c44',label:'Outer',dotR:5.5},{count:mid,r:rM,stroke:'#b33',label:'Middle',dotR:5.5},{count:inner,r:rI,stroke:'#a22',label:'Inner',dotR:isLarge?5.5:4.5}];
     let dots='';
-    rings.forEach(({count,r,color,stroke,dotR})=>{if(!count)return;for(let j=0;j<count;j++){const angle=(2*Math.PI*j/count)-Math.PI/2;const x=(cx+r*Math.cos(angle)).toFixed(2);const y=(cy+r*Math.sin(angle)).toFixed(2);dots+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="#e8e8e8" stroke="#222" stroke-width="1.5"/>"`;}});
+    rings.forEach(({count,r,stroke,dotR})=>{if(!count)return;for(let j=0;j<count;j++){const angle=(2*Math.PI*j/count)-Math.PI/2;const x=(cx+r*Math.cos(angle)).toFixed(2);const y=(cy+r*Math.sin(angle)).toFixed(2);dots+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="#e8e8e8" stroke="#222" stroke-width="1.5"/>`;}});
     const arcs=rings.map(({r,stroke})=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${stroke}" stroke-width="${isLarge?18:15}" stroke-opacity="0.35"/>`).join('');
     let legend='<div class="ring-legend">';
     rings.forEach(({count,stroke,label})=>{if(!count)return;legend+=`<div class="ring-legend-item"><div class="ring-legend-dot" style="background:${stroke}44;border-color:${stroke}"></div>${label}: ${count}</div>`});
@@ -667,7 +740,8 @@ function rH(h){
     return`<div class="ring-wrap"><div class="ring-total">♥${total} (${outer}/${mid}/${inner})</div><div class="ring-diagram"><svg class="ring-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${arcs}${dots}</svg></div>${legend}</div>`;
   }
   if(t==='Spiral'){
-    const vals=h.values||[];
+    const vals=Array.isArray(h.values)?h.values:[];
+    if(vals.length<6)throw new Error('Spiral health requires six column counts.');
     const colCounts=vals.map(v=>parseInt(v)||0);
     const total=colCounts.reduce((a,b)=>a+b,0)+6;
     const aspects=[{name:'Mind',short:'M',col1:colCounts[0],col2:colCounts[1],color:'#5588cc',stroke:'#6699dd'},{name:'Body',short:'B',col1:colCounts[2],col2:colCounts[3],color:'#cc5555',stroke:'#dd6666'},{name:'Spirit',short:'S',col1:colCounts[4],col2:colCounts[5],color:'#55aa55',stroke:'#66bb66'}];
@@ -680,7 +754,7 @@ function rH(h){
       cols.forEach((nDots,colIdx)=>{
         const armI=ai*2+colIdx;const startAngle=armStarts[armI];const totalInArm=nDots+1;
         for(let d=0;d<nDots;d++){const tScaled=nDots>1?d/totalInArm:0;const pos=spiralPos(startAngle,tScaled);armPositions[colIdx].push(pos);dots+=`<circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;}
-        const labelAngle=startAngle;const lR=maxR+16;const lx=cx+lR*Math.cos(labelAngle);const ly=cy+lR*Math.sin(labelAngle);
+        const lR=maxR+16;const lx=cx+lR*Math.cos(startAngle);const ly=cy+lR*Math.sin(startAngle);
         labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${asp.stroke}" font-family="Oswald" font-weight="700" font-size="14">${armI+1}</text>`;
       });
       const midAngle=(armStarts[ai*2]+armStarts[ai*2+1])/2+spiralTwist*0.85;
@@ -689,12 +763,7 @@ function rH(h){
       dots+=`<circle cx="${s1.x.toFixed(1)}" cy="${s1.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
       dots+=`<circle cx="${s2.x.toFixed(1)}" cy="${s2.y.toFixed(1)}" r="${dotR}" fill="#e8e8e8" stroke="${asp.stroke}" stroke-width="2"/>`;
       armPositions[0].push(s1,s2);armPositions[1].push(s1,s2);
-      armPositions.forEach(posArr=>{
-        if(posArr.length<2)return;
-        let pathD=`M${posArr[0].x.toFixed(1)},${posArr[0].y.toFixed(1)}`;
-        for(let i=1;i<posArr.length;i++){const prev=posArr[i-1];const curr=posArr[i];const mx=(prev.x+curr.x)/2;const my=(prev.y+curr.y)/2;const dx=curr.x-prev.x;const dy=curr.y-prev.y;const cpx=mx+dy*0.15;const cpy=my-dx*0.15;pathD+=` Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${curr.x.toFixed(1)},${curr.y.toFixed(1)}`;}
-        paths+=`<path d="${pathD}" fill="none" stroke="${asp.stroke}" stroke-width="2.5" stroke-opacity="0.3" stroke-linecap="round"/>`;
-      });
+      armPositions.forEach(posArr=>{if(posArr.length<2)return;let pathD=`M${posArr[0].x.toFixed(1)},${posArr[0].y.toFixed(1)}`;for(let i=1;i<posArr.length;i++){const prev=posArr[i-1],curr=posArr[i],mx=(prev.x+curr.x)/2,my=(prev.y+curr.y)/2,dx=curr.x-prev.x,dy=curr.y-prev.y,cpx=mx+dy*0.15,cpy=my-dx*0.15;pathD+=` Q${cpx.toFixed(1)},${cpy.toFixed(1)} ${curr.x.toFixed(1)},${curr.y.toFixed(1)}`;}paths+=`<path d="${pathD}" fill="none" stroke="${asp.stroke}" stroke-width="2.5" stroke-opacity="0.3" stroke-linecap="round"/>`;});
     });
     let legend='<div class="spiral-legend">';
     aspects.forEach(asp=>{const aspTotal=asp.col1+asp.col2+2;legend+=`<div class="spiral-legend-item"><div class="spiral-legend-dot" style="background:${asp.stroke}44;border-color:${asp.stroke}"></div>${asp.name}: ${aspTotal}</div>`});
@@ -702,31 +771,31 @@ function rH(h){
     return`<div class="spiral-wrap"><div class="spiral-total">♥${total}</div><div class="spiral-hdr">${aspects.map(a=>`<span class="spiral-hdr-label" style="background:${a.color}30;color:${a.stroke};border:1px solid ${a.stroke}55">${a.short}</span>`).join('')}</div><div class="spiral-diagram"><svg class="spiral-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${paths}${dots}${labels}</svg></div>${legend}</div>`;
   }
   if(t==='Box'||t==='Box Multi'){
-    const ns=h.names||[],vs=h.values||[];
+    const ns=Array.isArray(h.names)?h.names:[];const vs=Array.isArray(h.values)?h.values:[];
     let o='<div class="hs">';
     ns.forEach((n,i)=>{const c=parseInt(vs[i]?.[0]||vs[i]||'0');o+=`<div style="margin-bottom:${i<ns.length-1?8:0}px"><div class="hl"><span class="hhp">♥${c}</span>${n?`<span class="hn">${E(n)}</span>`:''}</div><div class="hbs">`;for(let j=0;j<c;j++)o+=`<div class="hb${j>=c-2?' l2':''}"></div>`;o+='</div></div>'});
     return o+'</div>';
   }
   if(t==='Grid'||t==='Grid Large'){
-    const rows=h.values||[];const isLarge=t==='Grid Large';
-    const colCount=rows.length?rows[0].split(',').length:6;const halfCol=isLarge?colCount/2:colCount;
-    let tb=0;rows.forEach(r=>r.split(',').forEach(c=>{if(c.trim()!=='-')tb++}));
-    let o='<div class="hs">';o+=`<div class="hl"><span class="hhp">♥${tb}</span></div>`;
+    const rows=Array.isArray(h.values)?h.values:[];const isLarge=t==='Grid Large';
+    if(!rows.length)throw new Error('Grid health has no rows.');
+    if(typeof rows[0]!=='string'){
+      if(h.grid&&Array.isArray(h.grid.cells))throw new Error('Grid health uses structured grid data, but this viewer expects comma-separated string rows in health.values.');
+      throw new Error('Grid health rows must be strings.');
+    }
+    const colCount=rows[0].split(',').length, halfCol=isLarge?colCount/2:colCount;
+    let tb=0;rows.forEach(r=>{if(typeof r!=='string')throw new Error('One or more grid rows are not strings.');r.split(',').forEach(c=>{if(c.trim()!=='-')tb++})});
+    let o='<div class="hs"><div class="hl"><span class="hhp">♥'+tb+'</span></div>';
     o+=`<div class="gh${isLarge?' lg':''}"><div class="gcl"></div>`;
-    if(isLarge){for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`;for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`}
-    else{for(let i=1;i<=colCount;i++)o+=`<div class="gcl">${i}</div>`}
+    if(isLarge){for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`;for(let i=1;i<=halfCol;i++)o+=`<div class="gcl">${i}</div>`} else {for(let i=1;i<=colCount;i++)o+=`<div class="gcl">${i}</div>`}
     o+=`</div><div class="grs${isLarge?' lg':''}">`;
-    rows.forEach((row,ri)=>{
-      const cells=row.split(',');o+=`<div class="gr"><div class="grl">${ri+1}</div>`;
-      cells.forEach(cell=>{const val=cell.trim(),miss=val==='-',letter=val&&val!==' '&&!miss?val:'',color=GC[val]||'#4a6a5a';if(miss)o+='<div class="gc ms"></div>';else o+=`<div class="gc" style="background:${color}25;border:1px solid ${color}55;color:${color}">${letter&&GN[letter]?letter:''}</div>`;});
-      o+='</div>';
-    });
+    rows.forEach((row,ri)=>{const cells=row.split(',');o+=`<div class="gr"><div class="grl">${ri+1}</div>`;cells.forEach(cell=>{const val=cell.trim(),miss=val==='-',letter=val&&val!==' '&&!miss?val:'',color=GC[val]||'#4a6a5a';if(miss)o+='<div class="gc ms"></div>';else o+=`<div class="gc" style="background:${color}25;border:1px solid ${color}55;color:${color}">${letter&&GN[letter]?letter:''}</div>`;});o+='</div>';});
     o+='</div>';
     const used=new Set();rows.forEach(r=>r.split(',').forEach(c=>{const v=c.trim();if(GN[v])used.add(v)}));
     if(used.size){o+='<div class="gl">';used.forEach(l=>{o+=`<span style="color:${GC[l]}">■ ${GN[l]}</span>`});o+='</div>'}
     return o+'</div>';
   }
-  return'';
+  throw new Error(`Unsupported health type: ${t}`);
 }
 
 // ── Weapon ──────────────────────────────────────────────────────────────────
@@ -761,86 +830,55 @@ function rCard(card,idx){
   if(card.composition)o+=`<span>${E(card.composition)}</span>`;
   if(card.keywords&&card.keywords.filter(k=>k).length)o+=`<span class="card-kw">${card.keywords.filter(k=>k).map(E).join(', ')}</span>`;
   o+='</div></div>';
-  if(card.health&&card.health.type){o+='<div class="sh"><span class="si">♥</span>Health</div>';o+=rH(card.health)}
-  if(card.rules&&Object.keys(card.rules).length){
-    o+='<div class="sh"><span class="si">📋</span>Card Rules</div><div class="rw">';
-    Object.entries(card.rules).forEach(([n,d])=>{o+=`<div class="rb"><span class="rn">${E(n)}</span><span class="rd">— ${E(d)}</span></div>`});
-    o+='</div>';
-  }
+
+  if(card.health&&card.health.type)o+=wrapSection('Health','♥','health',idx,()=>rH(card.health));
+  if(card.rules&&Object.keys(card.rules).length)o+=wrapSection('Card Rules','📋','rules',idx,()=>{let x='<div class="rw">';Object.entries(card.rules).forEach(([n,d])=>{x+=`<div class="rb"><span class="rn">${E(n)}</span><span class="rd">— ${E(d)}</span></div>`});return x+'</div>';});
+
   (card.profiles||[]).forEach(p=>{
-    o+=`<div class="sh"><span class="si">👤</span>${E(p.name)} ${rIco(p.icons)}</div><div class="aw">`;
-    o+=rSB(p.stats,false);
-    if(p.abilities&&p.abilities.length){
-      o+='<div class="at" style="margin-top:6px">';
-      o+=p.abilities.map(a=>`<span class="atg">${E(a)}</span>`).join('<span style="color:var(--text-muted)">, </span>');
-      o+='</div>';
-      p.abilities.forEach(a=>{if(ab[a])o+=`<div class="ad"><strong>${E(a)}</strong> — ${E(ab[a])}</div>`});
-    }
-    o+='</div>';
-    if(p.weapons&&p.weapons.length){o+='<div class="sh"><span class="si">⚔</span>Weapons</div><div class="ww">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
+    o+=wrapSection(p.name||'Profile','👤','profiles',idx,()=>{
+      let x=`<div class="aw">${rSB(p.stats||{},false)}`;
+      if(p.abilities&&p.abilities.length){
+        x+='<div class="at" style="margin-top:6px">';
+        x+=p.abilities.map(a=>`<span class="atg">${E(a)}</span>`).join('<span style="color:var(--text-muted)">, </span>');
+        x+='</div>';
+        p.abilities.forEach(a=>{if(ab[a])x+=`<div class="ad"><strong>${E(a)}</strong> — ${E(ab[a])}</div>`});
+      }
+      x+='</div>';
+      if(p.weapons&&p.weapons.length){x+='<div class="sh"><span class="si">⚔</span>Weapons</div><div class="ww">';p.weapons.forEach(w=>{x+=rW(w,pr)});x+='</div>'}
+      return x;
+    });
   });
-  if(card.spells&&card.spells.length){
-    o+='<div class="sh"><span class="si">✦</span>Spells</div><div class="sw">';
-    card.spells.forEach(sn=>{
-      const s=sp[sn];
-      if(!s){o+=`<div class="spb"><div class="spn">${E(sn)}</div><div class="spx" style="color:var(--red)">Not found in spell list</div></div>`;return}
-      o+='<div class="spb"><div class="spt">';
-      o+=`<div class="spn">${E(sn)}</div><div class="sps">`;
-      XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;o+=`<div class="spc"><div class="spl">${XL[k]}</div><div class="spv">${E(v)}</div></div>`});
-      o+='</div></div>';
-      if(s.text)o+=`<div class="spx">${E(s.text)}</div>`;
-      o+='</div>';
-    });
-    o+='</div>';
-  }
-  if(card.animus&&Object.keys(card.animus).length){
-    const an=card.animus;
-    o+='<div class="sh"><span class="si">🔮</span>Animus</div><div class="anw">';
-    Object.entries(an).forEach(([sn,s])=>{
-      o+='<div class="anb"><div class="ant">';
-      o+=`<div class="ann">${E(sn)}</div><div class="ans">`;
-      XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;o+=`<div class="anc"><div class="anl">${XL[k]}</div><div class="anv">${E(v)}</div></div>`});
-      o+='</div></div>';
-      if(s.text)o+=`<div class="anx">${E(s.text)}</div>`;
-      o+='</div>';
-    });
-    o+='</div>';
-  }
+
+  if(card.spells&&card.spells.length)o+=wrapSection('Spells','✦','spells',idx,()=>{let x='<div class="sw">';card.spells.forEach(sn=>{const s=sp[sn];if(!s){x+=`<div class="spb"><div class="spn">${E(sn)}</div><div class="spx" style="color:var(--red)">Not found in spell list</div></div>`;return}x+='<div class="spb"><div class="spt">';x+=`<div class="spn">${E(sn)}</div><div class="sps">`;XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;x+=`<div class="spc"><div class="spl">${XL[k]}</div><div class="spv">${E(v)}</div></div>`});x+='</div></div>';if(s.text)x+=`<div class="spx">${E(s.text)}</div>`;x+='</div>';});return x+'</div>';});
+
+  if(card.animus&&Object.keys(card.animus).length)o+=wrapSection('Animus','🔮','animus',idx,()=>{const entries=Object.entries(card.animus).filter(([sn,s])=>s&&typeof s==='object');if(!entries.length)throw new Error('Animus data exists, but contains no valid animus objects.');let x='<div class="anw">';entries.forEach(([sn,s])=>{x+='<div class="anb"><div class="ant">';x+=`<div class="ann">${E(sn)}</div><div class="ans">`;XO.forEach(k=>{const v=s.stats?.[k];if(v===undefined||v==='')return;x+=`<div class="anc"><div class="anl">${XL[k]}</div><div class="anv">${E(v)}</div></div>`});x+='</div></div>';if(s.text)x+=`<div class="anx">${E(s.text)}</div>`;x+='</div>';});return x+'</div>';});
+
   if(card.rack&&card.rack!=='')o+=`<div style="padding:2px 14px 6px"><span style="font-size:10px;color:var(--text-muted);font-family:'Oswald'">Spell Rack: ${E(card.rack)} slots</span></div>`;
-  if(card.feat&&Object.keys(card.feat).length){
-    o+='<div class="sh"><span class="si">🔥</span>Feat</div><div class="fw">';
-    Object.entries(card.feat).forEach(([n,d])=>{o+=`<div class="fb"><div class="fn">${E(n)}</div><div class="fd">${E(d)}</div></div>`});
-    o+='</div>';
-  }
-  if(card.options&&card.options.length){
+  if(card.feat&&Object.keys(card.feat).length)o+=wrapSection('Feat','🔥','feat',idx,()=>{let x='<div class="fw">';Object.entries(card.feat).forEach(([n,d])=>{x+=`<div class="fb"><div class="fn">${E(n)}</div><div class="fd">${E(d)}</div></div>`});return x+'</div>';});
+
+  if(card.options&&card.options.length)o+=wrapSection('Options','🔧','options',idx,()=>{
     const slots=new Map();
     card.options.forEach(opt=>{const s=opt.slot||'';if(!slots.has(s))slots.set(s,[]);slots.get(s).push(opt)});
+    let x='';
     slots.forEach((opts,slot)=>{
-      o+=`<div class="sh"><span class="si">🔧</span>${E(slot?slot+' Options':'Options')}</div><div class="ow">`;
+      x+=`<div class="sh"><span class="si">🔧</span>${E(slot?slot+' Options':'Options')}</div><div class="ow">`;
       opts.forEach(opt=>{
-        o+='<div class="ob"><div class="ot"><div>';
-        o+=`<span class="onn">${E(opt.name)}</span>${rIco(opt.icons,true)}`;
-        if(opt.hardpoints)o+=`<span class="ohp">[${opt.hardpoints.map(E).join(', ')}]</span>`;
-        o+='</div>';
-        if(opt.cost&&opt.cost!=='0')o+=`<span class="oc">+${E(opt.cost)} pts</span>`;
-        o+='</div>';
-        if(opt.abilities&&opt.abilities.length){o+='<div style="margin-top:4px">';opt.abilities.forEach(a=>{o+=`<div style="font-size:11px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
-        if(opt.weapons&&opt.weapons.length){o+='<div style="margin-top:4px">';opt.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
-        if(opt.profiles&&opt.profiles.length){
-          o+='<div style="margin-top:6px">';
-          opt.profiles.forEach(p=>{
-            o+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)} ${rIco(p.icons,true)}</div>`;
-            o+=rSB(p.stats,true);
-            if(p.abilities&&p.abilities.length){o+='<div style="margin-top:3px">';p.abilities.forEach(a=>{o+=`<div style="font-size:10px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});o+='</div>'}
-            if(p.weapons&&p.weapons.length){o+='<div style="margin-top:3px">';p.weapons.forEach(w=>{o+=rW(w,pr)});o+='</div>'}
-          });
-          o+='</div>';
-        }
-        o+='</div>';
+        x+='<div class="ob"><div class="ot"><div>';
+        x+=`<span class="onn">${E(opt.name)}</span>${rIco(opt.icons,true)}`;
+        if(opt.hardpoints)x+=`<span class="ohp">[${opt.hardpoints.map(E).join(', ')}]</span>`;
+        x+='</div>';
+        if(opt.cost&&opt.cost!=='0')x+=`<span class="oc">+${E(opt.cost)} pts</span>`;
+        x+='</div>';
+        if(opt.abilities&&opt.abilities.length){x+='<div style="margin-top:4px">';opt.abilities.forEach(a=>{x+=`<div style="font-size:11px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});x+='</div>'}
+        if(opt.weapons&&opt.weapons.length){x+='<div style="margin-top:4px">';opt.weapons.forEach(w=>{x+=rW(w,pr)});x+='</div>'}
+        if(opt.profiles&&opt.profiles.length){x+='<div style="margin-top:6px">';opt.profiles.forEach(p=>{x+=`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${E(p.name)} ${rIco(p.icons,true)}</div>`;x+=rSB(p.stats||{},true);if(p.abilities&&p.abilities.length){x+='<div style="margin-top:3px">';p.abilities.forEach(a=>{x+=`<div style="font-size:10px;color:var(--text-dim)"><strong style="color:var(--accent-light)">${E(a)}</strong>${ab[a]?` — ${E(ab[a])}`:''}</div>`});x+='</div>'}if(p.weapons&&p.weapons.length){x+='<div style="margin-top:3px">';p.weapons.forEach(w=>{x+=rW(w,pr)});x+='</div>'}});x+='</div>'}
+        x+='</div>';
       });
-      o+='</div>';
+      x+='</div>';
     });
-  }
+    return x;
+  });
+
   o+=`<div class="card-cf"><span>${E(card.faction)} — ${E(card.type)}</span>${idx>=0?`<button class="card-ed-btn" onclick="openEdit(${idx})">✏ EDIT</button>`:''}</div>`;
   o+='</div>';
   return o;
@@ -939,6 +977,7 @@ function dlIcons(){return`<datalist id="dlIco">${KNOWN_ICONS.map(i=>`<option val
 function dlSpells(){return`<datalist id="dlSp">${KNOWN_SPELLS.map(s=>`<option value="${av(s)}">`).join('')}</datalist>`}
 function dlAbilities(){return`<datalist id="dlAb">${KNOWN_ABILITIES.map(a=>`<option value="${av(a)}">`).join('')}</datalist>`}
 function dlProps(){return`<datalist id="dlPr">${KNOWN_PROPS.map(p=>`<option value="${av(p)}">`).join('')}</datalist>`}
+function dlAnimus(){return`<datalist id="dlAn">${KNOWN_ANIMUS.map(a=>`<option value="${av(a)}">`).join('')}</datalist>`}
 
 // ── Sections ─────────────────────────────────────────────────────────────────
 function edBasic(){
@@ -1130,8 +1169,12 @@ function edAnimus(){
   const rows=entries.map(([name,s],i)=>`
     <div class="ed-sub" style="margin-bottom:6px">
       <div class="ed-sub-hdr">
-        <div class="ed-field grow"><div class="ed-lbl">Animus Name</div><input class="ed-in" value="${av(name)}" oninput="renameObjKey(EDIT_CARD.animus,${i},this.value)"></div>
+        <div class="ed-field grow"><div class="ed-lbl">Animus Name</div><input class="ed-in" list="dlAn" value="${av(name)}" oninput="renameObjKey(EDIT_CARD.animus,${i},this.value)"></div>
         <button class="ed-rm" onclick="rmObjKey(EDIT_CARD,'animus',${i});reRenderEditBody()">✕</button>
+      </div>
+      <div class="ed-row" style="margin-bottom:6px">
+        <button class="ed-add" type="button" onclick="pullAnimusFromLibrary(${i})">↺ LOAD FROM LIBRARY</button>
+        <button class="ed-add" type="button" onclick="pushAnimusToLibrary(${i})">💾 SAVE TO LIBRARY</button>
       </div>
       <div class="ed-row">
         ${XO.map(k=>`<div class="ed-field"><div class="ed-lbl">${XL[k]}</div><input class="ed-in" style="width:55px" value="${av(s.stats?.[k]||'')}" oninput="setAnimStat(${i},'${k}',this.value)"></div>`).join('')}
@@ -1141,8 +1184,13 @@ function edAnimus(){
     </div>`).join('');
   return`<div class="ed-sec">
     <div class="ed-sec-hdr">🔮 Animus</div>
+    ${dlAnimus()}
+    <div class="ed-row" style="align-items:flex-end;margin-bottom:8px">
+      <div class="ed-field grow"><div class="ed-lbl">Add from Animus Library</div><input class="ed-in" id="animusLibraryPick" list="dlAn" placeholder="Choose an existing animus"></div>
+      <button class="ed-add" type="button" onclick="addAnimusFromPicker()">+ ADD FROM LIBRARY</button>
+      <button class="ed-add" type="button" onclick="addObjEntry(EDIT_CARD,'animus','New Animus',{stats:{cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No'},text:''});reRenderEditBody()">+ ADD NEW</button>
+    </div>
     ${rows}
-    <button class="ed-add" onclick="addObjEntry(EDIT_CARD,'animus','New Animus',{stats:{},text:''});reRenderEditBody()">+ ADD ANIMUS</button>
   </div>`;
 }
 
@@ -1277,6 +1325,41 @@ function setAnimText(i,v){
   const keys=Object.keys(EDIT_CARD.animus||{});
   if(i<keys.length)EDIT_CARD.animus[keys[i]].text=v;
 }
+function getAnimusLibrary(){return D.animus||(D.animus={})}
+function cloneAnimusEntry(v){
+  const stats={cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No',...(v&&v.stats||{})};
+  return {stats,text:(v&&v.text)||''};
+}
+function addAnimusFromPicker(){
+  const input=document.getElementById('animusLibraryPick');
+  const key=(input&&input.value||'').trim();
+  if(!key)return alert('Choose an animus from the library first.');
+  const lib=getAnimusLibrary();
+  if(!(key in lib))return alert(`"${key}" was not found in the Animus library.`);
+  if(!EDIT_CARD.animus)EDIT_CARD.animus={};
+  let finalKey=key,n=1;
+  while(EDIT_CARD.animus[finalKey]!==undefined)finalKey=`${key} ${++n}`;
+  EDIT_CARD.animus[finalKey]=cloneAnimusEntry(lib[key]);
+  reRenderEditBody();
+}
+function pullAnimusFromLibrary(i){
+  const keys=Object.keys(EDIT_CARD.animus||{});
+  if(i>=keys.length)return;
+  const key=keys[i];
+  const lib=getAnimusLibrary();
+  if(!(key in lib))return alert(`No Animus library entry named "${key}" was found.`);
+  EDIT_CARD.animus[key]=cloneAnimusEntry(lib[key]);
+  reRenderEditBody();
+}
+function pushAnimusToLibrary(i){
+  const keys=Object.keys(EDIT_CARD.animus||{});
+  if(i>=keys.length)return;
+  const key=(keys[i]||'').trim();
+  if(!key)return alert('Give the animus a name first.');
+  getAnimusLibrary()[key]=cloneAnimusEntry(EDIT_CARD.animus[key]);
+  buildKnownLists();
+  reRenderEditBody();
+}
 
 // ── Option-level Animus helpers ───────────────────────────────────────────────
 function addOptAnimus(oi){
@@ -1375,6 +1458,7 @@ function openDBModal(){
   if(!D.spells)D.spells={};
   if(!D.abilities)D.abilities={};
   if(!D.properties)D.properties={};
+  if(!D.animus)D.animus={};
   DB_TAB='spells';DB_SEARCH='';DB_KEY=null;
   document.getElementById('dbModal').style.display='flex';
   document.getElementById('dbSearch').value='';
@@ -1394,6 +1478,7 @@ function dbRender(){
   document.getElementById('dbTabSpells').className='db-tab'+(DB_TAB==='spells'?' active':'');
   document.getElementById('dbTabAbilities').className='db-tab'+(DB_TAB==='abilities'?' active':'');
   document.getElementById('dbTabProps').className='db-tab gold'+(DB_TAB==='properties'?' active':'');
+  document.getElementById('dbTabAnimus').className='db-tab'+(DB_TAB==='animus'?' active':'');
   dbRenderList();
   dbRenderEditor();
 }
@@ -1420,7 +1505,7 @@ function dbRenderList(){
 function dbRenderEditor(){
   const el=document.getElementById('dbEditor');
   if(!DB_KEY){
-    const labels={spells:'spell',abilities:'ability',properties:'property'};
+    const labels={spells:'spell',abilities:'ability',properties:'property',animus:'animus'};
     el.innerHTML=`<div class="db-empty">← Select a ${labels[DB_TAB]} to edit<br>or click <strong style="color:var(--accent)">＋ ADD NEW</strong> to create one.</div>`;
     return;
   }
@@ -1428,11 +1513,14 @@ function dbRenderEditor(){
   if(!(DB_KEY in section)){DB_KEY=null;dbRenderEditor();return}
   const val=section[DB_KEY];
   let html='';
-  if(DB_TAB==='spells'){
+  if(DB_TAB==='spells' || DB_TAB==='animus'){
     const stats=(val&&val.stats)||{};
+    const nameLabel=DB_TAB==='spells'?'Spell Name':'Animus Name';
+    const textLabel=DB_TAB==='spells'?'Spell Text':'Animus Text';
+    const deleteLabel=DB_TAB==='spells'?'SPELL':'ANIMUS';
     html=`
     <div class="ed-field" style="margin-bottom:12px">
-      <div class="ed-lbl">Spell Name</div>
+      <div class="ed-lbl">${nameLabel}</div>
       <input class="ed-in" id="dbNameIn" value="${av(DB_KEY)}" onchange="dbRename(this.value)">
       <div style="font-size:10px;color:var(--text-muted);margin-top:3px;font-family:'Oswald'">Press Enter or click away to rename</div>
     </div>
@@ -1443,11 +1531,11 @@ function dbRenderEditor(){
       </div>`).join('')}
     </div>
     <div class="ed-field">
-      <div class="ed-lbl">Spell Text</div>
+      <div class="ed-lbl">${textLabel}</div>
       <textarea class="ed-ta" style="min-height:140px" oninput="dbSetSpellText(this.value)">${av((val&&val.text)||'')}</textarea>
     </div>
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border)">
-      <button class="ed-del" onclick="dbDelete()">🗑 DELETE SPELL</button>
+      <button class="ed-del" onclick="dbDelete()">🗑 DELETE ${deleteLabel}</button>
     </div>`;
   }else{
     const label=DB_TAB==='abilities'?'Ability':'Property';
@@ -1528,11 +1616,12 @@ function dbAddNew(){
   if(!D.spells)D.spells={};
   if(!D.abilities)D.abilities={};
   if(!D.properties)D.properties={};
-  const labels={spells:'New Spell',abilities:'New Ability',properties:'New Property'};
+  if(!D.animus)D.animus={};
+  const labels={spells:'New Spell',abilities:'New Ability',properties:'New Property',animus:'New Animus'};
   let key=labels[DB_TAB],n=1;
   const section=dbSection();
   while(key in section)key=labels[DB_TAB]+' '+(++n);
-  if(DB_TAB==='spells'){
+  if(DB_TAB==='spells' || DB_TAB==='animus'){
     section[key]={stats:{cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No'},text:''};
   }else{
     section[key]='';
