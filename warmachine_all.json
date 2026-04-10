@@ -59446,7 +59446,7 @@
     },
     {
       "name": "VULCAN",
-      "type": "Warjack",
+      "type": "Colossal",
       "faction": "Crucible Guard",
       "armies": [
         "Crucible Guard"
@@ -77476,19 +77476,7 @@
           ]
         }
       ],
-      "animus": {
-        "Primal": {
-          "stats": {
-            "cost": "1",
-            "rng": "6",
-            "aoe": "-",
-            "pow": "-",
-            "dur": "RND",
-            "off": "No"
-          },
-          "text": "Target friendly faction warbeast gains +2 MAT and +2 to its melee attack damage rolls for one round and automatically frenzies during your next control phase. The target warbeast frenzies even if Primal was removed by a spell, special rule or casting of a new animus on it prior to your next control phase"
-        }
-      }
+      "animus": {}
     },
     {
       "name": "GUN BOAR",
@@ -77584,19 +77572,7 @@
           ]
         }
       ],
-      "animus": {
-        "Counterblast": {
-          "stats": {
-            "cost": "1",
-            "rng": "Self",
-            "aoe": "-",
-            "pow": "-",
-            "dur": "Rnd",
-            "off": "No"
-          },
-          "text": "When an enemy ends within 5\" of the spellcaster, the spellcaster can make one basic melee or ranged attack targeting the model. Then counterblast expires"
-        }
-      }
+      "animus": {}
     },
     {
       "name": "LYTIERSIS",
@@ -77720,7 +77696,19 @@
           ]
         }
       ],
-      "animus": {}
+      "animus": {
+        "Putrid Miasma": {
+          "stats": {
+            "cost": "2",
+            "rng": "Self",
+            "aoe": "-",
+            "pow": "-",
+            "dur": "Rnd",
+            "off": "No"
+          },
+          "text": "Friendly Models within 6\" gain magic resist (Roll and extra dice discard highest when targeted by arcane attack)"
+        }
+      }
     },
     {
       "name": "RAZOR BOAR",
@@ -106127,7 +106115,7 @@
     },
     {
       "name": "COROLLARY",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106205,7 +106193,7 @@
     },
     {
       "name": "ASSIMILATOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106299,7 +106287,7 @@
     },
     {
       "name": "CIPHER",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106395,7 +106383,7 @@
     },
     {
       "name": "CONSERVATOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106474,7 +106462,7 @@
     },
     {
       "name": "INVERTER",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106567,7 +106555,7 @@
     },
     {
       "name": "MODULATOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106663,7 +106651,7 @@
     },
     {
       "name": "MONITOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -106760,7 +106748,7 @@
     },
     {
       "name": "NEGATOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -107119,7 +107107,7 @@
     },
     {
       "name": "TESSELATOR",
-      "type": "Warjack",
+      "type": "Vector",
       "faction": "Convergence of Cyriss",
       "armies": [
         "Convergence of Cyriss"
@@ -115026,6 +115014,17 @@
         "off": "No"
       },
       "text": "The spellcaster gains an additional die on melee damage rolls against living models and Snacking. Pig Farm lasts for one turn. (When a model with Snacking boxes a living model with a melee attack, the model with Snacking can choose to remove the boxed model from play. When it does, this model can remove d3 damage points.)"
+    },
+    "Putrid Miasma": {
+      "stats": {
+        "cost": "2",
+        "rng": "Self",
+        "aoe": "-",
+        "pow": "-",
+        "dur": "Rnd",
+        "off": "No"
+      },
+      "text": "Friendly Models within 6\" gain magic resist (Roll and extra dice discard highest when targeted by arcane attack)"
     }
   }
 }
