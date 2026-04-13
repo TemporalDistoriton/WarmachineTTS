@@ -492,7 +492,7 @@ const SO=['spd','aat','mat','rat','def','arm','arc','fury','ctrl','thr','ess'];
 const SL={spd:'SPD',aat:'AAT',mat:'MAT',rat:'RAT',def:'DEF',arm:'ARM',arc:'ARC',fury:'FURY',ctrl:'CTRL',thr:'THR',ess:'ESS'};
 const XO=['cost','rng','aoe','pow','dur','off'];
 const XL={cost:'COST',rng:'RNG',aoe:'AOE',pow:'POW',dur:'DUR',off:'OFF'};
-const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Unit','Solo','Battle Engine','Command','Structure'];
+const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Colossal','Gargantuan','Vector','Unit','Solo','Battle Engine','Command','Structure'];
 
 function tc(t){t=(t||'').toLowerCase();if(t.includes('warcaster')||t.includes('warlock'))return'#8b6b3d';if(t.includes('warjack')||t.includes('warbeast'))return'#3d6b8b';if(t.includes('unit'))return'#6b3d8b';if(t.includes('solo'))return'#3d8b6b';if(t.includes('battle engine'))return'#6b6b3d';if(t.includes('command'))return'#8b3d6b';return'#5a5a5a'}
 function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
@@ -861,7 +861,9 @@ function rCard(card,idx){
 
   (card.profiles||[]).forEach(p=>{
     o+=wrapSection(p.name||'Profile','👤','profiles',idx,()=>{
-      let x=`<div class="aw">${rSB(p.stats||{},false)}`;
+      let x='<div class="aw">';
+      if(p.icons&&p.icons.length)x+=`<div style="margin-bottom:6px">${rIco(p.icons,false)}</div>`;
+      x+=rSB(p.stats||{},false);
       if(p.abilities&&p.abilities.length){
         x+='<div class="at" style="margin-top:6px">';
         x+=p.abilities.map(a=>`<span class="atg">${E(a)}</span>`).join('<span style="color:var(--text-muted)">, </span>');
@@ -1115,7 +1117,10 @@ function edProfiles(){
     return`<div class="ed-sub" style="margin-bottom:8px">
       <div class="ed-sub-hdr">
         <div class="ed-field grow"><div class="ed-lbl">Profile Name</div><input class="ed-in" value="${av(p.name)}" oninput="setP('profiles.${pi}.name',this.value)"></div>
-        <button class="ed-rm" onclick="rmArrItem('profiles',${pi})" title="Remove Profile">✕ Remove</button>
+        <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+          <button class="ed-add" type="button" onclick="duplicateProfile(${pi})" title="Duplicate Profile">⧉ DUPLICATE</button>
+          <button class="ed-rm" onclick="rmArrItem('profiles',${pi})" title="Remove Profile">✕ Remove</button>
+        </div>
       </div>
       <div class="ed-lbl" style="margin-bottom:5px">Stats</div>
       <div class="ed-stats">${statsHtml}</div>
@@ -1340,6 +1345,20 @@ function addObjEntry(parent,field,key,val){
   parent[field][k]=val;
 }
 
+
+function duplicateProfile(idx){
+  if(!EDIT_CARD||!Array.isArray(EDIT_CARD.profiles)||idx<0||idx>=EDIT_CARD.profiles.length)return;
+  const clone=JSON.parse(JSON.stringify(EDIT_CARD.profiles[idx]||{}));
+  const baseName=(clone.name&&String(clone.name).trim())||`Profile ${idx+1}`;
+  const existingNames=new Set((EDIT_CARD.profiles||[]).map(p=>String(p&&p.name||'').trim()).filter(Boolean));
+  let newName=`${baseName} Copy`;
+  let n=2;
+  while(existingNames.has(newName))newName=`${baseName} Copy ${n++}`;
+  clone.name=newName;
+  EDIT_CARD.profiles.splice(idx+1,0,clone);
+  reRenderEditBody();
+}
+
 function setAnimStat(i,k,v){
   const keys=Object.keys(EDIT_CARD.animus||{});
   if(i>=keys.length)return;
@@ -1350,7 +1369,20 @@ function setAnimText(i,v){
   const keys=Object.keys(EDIT_CARD.animus||{});
   if(i<keys.length)EDIT_CARD.animus[keys[i]].text=v;
 }
-function getAnimusLibrary(){return ensureAnimusObject(D)}
+function getAnimusLibrary(){
+  const lib=ensureAnimusObject(D);
+  (D.cards||[]).forEach(c=>{
+    Object.entries(normalizeAnimusContainer(c&&c.animus)).forEach(([k,v])=>{
+      if(lib[k]===undefined)lib[k]=cloneAnimusEntry(v);
+    });
+    (c.options||[]).forEach(o=>{
+      Object.entries(normalizeAnimusContainer(o&&o.animus)).forEach(([k,v])=>{
+        if(lib[k]===undefined)lib[k]=cloneAnimusEntry(v);
+      });
+    });
+  });
+  return lib;
+}
 function cloneAnimusEntry(v){
   const stats={cost:'',rng:'',aoe:'-',pow:'-',dur:'-',off:'No',...(v&&v.stats||{})};
   return {stats,text:(v&&v.text)||''};

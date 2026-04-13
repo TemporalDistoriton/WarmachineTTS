@@ -3062,9 +3062,9 @@
       "health": {
         "type": "Box Multi",
         "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
+          "Anathan",
+          "Dogreth",
+          "Valak"
         ],
         "values": [
           [
@@ -3091,7 +3091,7 @@
       },
       "profiles": [
         {
-          "name": "ANATHAN, DOGRETH, & VALAK",
+          "name": "ANATHAN",
           "stats": {
             "spd": "6",
             "aat": "7",
@@ -3112,6 +3112,101 @@
           ],
           "abilities": [
             "Magic Ability",
+            "Marionette (★Attack)",
+            "Power of Death (★Action)",
+            "Stygian Abyss (★ Attack)",
+            "Mortal Fear"
+          ],
+          "weapons": [
+            {
+              "name": "WRAITH STRIKE",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
+        },
+        {
+          "name": " DOGRETH",
+          "stats": {
+            "spd": "6",
+            "aat": "7",
+            "mat": "6",
+            "rat": "",
+            "def": "14",
+            "arm": "14",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets/Icons/model adv undead.png",
+            "Assets/Icons/model adv incorporeal.png"
+          ],
+          "abilities": [
+            "Magic Ability",
+            "Marionette (★Attack)",
+            "Power of Death (★Action)",
+            "Stygian Abyss (★ Attack)",
+            "Mortal Fear"
+          ],
+          "weapons": [
+            {
+              "name": "WRAITH STRIKE",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": []
+            }
+          ]
+        },
+        {
+          "name": "VALAK",
+          "stats": {
+            "spd": "6",
+            "aat": "7",
+            "mat": "6",
+            "rat": "",
+            "def": "14",
+            "arm": "14",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets/Icons/model adv undead.png",
+            "Assets/Icons/model adv incorporeal.png"
+          ],
+          "abilities": [
+            "Magic Ability",
+            "Marionette (★Attack)",
+            "Power of Death (★Action)",
+            "Stygian Abyss (★ Attack)",
             "Mortal Fear"
           ],
           "weapons": [
@@ -4005,11 +4100,15 @@
       "portrait": "ModelArt\\CAPTAIN RAEF HUXLEY.PNG",
       "attachments": [],
       "health": {
-        "type": "Box",
+        "type": "Box Multi",
         "names": [
-          "Captain Raef Huxley"
+          "HUXLEY SKY STORMER",
+          "HUXLEY GROUND ASSAULT"
         ],
         "values": [
+          [
+            "24"
+          ],
           [
             "24"
           ]
@@ -13293,9 +13392,9 @@
       "health": {
         "type": "Box Multi",
         "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
+          "VYR 2",
+          "MORDRYTH 1",
+          "RYVA 1"
         ],
         "values": [
           [
@@ -13320,7 +13419,7 @@
       },
       "profiles": [
         {
-          "name": "VYR 2, MORDRYTH 1",
+          "name": "VYR 2",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -13393,6 +13492,50 @@
               "name": "GREAT SWORD",
               "type": "Melee",
               "count": "2",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual weapon master.png"
+              ],
+              "stats": {
+                "rng": "2",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
+        },
+        {
+          "name": "MORDRYTH 1",
+          "stats": {
+            "spd": "6",
+            "aat": "",
+            "mat": "7",
+            "rat": "",
+            "def": "13",
+            "arm": "16",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 30mm.png",
+            "Assets\\Icons\\model res cold.png",
+            "Assets/Icons/model adv pathfinder.png"
+          ],
+          "abilities": [
+            "Defensive Line",
+            "Retaliatory Strike",
+            "Righteous Fury"
+          ],
+          "weapons": [
+            {
+              "name": "Greatsword",
+              "type": "Melee",
+              "count": "1",
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual weapon master.png"
@@ -17027,135 +17170,6 @@
               "icons": [],
               "stats": {
                 "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "10"
-              },
-              "properties": []
-            }
-          ]
-        }
-      ],
-      "animus": {}
-    },
-    {
-      "name": "THE LAST WATCH",
-      "type": "Unit",
-      "faction": "House Kallyss",
-      "armies": [
-        "House Kallyss"
-      ],
-      "portrait": "ModelArt\\THE LAST WATCH.PNG",
-      "attachments": [],
-      "health": {
-        "type": "Box Multi",
-        "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
-        ],
-        "values": [
-          [
-            "8"
-          ],
-          [
-            "8"
-          ],
-          [
-            "8"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "8",
-      "fa": "c",
-      "composition": "Aelyth Vyr, Ryva, and Mordryth",
-      "rules": {
-        "Defensive Line": "While this model is B2B with one or more models in its unit, it gains +2 DEF and cannot become knocked down.",
-        "Retaliatory Strike": "If this model is hit by an enemy melee attack during your opponent's turn, after that attack is resolved this model can immediately make one basic melee attack against the attacking model. This model can make only one Retaliatory Strike per turn.",
-        "Righteous Fury": "When one or more friendly Faction warrior models are destroyed by an enemy attack while within 10\" of this model, this model gains +2 ARM and +2 to its melee attack damage rolls for one round."
-      },
-      "profiles": [
-        {
-          "name": "VYR 2, MORDRYTH 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "7",
-            "rat": "",
-            "def": "13",
-            "arm": "16",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png",
-            "Assets\\Icons\\model res cold.png",
-            "Assets/Icons/model adv pathfinder.png"
-          ],
-          "abilities": [
-            "Defensive Line",
-            "Retaliatory Strike",
-            "Righteous Fury"
-          ],
-          "weapons": [
-            {
-              "name": "GREAT SWORD",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual weapon master.png"
-              ],
-              "stats": {
-                "rng": "2",
-                "rof": "",
-                "aoe": "",
-                "pow": "10"
-              },
-              "properties": []
-            }
-          ]
-        },
-        {
-          "name": "RYVA 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "7",
-            "rat": "",
-            "def": "13",
-            "arm": "16",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png",
-            "Assets\\Icons\\model res cold.png",
-            "Assets/Icons/model adv pathfinder.png"
-          ],
-          "abilities": [
-            "Defensive Line",
-            "Retaliatory Strike",
-            "Righteous Fury"
-          ],
-          "weapons": [
-            {
-              "name": "GREAT SWORD",
-              "type": "Melee",
-              "count": "2",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual weapon master.png"
-              ],
-              "stats": {
-                "rng": "2",
                 "rof": "",
                 "aoe": "",
                 "pow": "10"
@@ -26272,7 +26286,7 @@
       "animus": {}
     },
     {
-      "name": "VORGOROTH CODUIT OF THE ABYSS",
+      "name": "VORGOROTH CONDUIT OF THE ABYSS",
       "type": "Warcaster",
       "faction": "Infernals",
       "armies": [
@@ -29546,7 +29560,7 @@
         {
           "name": "LEFT ARM - WEDGE SHIELD",
           "cost": "0",
-          "slot": "L",
+          "slot": "LEFT ARM",
           "icons": [
             "Assets\\Icons\\weapon qual shield.png"
           ],
@@ -36913,7 +36927,7 @@
       "animus": {}
     },
     {
-      "name": "JEZHANNA AGHA DARK SISTER",
+      "name": "JEZHANA AGHA DARK SISTER",
       "type": "Solo",
       "faction": "Old Umbrey",
       "armies": [
@@ -37042,7 +37056,7 @@
       "fa": "2",
       "composition": "",
       "rules": {
-        "Body Snatcher: Trophy Hunter (Lord)": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the following abilities based on the number of corpse tokens it has:\n• 1 or more corpse tokens - When this model has at least one corpse token, enemy models within 10\" and LOS lose Stealth.\n• 3 or more corpse tokens - When this model has at least three corpse tokens, Lord of the Hunt gains Hunter and its Thrown Javelin becomes ROF 2. (A model with Hunter ignores concealment and cover when making ranged attacks.)\n• 5 or more corpse tokens - When this model has at least five corpse tokens it gains Hunt Eternal. (When a model with Hunt Eternal is disabled, remove all corpse tokens and damage from it; it is no longer disabled.)",
+        "Body Snatcher: Trophy Hunter (Lord)": "This model can gain corpse tokens. When this model destroys a living or undead enemy model with a melee attack, this model gains the destroyed model's corpse token. This model can have up to five corpse tokens at any time. It gains the abilities based on the number of corpse tokens it has",
         "Fortune Hunter": "This model gains an additional die on its attack and damage rolls against character models.",
         "Reposition [5\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 5\", then its activation ends.",
         "Steady": "This model cannot become knocked down."
@@ -37764,248 +37778,6 @@
             "Inconsequential"
           ],
           "weapons": []
-        }
-      ],
-      "animus": {}
-    },
-    {
-      "name": "THE HOUNDS",
-      "type": "Unit",
-      "faction": "Old Umbrey",
-      "armies": [
-        "Old Umbrey"
-      ],
-      "portrait": "ModelArt\\THE HOUNDS.PNG",
-      "attachments": [],
-      "health": {
-        "type": "Box Multi",
-        "names": [
-          "Grunt 1",
-          "Grunt 2",
-          "Grunt 3"
-        ],
-        "values": [
-          [
-            "8"
-          ],
-          [
-            "8"
-          ],
-          [
-            "8"
-          ]
-        ]
-      },
-      "keywords": [],
-      "cost": "9",
-      "fa": "c",
-      "composition": "Teterya, Fedyniak, and Skrobala",
-      "rules": {
-        "Alchemical Mask": "This model does not suffer gas effects. When determining LOS or resolving attacks, this model ignores cloud effects and concealment granted from cloud effects.",
-        "Girded": "This model and friendly models B2B with it gain Resistance: Blast.",
-        "Prowl": "While this model has concealment, it gains Stealth.",
-        "Reposition [3\"]": "At the end of this model/unit's activation in which it did not run or fail a charge, this model can advance up to 3\", then its activation ends.",
-        "Shield Wall": "While this model is B2B with one or more models in its unit, it gains +2 ARM and cannot be knocked down."
-      },
-      "profiles": [
-        {
-          "name": "TETERYA 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "6",
-            "rat": "6",
-            "def": "14",
-            "arm": "15",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png",
-            "Assets\\Icons\\model adv tough.png",
-            "Assets/Icons/model adv pathfinder.png",
-            "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png",
-            "Assets/Icons/model adv dual attack.png",
-            "Assets\\Icons\\model adv advance deployment.png"
-          ],
-          "abilities": [
-            "Alchemical Mask",
-            "Girded",
-            "Prowl",
-            "Reposition [3\"]",
-            "Shield Wall"
-          ],
-          "weapons": [
-            {
-              "name": "DEATH WHISPER CARBINE",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual pistol weapon.png"
-              ],
-              "stats": {
-                "rng": "8",
-                "rof": "1",
-                "aoe": "-",
-                "pow": "6"
-              },
-              "properties": [
-                "Armor-Piercing"
-              ]
-            },
-            {
-              "name": "BATTLE SHIELD",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "12"
-              },
-              "properties": []
-            }
-          ]
-        },
-        {
-          "name": "FEDYNIAK 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "6",
-            "rat": "6",
-            "def": "14",
-            "arm": "15",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png",
-            "tough",
-            "Assets/Icons/model adv pathfinder.png",
-            "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png",
-            "Assets/Icons/model adv dual attack.png",
-            "Assets\\Icons\\model adv advance deployment.png"
-          ],
-          "abilities": [
-            "Alchemical Mask",
-            "Girded",
-            "Prowl",
-            "Reposition [3\"]",
-            "Shield Wall"
-          ],
-          "weapons": [
-            {
-              "name": "GRENADE LAUNCHER",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual pistol weapon.png"
-              ],
-              "stats": {
-                "rng": "12",
-                "rof": "1",
-                "aoe": "2",
-                "pow": "12/8"
-              },
-              "properties": [
-                "Arcing Fire"
-              ]
-            },
-            {
-              "name": "BATTLE SHIELD",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "12"
-              },
-              "properties": []
-            }
-          ]
-        },
-        {
-          "name": "SKROBALA 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "6",
-            "rat": "6",
-            "def": "14",
-            "arm": "15",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 30mm.png",
-            "Assets\\Icons\\model adv tough.png",
-            "Assets/Icons/model adv pathfinder.png",
-            "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png",
-            "Assets/Icons/model adv dual attack.png",
-            "Assets\\Icons\\model adv advance deployment.png"
-          ],
-          "abilities": [
-            "Alchemical Mask",
-            "Girded",
-            "Prowl",
-            "Reposition [3\"]",
-            "Shield Wall"
-          ],
-          "weapons": [
-            {
-              "name": "ASSAULT CANNON",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual pistol weapon.png"
-              ],
-              "stats": {
-                "rng": "12",
-                "rof": "D3+1",
-                "aoe": "-",
-                "pow": "12"
-              },
-              "properties": [
-                "Volume Fire",
-                "Critical Knockdown"
-              ]
-            },
-            {
-              "name": "BATTLE SHIELD",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "12"
-              },
-              "properties": []
-            }
-          ]
         }
       ],
       "animus": {}
@@ -49321,140 +49093,6 @@
       "animus": {}
     },
     {
-      "name": "THE EXECRATORS",
-      "type": "Unit",
-      "faction": "Sea Raiders",
-      "armies": [
-        "Sea Raiders"
-      ],
-      "portrait": "ModelArt\\THE EXECRATORS.PNG",
-      "attachments": [],
-      "health": {
-        "type": "Box Multi",
-        "names": [
-          "Duulgrim",
-          "Harrkreth",
-          "Vurgesh"
-        ],
-        "values": [
-          [
-            "8",
-            "8",
-            "8"
-          ],
-          [
-            "8",
-            "8",
-            "8"
-          ],
-          [
-            "8",
-            "8",
-            "8"
-          ]
-        ]
-      },
-      "keywords": [
-        "Orgoth",
-        "Graveborn"
-      ],
-      "cost": "8",
-      "fa": "c",
-      "composition": "Duulgrim, Harrkreth and Vurgesh",
-      "rules": {
-        "Accursed Armor": "A living enemy model that hits this model with an attack gains Weaken for one round. (A model with Weaken suffers -2 DEF and -2 to its melee attack damage rolls.)",
-        "Shield Wall": "While this model is B2B with one or more models in its unit, it gains +2 ARM and cannot be knocked down.",
-        "Vengeance": "During your Maintenance Phase, if one or more models in this unit were damaged by enemy attacks during the last round, each model in the unit can make a Vengeance Move. Each model making a Vengeance Move can advance 3\". After all models in the unit have moved, each model can then make one basic melee attack. A model can only make one Vengeance Move each turn."
-      },
-      "profiles": [
-        {
-          "name": "DUULGRIM 1, HARRKRETH 1, VURGESH 1",
-          "stats": {
-            "spd": "6",
-            "aat": "",
-            "mat": "7",
-            "rat": "6",
-            "def": "12",
-            "arm": "16",
-            "arc": "",
-            "fury": "",
-            "ctrl": "",
-            "thr": "",
-            "ess": ""
-          },
-          "icons": [
-            "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv undead.png",
-            "Assets\\Icons\\model adv tough.png"
-          ],
-          "abilities": [
-            "Accursed Armor",
-            "Shield Wall",
-            "Vengeance"
-          ],
-          "weapons": [
-            {
-              "name": "ACCURSED SPEAR",
-              "type": "Ranged",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets/Icons/weapon qual blessed.png"
-              ],
-              "stats": {
-                "rng": "10",
-                "rof": "1",
-                "aoe": "-",
-                "pow": "13"
-              },
-              "properties": [
-                "Snap Fire",
-                "Thunderbolt"
-              ]
-            },
-            {
-              "name": "IRON BLADE",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets/Icons/weapon qual blessed.png"
-              ],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "12"
-              },
-              "properties": [
-                "Critical Grievous Wounds"
-              ]
-            },
-            {
-              "name": "GREAT SHIELD",
-              "type": "Melee",
-              "count": "1",
-              "location": "",
-              "icons": [
-                "Assets\\Icons\\weapon qual dam type magical.png",
-                "Assets/Icons/weapon qual blessed.png"
-              ],
-              "stats": {
-                "rng": "1",
-                "rof": "",
-                "aoe": "",
-                "pow": "10"
-              },
-              "properties": []
-            }
-          ]
-        }
-      ],
-      "animus": {}
-    },
-    {
       "name": "ULKOR AXERS",
       "type": "Unit",
       "faction": "Sea Raiders",
@@ -50269,7 +49907,175 @@
       },
       "profiles": [
         {
-          "name": "DUULGRIM 1, HARRKRETH 1, VURGESH 1",
+          "name": "DUULGRIM 1",
+          "stats": {
+            "spd": "6",
+            "aat": "",
+            "mat": "7",
+            "rat": "6",
+            "def": "12",
+            "arm": "16",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv undead.png",
+            "Assets\\Icons\\model adv unstoppable.png"
+          ],
+          "abilities": [
+            "Accursed Armor",
+            "Shield Wall",
+            "Vengeance"
+          ],
+          "weapons": [
+            {
+              "name": "ACCURSED SPEAR",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Snap Fire",
+                "Thunderbolt"
+              ]
+            },
+            {
+              "name": "IRON BLADE",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            },
+            {
+              "name": "GREAT SHIELD",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
+        },
+        {
+          "name": "HARRKRETH 1",
+          "stats": {
+            "spd": "6",
+            "aat": "",
+            "mat": "7",
+            "rat": "6",
+            "def": "12",
+            "arm": "16",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 40mm.png",
+            "Assets\\Icons\\model adv undead.png",
+            "Assets\\Icons\\model adv unstoppable.png"
+          ],
+          "abilities": [
+            "Accursed Armor",
+            "Shield Wall",
+            "Vengeance"
+          ],
+          "weapons": [
+            {
+              "name": "ACCURSED SPEAR",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "10",
+                "rof": "1",
+                "aoe": "-",
+                "pow": "13"
+              },
+              "properties": [
+                "Snap Fire",
+                "Thunderbolt"
+              ]
+            },
+            {
+              "name": "IRON BLADE",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "12"
+              },
+              "properties": [
+                "Critical Grievous Wounds"
+              ]
+            },
+            {
+              "name": "GREAT SHIELD",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "1",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": []
+            }
+          ]
+        },
+        {
+          "name": "VURGESH 1",
           "stats": {
             "spd": "6",
             "aat": "",
@@ -58469,7 +58275,8 @@
           "icons": [
             "Assets\\Icons\\base size 30mm.png",
             "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png"
+            "Assets\\Icons\\model res fire.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Alchemical Mask",
@@ -58485,7 +58292,9 @@
               "type": "Ranged",
               "count": "1",
               "location": "",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
               "stats": {
                 "rng": "6",
                 "rof": "1",
@@ -58502,7 +58311,8 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual dam type magical.png"
+                "Assets\\Icons\\weapon qual dam type magical.png",
+                "Assets/Icons/weapon qual blessed.png"
               ],
               "stats": {
                 "rng": "1",
@@ -58574,7 +58384,8 @@
           "icons": [
             "Assets\\Icons\\base size 30mm.png",
             "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png"
+            "Assets\\Icons\\model res fire.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Chemical Warfare",
@@ -58681,7 +58492,8 @@
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
             "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png"
+            "Assets\\Icons\\model res fire.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Chemical Warfare",
@@ -58697,7 +58509,8 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual cont eff fire.png",
-                "Assets\\Icons\\weapon qual cont eff corrosion.png"
+                "Assets\\Icons\\weapon qual dam type fire.png",
+                "Assets\\Icons\\weapon qual pistol weapon.png"
               ],
               "stats": {
                 "rng": "Sp6",
@@ -58787,11 +58600,10 @@
           "icons": [
             "Assets\\Icons\\base size 120mm.png",
             "Assets\\Icons\\model adv construct.png",
-            "Assets\\Icons\\model adv headbutt power attack.png",
-            "Assets\\Icons\\model adv slam power attack.png",
-            "Assets\\Icons\\model adv trample power attack.png",
-            "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png"
+            "Assets\\Icons\\model adv unstoppable.png",
+            "Assets/Icons/model adv pathfinder.png",
+            "Assets\\Icons\\model adv cavalry.png",
+            "Assets/Icons/model adv dual attack.png"
           ],
           "abilities": [
             "Chemical Warfare",
@@ -58823,7 +58635,10 @@
               "type": "Ranged",
               "count": "2",
               "location": "",
-              "icons": [],
+              "icons": [
+                "Assets/Icons/weapon qual blessed.png",
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
               "stats": {
                 "rng": "Sp8",
                 "rof": "1",
@@ -58839,7 +58654,8 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual cont eff fire.png",
-                "Assets\\Icons\\weapon qual cont eff corrosion.png"
+                "Assets\\Icons\\weapon qual dam type fire.png",
+                "Assets\\Icons\\weapon qual pistol weapon.png"
               ],
               "stats": {
                 "rng": "Sp8",
@@ -58855,7 +58671,7 @@
               "count": "1",
               "location": "",
               "icons": [
-                "Assets\\Icons\\weapon qual open fist.png"
+                "Assets\\Icons\\weapon qual buckler.png"
               ],
               "stats": {
                 "rng": "1",
@@ -58926,10 +58742,11 @@
           },
           "icons": [
             "Assets\\Icons\\base size 40mm.png",
-            "Assets\\Icons\\model adv advance deployment.png",
+            "Assets/Icons/model adv unstoppable.png",
             "Assets\\Icons\\model adv flight.png",
             "Assets\\Icons\\model res corrosion.png",
-            "Assets\\Icons\\model res fire.png"
+            "Assets\\Icons\\model res fire.png",
+            "Assets\\Icons\\model adv gunfighter.png"
           ],
           "abilities": [
             "Chemical Warfare",
@@ -58945,7 +58762,8 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual cont eff fire.png",
-                "Assets\\Icons\\weapon qual cont eff corrosion.png"
+                "Assets\\Icons\\weapon qual dam type fire.png",
+                "Assets\\Icons\\weapon qual pistol weapon.png"
               ],
               "stats": {
                 "rng": "Sp8",
@@ -58972,13 +58790,17 @@
       "portrait": "ModelArt\\MARSHAL GENERAL BALDWIN GEARHART.PNG",
       "attachments": [],
       "health": {
-        "type": "Box",
+        "type": "Box Multi",
         "names": [
-          "Gearhart"
+          "MARSHAL GENERAL BALDWIN GEARHART",
+          "MR CLOGG"
         ],
         "values": [
           [
             "17"
+          ],
+          [
+            "5"
           ]
         ]
       },
@@ -58999,7 +58821,7 @@
       },
       "profiles": [
         {
-          "name": "GEARHART 1",
+          "name": "MARSHAL GENERAL BALDWIN GEARHART",
           "stats": {
             "spd": "5",
             "aat": "6",
@@ -59035,7 +58857,7 @@
               "location": "",
               "icons": [
                 "Assets\\Icons\\weapon qual cont eff corrosion.png",
-                "Assets\\Icons\\weapon qual cont eff fire.png"
+                "Assets\\Icons\\weapon qual crit corrosion.png"
               ],
               "stats": {
                 "rng": "12",
@@ -59052,7 +58874,9 @@
               "type": "Melee",
               "count": "1",
               "location": "",
-              "icons": [],
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
               "stats": {
                 "rng": "1",
                 "rof": "",
@@ -59061,6 +58885,102 @@
               },
               "properties": [
                 "Mechanikal Seizure"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "MR CLOGG",
+          "stats": {
+            "spd": "5",
+            "aat": "",
+            "mat": "",
+            "rat": "7",
+            "def": "13",
+            "arm": "11",
+            "arc": "",
+            "fury": "",
+            "ctrl": "",
+            "thr": "",
+            "ess": ""
+          },
+          "icons": [
+            "Assets\\Icons\\base size 30mm.png"
+          ],
+          "abilities": [
+            "Companion [Marshal General Baldwin Gearhart]",
+            "Hit the Deck!",
+            "Johnny on the Spot (★Action)",
+            "Non-Combatant"
+          ],
+          "weapons": [
+            {
+              "name": "Acid Cannon",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual crit corrosion.png",
+                "Assets\\Icons\\weapon qual dam type corrosion.png"
+              ],
+              "stats": {
+                "rng": "12",
+                "rof": "",
+                "aoe": "3",
+                "pow": "14/8"
+              },
+              "properties": []
+            },
+            {
+              "name": "Catalytic Detonator",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [],
+              "stats": {
+                "rng": "8",
+                "rof": "1",
+                "aoe": "",
+                "pow": "15"
+              },
+              "properties": [
+                "Momentum"
+              ]
+            },
+            {
+              "name": "Cyro-Evaporator",
+              "type": "Melee",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type cold.png"
+              ],
+              "stats": {
+                "rng": "Sp 8",
+                "rof": "1",
+                "aoe": "",
+                "pow": "13"
+              },
+              "properties": [
+                "Critical Freeze"
+              ]
+            },
+            {
+              "name": "Vitriolic Ingression Catapult",
+              "type": "Ranged",
+              "count": "1",
+              "location": "",
+              "icons": [
+                "Assets\\Icons\\weapon qual dam type magical.png"
+              ],
+              "stats": {
+                "rng": "13",
+                "rof": "",
+                "aoe": "",
+                "pow": "10"
+              },
+              "properties": [
+                "Shadow Bind"
               ]
             }
           ]
@@ -60731,9 +60651,9 @@
       "health": {
         "type": "Box Multi",
         "names": [
-          "Marie's Damage",
-          "Rosalind's Damage",
-          "Hieronymus's Damage"
+          "Marie",
+          "Rosalind",
+          "Hieronymus"
         ],
         "values": [
           [
@@ -109137,7 +109057,7 @@
           "icons": [
             "Assets\\Icons\\base size 30mm.png",
             "Assets/Icons/model adv unstoppable.png",
-            "tough",
+            "Assets\\Icons\\model adv tough.png",
             "Assets/Icons/model adv pathfinder.png",
             "Assets\\Icons\\model res corrosion.png",
             "Assets\\Icons\\model res fire.png",
