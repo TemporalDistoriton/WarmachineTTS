@@ -492,7 +492,7 @@ const SO=['spd','aat','mat','rat','def','arm','arc','fury','ctrl','thr','ess'];
 const SL={spd:'SPD',aat:'AAT',mat:'MAT',rat:'RAT',def:'DEF',arm:'ARM',arc:'ARC',fury:'FURY',ctrl:'CTRL',thr:'THR',ess:'ESS'};
 const XO=['cost','rng','aoe','pow','dur','off'];
 const XL={cost:'COST',rng:'RNG',aoe:'AOE',pow:'POW',dur:'DUR',off:'OFF'};
-const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Colossal','Gargantuan','Vector','Unit','Solo','Battle Engine','Command','Structure'];
+const CARD_TYPES=['Warcaster','Warlock','Warjack','Warbeast','Colossal','Gargantuan','Vector','Monstrosity','Master','Unit','Solo','Battle Engine','Command','Structure'];
 
 function tc(t){t=(t||'').toLowerCase();if(t.includes('warcaster')||t.includes('warlock'))return'#8b6b3d';if(t.includes('warjack')||t.includes('warbeast'))return'#3d6b8b';if(t.includes('unit'))return'#6b3d8b';if(t.includes('solo'))return'#3d8b6b';if(t.includes('battle engine'))return'#6b6b3d';if(t.includes('command'))return'#8b3d6b';return'#5a5a5a'}
 function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
