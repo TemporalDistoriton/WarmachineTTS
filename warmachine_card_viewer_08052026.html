@@ -351,11 +351,10 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 /* Print */
 @media print {
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
-  html,body{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important}
   body{background:#fff!important}
-  #sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal,#dbModal{display:none!important}
-  #app{display:block!important;height:auto!important;overflow:visible!important}
-  #main{display:flex!important;flex-wrap:wrap!important;padding:8mm!important;gap:8px!important;overflow:visible!important;height:auto!important;min-height:0!important;background:#fff!important;justify-content:flex-start!important}
+  #sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal{display:none!important}
+  #app{display:block!important}
+  #main{display:flex!important;flex-wrap:wrap!important;padding:8mm!important;gap:8px!important;overflow:visible!important;height:auto!important;background:#fff!important;justify-content:flex-start!important}
   .card{width:48%!important;font-size:10px!important;box-shadow:none!important;border:1px solid #999!important;border-radius:4px!important;animation:none!important;break-inside:avoid;page-break-inside:avoid}
   .card-nm{font-size:16px!important;color:#1a352a!important;text-shadow:none!important}
   .card-hdr{background:#2a5a45!important;padding:10px 12px 8px!important}
@@ -721,189 +720,7 @@ function gFilt(){return D.cards.filter(c=>(TF==='All'||c.type===TF)&&(FF==='All'
 function tPrint(nm,ev){ev.stopPropagation();if(PL.has(nm))PL.delete(nm);else PL.add(nm);rList();uPB()}
 function clearPrint(){PL.clear();rList();uPB()}
 function uPB(){const n=PL.size;document.getElementById('printCount').textContent=`Print list: ${n} card${n!==1?'s':''}`;document.getElementById('printBtn').disabled=n===0}
-function buildPrintDocument(cards){
-  const css=Array.from(document.querySelectorAll('style')).map(st=>st.textContent).join('\n');
-  const body=cards.map(c=>rCard(c,D.cards.indexOf(c))).join('');
-  return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Warmachine Print Cards</title>
-<style>
-${css}
-@page{margin:8mm;size:auto;}
-html,body{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;}
-#app{display:block!important;height:auto!important;overflow:visible!important;background:#fff!important;}
-#main{display:flex!important;flex-wrap:wrap!important;align-content:flex-start!important;justify-content:flex-start!important;gap:8px!important;padding:0!important;height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;}
-.card{display:block!important;visibility:visible!important;opacity:1!important;}
-
-/* Low-ink print theme: white cards, black text, coloured icons retained. */
-@media print{
-  *{
-    background:transparent!important;
-    color:#000!important;
-    text-shadow:none!important;
-    box-shadow:none!important;
-    -webkit-print-color-adjust:exact!important;
-    print-color-adjust:exact!important;
-  }
-  html,body,#app,#main{
-    background:#fff!important;
-    color:#000!important;
-    height:auto!important;
-    min-height:0!important;
-    overflow:visible!important;
-  }
-  #main{
-    gap:6mm!important;
-    padding:0!important;
-    align-content:flex-start!important;
-    justify-content:flex-start!important;
-  }
-  .card{
-    background:#fff!important;
-    border:1px solid #000!important;
-    box-shadow:none!important;
-    border-radius:3px!important;
-    overflow:hidden!important;
-    break-inside:avoid!important;
-    page-break-inside:avoid!important;
-  }
-  .card-hdr{
-    background:#fff!important;
-    border-bottom:1px solid #000!important;
-  }
-  .card-hdr::after{display:none!important;}
-  .card-nm,.card-sub,.card-info,.card-info strong,.card-kw,.card-cf,
-  .sh,.si,.hn,.hhp,.atg,.ad,.ad strong,.wn,.wtl,.ws,.wsl,.wsv,
-  .wpn,.wpn.at2,.wpd,.spn,.spx,.spl,.spv,.fn,.fd,.rn,.rd,
-  .ann,.anx,.anl,.anv,.onn,.ohp,.oc,.ring-total,.spiral-total,
-  .ring-legend-item,.spiral-legend-item,.gl span{
-    color:#000!important;
-  }
-  .card-cbadge{
-    background:#fff!important;
-    color:#000!important;
-    border:1px solid #000!important;
-  }
-  .sh{
-    border-top:1px solid #999!important;
-    letter-spacing:1.5px!important;
-  }
-  .sb,.sb.c{
-    border:1px solid #666!important;
-    background:#fff!important;
-  }
-  .sl,.sv,.sc{
-    background:#fff!important;
-    color:#000!important;
-    border-color:#999!important;
-  }
-  .sc:not(:last-child){border-right:1px solid #bbb!important;}
-  .ad,.spb,.anb,.fb,.rb,.ob,.wb,.wb.rng,.wb.mel{
-    background:#fff!important;
-    border-left:1px solid #999!important;
-    border-radius:0!important;
-  }
-  .wb.rng,.wb.mel,.spb,.anb,.fb,.rb,.ob{
-    border-top:1px solid #ddd!important;
-    border-right:1px solid #ddd!important;
-    border-bottom:1px solid #ddd!important;
-  }
-  .hb{
-    background:#fff!important;
-    border:1px solid #555!important;
-  }
-  .hb.l2{
-    background:#fff!important;
-    border:1px solid #000!important;
-  }
-  .gc{
-    background:#fff!important;
-    border:1px solid #555!important;
-    color:#000!important;
-  }
-  .gc.ms{
-    background:#fff!important;
-    border:1px solid transparent!important;
-  }
-  .ico img,.wico img,.ed-ico-prev{
-    background:#fff!important;
-    border:1px solid #777!important;
-    print-color-adjust:exact!important;
-    -webkit-print-color-adjust:exact!important;
-  }
-  .ring-svg circle,.spiral-svg circle{
-    print-color-adjust:exact!important;
-    -webkit-print-color-adjust:exact!important;
-  }
-  .ring-svg text,.spiral-svg text{fill:#000!important;}
-  .card-ed-btn,#sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal,#dbModal{display:none!important;}
-}
-</style>
-</head>
-<body>
-<div id="app"><div id="main">${body}</div></div>
-</body>
-</html>`;
-}
-
-function doPrint(){
-  if(!PL.size)return;
-  const pc=D.cards.filter(c=>PL.has(c.name));
-  if(!pc.length){showNotice('No selected cards were found to print','err');return}
-
-  let frame=document.getElementById('printFrame');
-  if(frame)frame.remove();
-
-  frame=document.createElement('iframe');
-  frame.id='printFrame';
-  frame.setAttribute('title','Print selected cards');
-  frame.style.position='fixed';
-  frame.style.right='0';
-  frame.style.bottom='0';
-  frame.style.width='0';
-  frame.style.height='0';
-  frame.style.border='0';
-  frame.style.opacity='0';
-  document.body.appendChild(frame);
-
-  const doc=frame.contentWindow.document;
-  doc.open();
-  doc.write(buildPrintDocument(pc));
-  doc.close();
-
-  const printFrame=()=>{
-    const win=frame.contentWindow;
-    try{
-      win.focus();
-      win.print();
-    }catch(e){
-      showNotice('Print failed: '+errTxt(e),'err');
-      frame.remove();
-    }
-  };
-
-  // Let the iframe fully parse/layout before opening print preview. This is
-  // especially important in Firefox, where printing a just-mutated main DOM can
-  // produce a blank preview.
-  setTimeout(()=>{
-    const imgs=Array.from(doc.images||[]);
-    if(!imgs.length){printFrame();return}
-    let remaining=imgs.length;
-    const done=()=>{remaining--;if(remaining<=0)printFrame()};
-    imgs.forEach(img=>{
-      if(img.complete)done();
-      else{
-        img.addEventListener('load',done,{once:true});
-        img.addEventListener('error',done,{once:true});
-      }
-    });
-    // Do not let slow external icons block the print dialog forever.
-    setTimeout(printFrame,1200);
-  },100);
-}
-
+function doPrint(){if(!PL.size)return;const m=document.getElementById('main');const pc=D.cards.filter(c=>PL.has(c.name));m.innerHTML=pc.map((c,i)=>rCard(c,D.cards.indexOf(c))).join('');window.print();rMain()}
 
 function rFilt(){
   const ts=['All',...new Set(D.cards.map(c=>c.type))];
@@ -1218,8 +1035,6 @@ function dlAnimus(){return`<datalist id="dlAn">${KNOWN_ANIMUS.map(a=>`<option va
 function edBasic(){
   const c=EDIT_CARD;
   const typeOpts=CARD_TYPES.map(t=>`<option value="${av(t)}"${t===c.type?' selected':''}>${E(t)}</option>`).join('');
-  const abUrl=av(c.asset_bundle_url||'');
-  const m3Url=av(c.model_3d_url||'');
   return`<div class="ed-sec">
     <div class="ed-sec-hdr">⬡ Basic Info</div>
     <div class="ed-row">
@@ -1236,21 +1051,6 @@ function edBasic(){
     <div class="ed-row">
       <div class="ed-field grow"><div class="ed-lbl">Keywords (comma-separated)</div><input class="ed-in" value="${av((c.keywords||[]).join(', '))}" oninput="EDIT_CARD.keywords=this.value.split(',').map(s=>s.trim()).filter(Boolean)"></div>
       <div class="ed-field grow"><div class="ed-lbl">Armies (comma-separated)</div><input class="ed-in" value="${av((c.armies||[]).join(', '))}" oninput="EDIT_CARD.armies=this.value.split(',').map(s=>s.trim()).filter(Boolean)"></div>
-    </div>
-  </div>
-  <div class="ed-sec" style="border-color:rgba(201,168,76,0.25);background:rgba(20,16,8,0.6)">
-    <div class="ed-sec-hdr" style="color:var(--gold);border-color:rgba(201,168,76,0.2)">🎲 TTS 3D Links <span style="font-weight:300;font-size:8px;letter-spacing:0.5px;color:var(--text-muted);text-transform:none;margin-left:6px">hidden from card — used by the database generator only</span></div>
-    <div class="ed-row">
-      <div class="ed-field grow">
-        <div class="ed-lbl" style="color:var(--gold)">Asset Bundle URL</div>
-        <input class="ed-in" style="font-size:11px;font-family:monospace" placeholder="https://steamusercontent-a.akamaihd.net/ugc/… (leave blank if none)" value="${abUrl}" oninput="if(this.value.trim()){EDIT_CARD.asset_bundle_url=this.value.trim()}else{delete EDIT_CARD.asset_bundle_url}">
-      </div>
-    </div>
-    <div class="ed-row">
-      <div class="ed-field grow">
-        <div class="ed-lbl" style="color:var(--accent-light)">3D Model Mesh URL</div>
-        <input class="ed-in" style="font-size:11px;font-family:monospace" placeholder="https://steamusercontent-a.akamaihd.net/ugc/… (leave blank to use default mesh)" value="${m3Url}" oninput="if(this.value.trim()){EDIT_CARD.model_3d_url=this.value.trim()}else{delete EDIT_CARD.model_3d_url}">
-      </div>
     </div>
   </div>`;
 }
