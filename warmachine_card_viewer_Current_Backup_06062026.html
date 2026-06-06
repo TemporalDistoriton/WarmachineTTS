@@ -1220,7 +1220,6 @@ function edBasic(){
   const typeOpts=CARD_TYPES.map(t=>`<option value="${av(t)}"${t===c.type?' selected':''}>${E(t)}</option>`).join('');
   const abUrl=av(c.asset_bundle_url||'');
   const m3Url=av(c.model_3d_url||'');
-  const portraitUrl=av(c.portrait||'');
   return`<div class="ed-sec">
     <div class="ed-sec-hdr">⬡ Basic Info</div>
     <div class="ed-row">
@@ -1251,16 +1250,6 @@ function edBasic(){
       <div class="ed-field grow">
         <div class="ed-lbl" style="color:var(--accent-light)">3D Model Mesh URL</div>
         <input class="ed-in" style="font-size:11px;font-family:monospace" placeholder="https://steamusercontent-a.akamaihd.net/ugc/… (leave blank to use default mesh)" value="${m3Url}" oninput="if(this.value.trim()){EDIT_CARD.model_3d_url=this.value.trim()}else{delete EDIT_CARD.model_3d_url}">
-      </div>
-    </div>
-  </div>
-  <div class="ed-sec" style="border-color:rgba(91,184,146,0.25);background:rgba(8,20,16,0.6)">
-    <div class="ed-sec-hdr" style="color:var(--accent-light);border-color:rgba(91,184,146,0.2)">🖼 Image Link <span style="font-weight:300;font-size:8px;letter-spacing:0.5px;color:var(--text-muted);text-transform:none;margin-left:6px">stored in the database as portrait</span></div>
-    <div class="ed-row">
-      <div class="ed-field grow">
-        <div class="ed-lbl" style="color:var(--accent-light)">Portrait / Card Image URL or Path</div>
-        <input class="ed-in" style="font-size:11px;font-family:monospace" placeholder="ModelArt\\MODEL NAME.PNG or https://raw.githubusercontent.com/… (leave blank if none)" value="${portraitUrl}" oninput="EDIT_CARD.portrait=this.value.trim()">
-        <div style="font-size:10px;color:var(--text-muted);margin-top:4px;font-family:'Oswald';letter-spacing:0.4px">Existing entries usually use ModelArt\NAME.PNG. New entries can use a raw GitHub URL or the same local path format.</div>
       </div>
     </div>
   </div>`;
