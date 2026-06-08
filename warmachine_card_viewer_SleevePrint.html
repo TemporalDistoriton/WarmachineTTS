@@ -752,20 +752,9 @@ function pHealth(h){
     }
     if(h.type==='Grid'||h.type==='Grid Large'){
       const rows=Array.isArray(h.values)?h.values:[];
-      const parsed=rows.map(r=>String(r).split(','));
-      const cols=Math.max(1,...parsed.map(r=>r.length));
       let count=0;
-      const cells=[];
-      parsed.forEach(r=>{
-        for(let i=0;i<cols;i++){
-          const raw=(r[i]!==undefined?r[i]:'-');
-          const v=String(raw).trim();
-          if(v==='-')cells.push('<div class="pc-dcell pc-void"></div>');
-          else{count++;cells.push(`<div class="pc-dcell pc-live">${v?E(v):''}</div>`);}
-        }
-      });
-      const cls=cols>6?' pc-dgrid-lg':'';
-      return `<div class="pc-health"><b>Damage Grid</b><div>${count} boxes, ${E(h.type)}</div><div class="pc-dgrid${cls}" style="--cols:${cols}">${cells.join('')}</div></div>`;
+      rows.forEach(r=>String(r).split(',').forEach(c=>{if(c.trim()!=='-')count++}));
+      return `<div class="pc-health"><b>Damage Grid</b><div>${count} boxes, ${E(h.type)}</div><div class="pc-grid-mini">${rows.map(r=>`<div>${E(String(r).replace(/,/g,' '))}</div>`).join('')}</div></div>`;
     }
     return `<div class="pc-health"><b>Health</b><div>${E(h.type)}</div></div>`;
   }catch(e){return `<div class="pc-health"><b>Health</b><div>${E(errTxt(e))}</div></div>`}
@@ -928,12 +917,7 @@ html,body{margin:0;padding:0;background:#fff;color:#000;font-family:Arial,Helvet
 .pc-boxrow{display:flex;gap:1mm;align-items:flex-start;}
 .pc-boxrow span:first-child{min-width:13mm;font-weight:700;}
 .pc-boxes{font-size:4.65pt;letter-spacing:-0.26mm;line-height:1.08;}
-.pc-dgrid{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:0.35mm;background:#fff;border:0.12mm solid #999;padding:0.55mm;margin-top:0.55mm;max-width:100%;}
-.pc-dcell{height:4.1mm;border:0.16mm solid #111;background:#fff;text-align:center;font-size:4.55pt;font-weight:800;line-height:3.55mm;position:relative;}
-.pc-dcell.pc-live:after{content:'';position:absolute;inset:0.55mm;border:0.08mm solid #ddd;pointer-events:none;}
-.pc-dcell.pc-void{background:#e5e5e5;border-color:#bbb;}
-.pc-dgrid-lg{gap:0.25mm;padding:0.45mm;}
-.pc-dgrid-lg .pc-dcell{height:3.25mm;font-size:3.8pt;line-height:2.85mm;}
+.pc-grid-mini{font-family:Consolas,monospace;font-size:4.65pt;line-height:1.03;white-space:pre;background:#fff;border:0.12mm solid #d0d0d0;padding:0.45mm;margin-top:0.45mm;}
 .pc-profile{margin-bottom:1mm;}
 .pc-profile-name{font-weight:900;font-size:5.75pt;text-transform:uppercase;margin-bottom:0.5mm;background:#f0f0f0;border-left:0.8mm solid #111;padding:0.35mm 0.75mm;letter-spacing:0.1mm;}
 .pc-statbar{display:grid;grid-template-columns:repeat(5,1fr);border:0.22mm solid #111;margin-bottom:0.8mm;background:#fff;}
