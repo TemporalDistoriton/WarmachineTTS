@@ -354,7 +354,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
   html,body{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important}
   body{background:#fff!important}
-  #sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal,#dbModal,#massEditModal,#settingsModal{display:none!important}
+  #sidebar,#landing,.vt,.sb-pbar,.sb-foot,#editModal,#dbModal{display:none!important}
   #app{display:block!important;height:auto!important;overflow:visible!important}
   #main{display:flex!important;flex-wrap:wrap!important;padding:8mm!important;gap:8px!important;overflow:visible!important;height:auto!important;min-height:0!important;background:#fff!important;justify-content:flex-start!important}
   .card{width:48%!important;font-size:10px!important;box-shadow:none!important;border:1px solid #999!important;border-radius:4px!important;animation:none!important;break-inside:avoid;page-break-inside:avoid}
@@ -418,10 +418,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
         <span class="cnt" id="printCount">Print list: 0 cards</span>
         <button class="clr" onclick="clearPrint()">clear</button>
       </div>
-      <div style="display:flex;gap:6px">
-        <button class="sb-pbtn" id="printBtn" disabled onclick="doPrint()" style="flex:1">🖨 PRINT SELECTED</button>
-        <button class="sb-pbtn" id="massEditBtn" disabled onclick="openMassEdit()" style="flex:1">✎ MASS EDIT</button>
-      </div>
+      <button class="sb-pbtn" id="printBtn" disabled onclick="doPrint()">🖨 PRINT SELECTED</button>
     </div>
     <div class="sb-foot">
       <div class="sb-btn-row">
@@ -472,40 +469,6 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
       <button class="db-add-btn" onclick="dbAddNew()">＋ ADD NEW</button>
       <button class="db-save-btn" onclick="saveDB();closeDBModal()">💾 SAVE &amp; CLOSE</button>
       <button class="ed-cancel" onclick="closeDBModal()">CLOSE</button>
-    </div>
-  </div>
-</div>
-
-<!-- Mass Edit Modal -->
-<div id="massEditModal" class="edit-overlay" style="display:none" onclick="if(event.target===this)closeMassEdit()">
-  <div class="edit-panel settings-panel">
-    <div class="edit-hdr">
-      <div class="edit-hdr-title">✎ MASS EDIT SELECTED MODELS</div>
-      <button class="edit-close" onclick="closeMassEdit()">✕</button>
-    </div>
-    <div class="edit-body">
-      <div class="ed-sec">
-        <div class="ed-sec-hdr">TTS DEFAULT SPAWN MODE</div>
-        <div id="massEditSummary" style="font-size:11px;color:var(--text-muted);margin-bottom:12px"></div>
-        <div class="ed-row">
-          <div class="ed-field grow">
-            <div class="ed-lbl">Default Spawn Mode</div>
-            <select id="massEditSpawnMode" class="ed-sel">
-              <option value="obj">3D Model (OBJ)</option>
-              <option value="2d">2D</option>
-              <option value="asset_bundle">Asset Bundle 3D</option>
-            </select>
-            <div style="font-size:10px;color:var(--text-muted);margin-top:6px">
-              Applying this changes only <b>default_spawn_mode</b> on the currently selected cards.
-              No other card data is altered.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="edit-foot">
-      <button class="sb-pbtn" style="width:auto;padding:8px 18px" onclick="applyMassEditSpawnMode()">APPLY TO SELECTED</button>
-      <button class="ed-rm" style="padding:8px 14px" onclick="closeMassEdit()">CANCEL</button>
     </div>
   </div>
 </div>
@@ -860,34 +823,7 @@ function gFilt(){return D.cards.filter(c=>(TF==='All'||c.type===TF)&&(FF==='All'
 
 function tPrint(nm,ev){ev.stopPropagation();if(PL.has(nm))PL.delete(nm);else PL.add(nm);rList();uPB()}
 function clearPrint(){PL.clear();rList();uPB()}
-function uPB(){const n=PL.size;document.getElementById('printCount').textContent=`Selected: ${n} card${n!==1?'s':''}`;document.getElementById('printBtn').disabled=n===0;const mb=document.getElementById('massEditBtn');if(mb)mb.disabled=n===0}
-
-function openMassEdit(){
-  if(!D||PL.size===0){showNotice('Select one or more cards first','err');return}
-  const selected=(D.cards||[]).filter(c=>PL.has(c.name));
-  document.getElementById('massEditSummary').textContent=
-    `${selected.length} selected card${selected.length!==1?'s':''}. Only Default Spawn Mode will be changed.`;
-  document.getElementById('massEditSpawnMode').value='obj';
-  document.getElementById('massEditModal').style.display='flex';
-}
-function closeMassEdit(){
-  document.getElementById('massEditModal').style.display='none';
-}
-function applyMassEditSpawnMode(){
-  if(!D||PL.size===0)return;
-  const mode=document.getElementById('massEditSpawnMode').value;
-  let changed=0;
-  (D.cards||[]).forEach(c=>{
-    if(PL.has(c.name)){
-      c.default_spawn_mode=mode;
-      changed++;
-    }
-  });
-  closeMassEdit();
-  if(SEL&&PL.has(SEL.name))rMain();
-  showNotice(`Updated Default Spawn Mode on ${changed} selected card${changed!==1?'s':''}`,'ok');
-}
-
+function uPB(){const n=PL.size;document.getElementById('printCount').textContent=`Print list: ${n} card${n!==1?'s':''}`;document.getElementById('printBtn').disabled=n===0}
 function printTypeLine(card){
   const bits=[];
   if(card.faction)bits.push(card.faction);
@@ -1415,8 +1351,6 @@ function openNewCard(){
   EDIT_IDX=-1;
   EDIT_CARD={
     name:'New Model',type:'Solo',faction:'',armies:[],portrait:'',model_input:'',
-    model_inputs:[],model_count:1,default_spawn_mode:'obj',model_manipulations:[],
-    model_scale:1,model_offset_x:0,model_offset_y:0,model_offset_z:0,
     attachments:[],health:{type:'Box',names:['New Model'],values:[['10']]},
     keywords:[],cost:'0',fa:'u',composition:'',rules:{},
     profiles:[{name:'Profile 1',stats:{spd:'',aat:'',mat:'',rat:'',def:'',arm:'',arc:'',fury:'',ctrl:'',thr:'',ess:''},icons:[],abilities:[],weapons:[]}],
@@ -1456,50 +1390,6 @@ function getModelInputFiles(card){
     diffuse:stem+'_Diffuse.jpg',
     collider:stem+'_Collider.obj'
   };
-}
-
-function normaliseModelCount(card){
-  const n=Math.max(1,parseInt(card&&card.model_count,10)||1);
-  if(card)card.model_count=n;
-  return n;
-}
-function ensureAdditionalModelInputs(card){
-  if(!card)return[];
-  if(!Array.isArray(card.model_inputs))card.model_inputs=[];
-  if(!Array.isArray(card.model_manipulations))card.model_manipulations=[];
-  const needed=Math.max(0,normaliseModelCount(card)-1);
-  while(card.model_inputs.length<needed)card.model_inputs.push('');
-  if(card.model_inputs.length>needed)card.model_inputs.length=needed;
-  while(card.model_manipulations.length<needed){
-    card.model_manipulations.push({scale:1,x:0,y:0,z:0});
-  }
-  if(card.model_manipulations.length>needed)card.model_manipulations.length=needed;
-  card.model_manipulations=card.model_manipulations.map(m=>({
-    scale:(m&&m.scale!=null&&m.scale!=='')?Number(m.scale):1,
-    x:(m&&m.x!=null&&m.x!=='')?Number(m.x):0,
-    y:(m&&m.y!=null&&m.y!=='')?Number(m.y):0,
-    z:(m&&m.z!=null&&m.z!=='')?Number(m.z):0
-  }));
-  return card.model_inputs;
-}
-function setModelCount(value){
-  if(!EDIT_CARD)return;
-  EDIT_CARD.model_count=Math.max(1,parseInt(value,10)||1);
-  ensureAdditionalModelInputs(EDIT_CARD);
-  reRenderEditBody();
-}
-function setAdditionalModelInput(index,value){
-  if(!EDIT_CARD)return;
-  const arr=ensureAdditionalModelInputs(EDIT_CARD);
-  arr[index]=String(value||'').trim();
-}
-function setAdditionalModelManip(index,key,value){
-  if(!EDIT_CARD)return;
-  ensureAdditionalModelInputs(EDIT_CARD);
-  const m=EDIT_CARD.model_manipulations[index]||(EDIT_CARD.model_manipulations[index]={scale:1,x:0,y:0,z:0});
-  const defaults={scale:1,x:0,y:0,z:0};
-  const n=(value===''?defaults[key]:parseFloat(value));
-  m[key]=Number.isFinite(n)?n:defaults[key];
 }
 
 // ── Path helper ──────────────────────────────────────────────────────────────
@@ -1563,59 +1453,12 @@ function edBasic(){
   const m3Url=av(c.model_3d_url||'');
   const modelInput=av(c.model_input||'');
   const portraitUrl=av(c.portrait||'');
-  const modelScale=(c.model_scale==null||c.model_scale==='')?1:c.model_scale;
-  const modelOffsetX=(c.model_offset_x==null||c.model_offset_x==='')?0:c.model_offset_x;
-  const modelOffsetY=(c.model_offset_y==null||c.model_offset_y==='')?0:c.model_offset_y;
-  const modelOffsetZ=(c.model_offset_z==null||c.model_offset_z==='')?0:c.model_offset_z;
-  const defaultSpawnMode=c.default_spawn_mode||'obj';
-  const modelCount=Math.max(1,parseInt(c.model_count,10)||1);
-  if(!Array.isArray(c.model_inputs))c.model_inputs=[];
-  if(!Array.isArray(c.model_manipulations))c.model_manipulations=[];
-  ensureAdditionalModelInputs(c);
-  const spawnModeOpts=[
-    ['obj','3D Model (OBJ)'],
-    ['2d','2D'],
-    ['asset_bundle','Asset Bundle 3D']
-  ].map(([v,l])=>`<option value="${v}"${defaultSpawnMode===v?' selected':''}>${l}</option>`).join('');
   return`<div class="ed-sec">
     <div class="ed-sec-hdr">⬡ Basic Info</div>
     <div class="ed-row">
       <div class="ed-field grow"><div class="ed-lbl">Name</div><input class="ed-in" value="${av(c.name)}" oninput="EDIT_CARD.name=this.value"></div>
       <div class="ed-field grow"><div class="ed-lbl">Faction</div><input class="ed-in" value="${av(c.faction)}" oninput="EDIT_CARD.faction=this.value"></div>
       <div class="ed-field"><div class="ed-lbl">Type</div><select class="ed-sel" onchange="EDIT_CARD.type=this.value">${typeOpts}</select></div>
-    </div>
-    <div style="margin:2px 0 7px;padding:8px 10px;border:1px solid rgba(201,168,76,0.18);background:rgba(201,168,76,0.035);border-radius:6px">
-      <div class="ed-lbl" style="color:var(--gold);margin-bottom:7px">OBJ MODEL MANIPULATION — MODEL 1 <span style="color:var(--text-muted);font-weight:300;text-transform:none;letter-spacing:0">(model only — base remains unchanged)</span></div>
-      <div class="ed-row" style="margin:0">
-        <div class="ed-field">
-          <div class="ed-lbl">Scale</div>
-          <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(modelScale)}"
-                 oninput="EDIT_CARD.model_scale=this.value===''?1:(parseFloat(this.value)||0)">
-        </div>
-        <div class="ed-field">
-          <div class="ed-lbl">X Offset</div>
-          <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(modelOffsetX)}"
-                 oninput="EDIT_CARD.model_offset_x=this.value===''?0:(parseFloat(this.value)||0)">
-        </div>
-        <div class="ed-field">
-          <div class="ed-lbl">Y Offset</div>
-          <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(modelOffsetY)}"
-                 oninput="EDIT_CARD.model_offset_y=this.value===''?0:(parseFloat(this.value)||0)">
-        </div>
-        <div class="ed-field">
-          <div class="ed-lbl">Z Offset</div>
-          <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(modelOffsetZ)}"
-                 oninput="EDIT_CARD.model_offset_z=this.value===''?0:(parseFloat(this.value)||0)">
-        </div>
-        <div class="ed-field">
-          <div class="ed-lbl">Default Spawn Mode</div>
-          <select class="ed-sel" style="min-width:150px" onchange="EDIT_CARD.default_spawn_mode=this.value">${spawnModeOpts}</select>
-        </div>
-        <div style="font-size:9px;color:var(--text-muted);line-height:1.45;align-self:flex-end;padding-bottom:4px">
-          Defaults: Scale 1.00 · X/Y/Z 0.00<br>
-          Y is applied after automatic base-top alignment.
-        </div>
-      </div>
     </div>
     <div class="ed-row">
       <div class="ed-field"><div class="ed-lbl">Cost (pts)</div><input class="ed-in" style="width:70px" value="${av(c.cost||'0')}" oninput="EDIT_CARD.cost=this.value"></div>
@@ -1643,60 +1486,17 @@ function edBasic(){
       </div>
     </div>
     <div class="ed-row" style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(201,168,76,0.15)">
-      <div class="ed-field" style="min-width:120px">
-        <div class="ed-lbl" style="color:#d7bd6b">3D Model Count</div>
-        <input class="ed-in" type="number" min="1" step="1" style="width:90px" value="${modelCount}" onchange="setModelCount(this.value)">
-        <div style="font-size:9px;color:var(--text-muted);margin-top:4px">Number of distinct OBJ models available.</div>
-      </div>
       <div class="ed-field grow">
-        <div class="ed-lbl" style="color:#d7bd6b">Model Input 1</div>
+        <div class="ed-lbl" style="color:#d7bd6b">Model Input</div>
         <input class="ed-in" style="font-size:12px;font-family:monospace" placeholder="e.g. Clockwork Legions/Archnumen Aurora" value="${modelInput}"
-          oninput="const v=this.value.trim();EDIT_CARD.model_input=v;const p=this.parentElement.querySelector('.model-input-preview');const stem=resolvedModelInputStem(v);if(p)p.textContent=stem?('Resolved: '+stem+'_Model.obj'):'Resolved: —'">
+          oninput="const v=this.value.trim();EDIT_CARD.model_input=v;const p=this.parentElement.querySelector('.model-input-preview');const stem=resolvedModelInputStem(v);if(p)p.textContent=stem?('Resolved: '+stem+'_Model.obj  |  '+stem+'_Diffuse.jpg  |  '+stem+'_Collider.obj'):'Resolved: —'">
         <div class="model-input-preview" style="font-size:10px;color:var(--text-muted);margin-top:5px;font-family:monospace;overflow-wrap:anywhere">
-          ${c.model_input?`Resolved: ${E(resolvedModelInputStem(c.model_input))}_Model.obj`:'Resolved: —'}
+          ${c.model_input?`Resolved: ${E(resolvedModelInputStem(c.model_input))}_Model.obj  |  ${E(resolvedModelInputStem(c.model_input))}_Diffuse.jpg  |  ${E(resolvedModelInputStem(c.model_input))}_Collider.obj`:'Resolved: —'}
+        </div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:4px;font-family:'Oswald';letter-spacing:0.3px">
+          The global <b>Model Input Append</b> setting is prepended automatically. Full URLs are also accepted and are not modified.
         </div>
       </div>
-    </div>
-    ${Array.from({length:Math.max(0,modelCount-1)},(_,i)=>{
-      const raw=c.model_inputs[i]||'';
-      const stem=resolvedModelInputStem(raw||c.model_input||'');
-      const manip=c.model_manipulations[i]||{scale:1,x:0,y:0,z:0};
-      return`<div style="margin:8px 0;padding:9px 10px;border:1px solid rgba(201,168,76,0.15);border-radius:6px;background:rgba(201,168,76,0.025)">
-        <div class="ed-row">
-          <div class="ed-field grow">
-            <div class="ed-lbl" style="color:#d7bd6b">Model Input ${i+2}</div>
-            <input class="ed-in" style="font-size:12px;font-family:monospace"
-                   placeholder="Leave blank to reuse Model Input 1"
-                   value="${av(raw)}"
-                   oninput="setAdditionalModelInput(${i},this.value);const p=this.parentElement.querySelector('.model-input-preview');const s=resolvedModelInputStem(this.value.trim()||EDIT_CARD.model_input||'');if(p)p.textContent=s?('Resolved: '+s+'_Model.obj'):'Resolved: —'">
-            <div class="model-input-preview" style="font-size:10px;color:var(--text-muted);margin-top:5px;font-family:monospace;overflow-wrap:anywhere">
-              ${stem?`Resolved: ${E(stem)}_Model.obj${raw?'':'  (using Model 1)'}`:'Resolved: —'}
-            </div>
-          </div>
-        </div>
-        <div class="ed-lbl" style="color:var(--gold);margin:8px 0 5px">OBJ MODEL MANIPULATION — MODEL ${i+2}</div>
-        <div class="ed-row" style="margin:0">
-          <div class="ed-field"><div class="ed-lbl">Scale</div>
-            <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(manip.scale??1)}"
-                   oninput="setAdditionalModelManip(${i},'scale',this.value)">
-          </div>
-          <div class="ed-field"><div class="ed-lbl">X Offset</div>
-            <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(manip.x??0)}"
-                   oninput="setAdditionalModelManip(${i},'x',this.value)">
-          </div>
-          <div class="ed-field"><div class="ed-lbl">Y Offset</div>
-            <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(manip.y??0)}"
-                   oninput="setAdditionalModelManip(${i},'y',this.value)">
-          </div>
-          <div class="ed-field"><div class="ed-lbl">Z Offset</div>
-            <input class="ed-in" type="number" step="0.01" style="width:78px" value="${av(manip.z??0)}"
-                   oninput="setAdditionalModelManip(${i},'z',this.value)">
-          </div>
-        </div>
-      </div>`;
-    }).join('')}
-    <div style="font-size:10px;color:var(--text-muted);margin:3px 0 0 132px;font-family:'Oswald';letter-spacing:0.3px">
-      Unit members use the models in order. When the unit is larger than the available model list, it cycles back to Model 1.
     </div>
   </div>
   <div class="ed-sec" style="border-color:rgba(91,184,146,0.25);background:rgba(8,20,16,0.6)">
